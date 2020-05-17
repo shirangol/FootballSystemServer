@@ -94,10 +94,7 @@ public class FanController extends GuestController   {
 //       ScreenController.getInstance().setAlert(userName,alert);
 //
 //    }
-    @Override
-    public Fan signUp(int id, String name, String password, String userName) {
-        throw new UnsupportedOperationException();
-    }
+
     @Override
     public void logOut(User user) {
         Controller controller = Controller.getInstance();

@@ -58,3 +58,14 @@ Sun May 17 17:25:08 IDT 2020 lSystem.System.Controller.signUp: A new user signUp
 Sun May 17 17:25:56 IDT 2020 lSystem.System.Users.User.setStatus: shiran(id: 6) update his status
 Sun May 17 17:25:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
 Sun May 17 17:43:34 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,shiran).
+Sun May 17 18:03:45 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,shiran).
+Sun May 17 18:09:06 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,shiran).
+Sun May 17 18:09:18 IDT 2020 lSystem.System.Users.User.setStatus: shiran(id: 6) update his status
+Sun May 17 18:09:18 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sun May 17 18:19:36 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,shiran).
+Sun May 17 18:23:39 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,shiran).
+Sun May 17 18:24:25 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,null).
+Sun May 17 19:47:10 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,gal).
+Sun May 17 19:47:22 IDT 2020 lSystem.System.Users.User.setStatus: shiran(id: 6) update his status
+Sun May 17 19:47:22 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sun May 17 19:48:05 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (6,gal).
