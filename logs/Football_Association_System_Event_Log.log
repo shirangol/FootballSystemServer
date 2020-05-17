@@ -1,0 +1,26 @@
+Fri May 15 17:42:12 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 17:42:44 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 17:55:42 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 17:56:57 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 15 17:56:57 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 15 17:59:02 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 18:02:23 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 15 18:02:23 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 15 18:03:05 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 15 18:03:05 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 15 19:08:00 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 19:11:29 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 19:12:21 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 15 19:12:21 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 15 19:13:16 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 19:13:30 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 15 19:13:30 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 15 20:32:03 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Fri May 15 20:32:53 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 15 20:32:53 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 15 20:52:01 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Sat May 16 02:35:40 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,MAX).
+Sat May 16 02:35:59 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 16 02:35:59 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 16 02:37:23 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 16 02:37:23 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
