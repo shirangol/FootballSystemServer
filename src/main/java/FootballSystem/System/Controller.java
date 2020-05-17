@@ -74,8 +74,8 @@ public class Controller {
         seasons.add(season);
     }
 
-    public void getUser(UserSQL userSQL , String userName){
-
+    public User getUser(String userName){
+        return users.get(userName);
     }
     //</editor-fold>
 

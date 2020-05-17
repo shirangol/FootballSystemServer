@@ -8,12 +8,16 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.User;
 import FootballSystem.System.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+@RequestMapping("/api/referee")
+@RestController
 public class RefereeController extends MainUserController {
     private static RefereeController ourInstance = new RefereeController();
 

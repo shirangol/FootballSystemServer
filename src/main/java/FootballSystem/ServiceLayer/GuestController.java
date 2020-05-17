@@ -10,7 +10,10 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.FootballObjects.Team.Team;
 import FootballSystem.System.Searcher.ASearchStrategy;
 import FootballSystem.System.Users.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -85,7 +88,7 @@ public class GuestController extends MainUserController {
                 }
             }
             case "Referee":{
-               for(Referee referee : Controller.getInstance().getAllReferee()){
+                for(Referee referee : Controller.getInstance().getAllReferee()){
                     result.add(referee);
                 }
             }
@@ -104,21 +107,27 @@ public class GuestController extends MainUserController {
         return results;
     }
 
-    @Override
-    public void logOut(User user){
-        throw new UnsupportedOperationException();
-    }
 
-    @PostMapping
-    public void signUp2(@RequestBody Fan fan) throws UserNameAlreadyExistException {
+    //Sign-Up for fan only
+    @PostMapping (value = "/signUp")
+    public ResponseEntity signUp(@RequestBody Fan fan)throws UserNameAlreadyExistException {
         Controller controller = Controller.getInstance();
-        Fan newFan = controller.signUp(2,fan.getName(),fan.getPassword(),fan.getUserName());
-   //     return newFan;
+        Fan newFan = controller.signUp(fan.getId(),fan.getName(),fan.getPassword(),fan.getUserName());
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(path = "{user_Name}")
-    public User login(@PathVariable("user_Name")String userName ) throws WrongPasswordException, NoSuchAUserNamedException {
-        return (Controller.getInstance().login(userName,"1234"));
+    //Login
+    @GetMapping(path = "login/{user_Name}/{password}")
+    public ResponseEntity login(@PathVariable("user_Name")String userName, @PathVariable("password") String password ) throws WrongPasswordException, NoSuchAUserNamedException {
+        return new ResponseEntity(Controller.getInstance().login(userName,password),HttpStatus.ACCEPTED);
     }
 
+    //Log-Out
+    @GetMapping(path = "logOut/{user_Name}")
+    public ResponseEntity logOut(@PathVariable("user_Name")String userName){
+        Controller controller = Controller.getInstance();
+        User user= controller.getUser(userName);
+        controller.logOut(user);
+        return new ResponseEntity(user,HttpStatus.ACCEPTED);
+    }
 }
