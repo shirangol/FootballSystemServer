@@ -48,6 +48,31 @@ public class RefereeController extends MainUserController {
         referee.addEventMidGame(game, type, min, playerName, teamName);
     }
 
+    public List<AEvent> getEventsOfGame(User user, Game game) throws NoRefereePermissions {
+        if (!(user instanceof Referee)) {
+            throw new NoRefereePermissions();
+        }
+        return game.getEventLog().getEventList();
+    }
+
+    public void editEventAfterGame(Referee referee, Game game, String type, AEvent oldEvent, String playerName, String teamName) throws NoRefereePermissions, NoSuchEventException {
+        referee.editEventAfterGame(game, oldEvent, type, playerName, teamName);
+    }
+
+    public void addEventAfterGame(Referee referee, Game game, String type, int minute, String playerName, String teamName) throws NoRefereePermissions, NoSuchEventException {
+        if (game.getMainReferee() != referee) {
+            throw new NoRefereePermissions();
+        }
+        referee.addEventToLogEvent(game, type, minute, playerName, teamName);
+    }
+
+    public void createGameReport(Referee referee, Game game) throws NoRefereePermissions {
+        if (game.getMainReferee() != referee) {
+            throw new NoRefereePermissions();
+        }
+        referee.createGameReport(game);
+    }
+
     @PostMapping(value = "/addEventDuringGame")
     public ResponseEntity addEventDuringGame(@RequestBody Map<String,String> body) throws NoRefereePermissions, NoSuchEventException, OnlyForReferee {
         User referee =  Controller.getInstance().getUser(body.get("user_name"));
@@ -77,31 +102,6 @@ public class RefereeController extends MainUserController {
             }
         }
         return new ResponseEntity(HttpStatus.ACCEPTED);
-    }
-
-    public List<AEvent> getEventsOfGame(User user, Game game) throws NoRefereePermissions {
-        if (!(user instanceof Referee)) {
-            throw new NoRefereePermissions();
-        }
-        return game.getEventLog().getEventList();
-    }
-
-    public void editEventAfterGame(Referee referee, Game game, String type, AEvent oldEvent, String playerName, String teamName) throws NoRefereePermissions, NoSuchEventException {
-        referee.editEventAfterGame(game, oldEvent, type, playerName, teamName);
-    }
-
-    public void addEventAfterGame(Referee referee, Game game, String type, int minute, String playerName, String teamName) throws NoRefereePermissions, NoSuchEventException {
-        if (game.getMainReferee() != referee) {
-            throw new NoRefereePermissions();
-        }
-        referee.addEventToLogEvent(game, type, minute, playerName, teamName);
-    }
-
-    public void createGameReport(Referee referee, Game game) throws NoRefereePermissions {
-        if (game.getMainReferee() != referee) {
-            throw new NoRefereePermissions();
-        }
-        referee.createGameReport(game);
     }
 
     @GetMapping(path = "getMyGames/{user_name}")
@@ -176,13 +176,21 @@ public class RefereeController extends MainUserController {
         return new ResponseEntity(events,HttpStatus.ACCEPTED);
     }
 
-    public void postEventReport(String userName , String gameID , String report){
-        HashMap<String, User> dic = Controller.getInstance().getUsers();
-        Referee referee = ((Referee) dic.get(userName));
-        for (Game g : referee.getGames()) {
+    @PostMapping(value = "/postEventReport")
+    public ResponseEntity postEventReport(@RequestBody Map<String,String> body) throws OnlyForReferee {
+        String refereeName=body.get("user_name");
+        String gameID=body.get("game_id");
+        String report=body.get("report");
+        User referee =  Controller.getInstance().getUser(refereeName);
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+
+        for (Game g : ((Referee)referee).getGames()) {
             if (g.getId() == Integer.parseInt(gameID)) {
               g.getEventLog().setReport(report);
             }
         }
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }

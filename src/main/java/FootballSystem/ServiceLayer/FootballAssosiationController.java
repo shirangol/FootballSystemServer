@@ -58,14 +58,6 @@ public class FootballAssosiationController {
         return Controller.getInstance().getAllReferee();
     }
 
-    /**
-     * Get all team owner in the system
-     *
-     * @return
-     */
-    public List<TeamOwner> getAllTeamOwner() {
-        return Controller.getInstance().getAllTeamOwner();
-    }
 
     /**
      * Get all LeagueInformation of FootballAssociation
@@ -280,7 +272,7 @@ public class FootballAssosiationController {
 
     @GetMapping(path = "createTeam/{team_name}/{team_owner_name}")
     public ResponseEntity createTeam(@PathVariable("team_name") String teamName,@PathVariable("team_owner_name") String teamOwner) {
-        for (TeamOwner tO : getAllTeamOwner()) {
+        for (TeamOwner tO :  Controller.getInstance().getAllTeamOwner()) {
             if (tO.getUserName().equals(teamOwner)) {
                 createTeam(teamName, tO);
             }
@@ -328,8 +320,9 @@ public class FootballAssosiationController {
      *
      * @return
      */
-    public List<String> getScorePolicyString() {
-        return Controller.getInstance().getScorePoliciesString();
+    @GetMapping(path = "/getScorePolicy")
+    public ResponseEntity getScorePolicy() {
+        return new ResponseEntity(Controller.getInstance().getScorePoliciesString(),HttpStatus.ACCEPTED) ;
     }
 
     /**
@@ -337,16 +330,19 @@ public class FootballAssosiationController {
      *
      * @return
      */
-    public List<String> getAllocatePolicyString() {
-        return Controller.getInstance().getMethodAllocatePoliciesString();
+    @GetMapping(path = "/getAllocatePolicy")
+    public ResponseEntity getAllocatePolicy()
+    {
+        return new ResponseEntity(Controller.getInstance().getMethodAllocatePoliciesString(),HttpStatus.ACCEPTED);
     }
 
-    public List<String> getAllTeamOwnerString() {
+    @GetMapping(path = "/getAllTeamOwner")
+    public ResponseEntity getAllTeamOwner() {
         List<String> list = new ArrayList<>();
-        for (TeamOwner t : getAllTeamOwner()) {
+        for (TeamOwner t : Controller.getInstance().getAllTeamOwner()) {
             list.add(t.getUserName());
         }
-        return list;
+        return new ResponseEntity(list,HttpStatus.ACCEPTED);
     }
 
     /**
