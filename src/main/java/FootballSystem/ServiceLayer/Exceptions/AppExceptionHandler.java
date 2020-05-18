@@ -12,6 +12,6 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleAnyException(Exception ex, WebRequest request){
-        return new ResponseEntity<>("ssss", HttpStatus.EXPECTATION_FAILED);
+        return new ResponseEntity<>(ex.getClass(), HttpStatus.EXPECTATION_FAILED);
     }
 }

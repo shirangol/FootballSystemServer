@@ -10,12 +10,13 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.FootballObjects.Team.Team;
 import FootballSystem.System.Searcher.ASearchStrategy;
 import FootballSystem.System.Users.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
-import java.util.HashMap;
+import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -24,42 +25,8 @@ import java.util.Map;
 @RestController
 public class GuestController extends MainUserController {
 
-    public int getUserType(String userName , String password) throws WrongPasswordException, NoSuchAUserNamedException {
-        Controller controller = Controller.getInstance();
-        User existUser = controller.login(userName,password);
-        if(existUser instanceof Fan){
-            return 1;
-        }
-        if(existUser instanceof Referee){
-            return 2;
-        }
-        if(existUser instanceof Coach){
-            return 3;
-        }
-        if(existUser instanceof Player){
-            return 4;
-        }
-        if(existUser instanceof FootballAssociation){
-            return 5;
-        }
-        if(existUser instanceof SystemManager){
-            return 6;
-        }
-        if(existUser instanceof TeamOwner){
-            return 7;
-        }
-        if(existUser instanceof TeamManager){
-            return 8;
-        }
-        return 0;
 
-    }
 
-    public Fan signUp(int id, String name, String password, String userName) throws UserNameAlreadyExistException {
-        Controller controller = Controller.getInstance();
-        Fan newFan = controller.signUp(id,name,password,userName);
-        return newFan;
-    }
 
     public List<IShowable> getInfoToShow(String name){
         List<IShowable> result = new LinkedList<IShowable>();
@@ -112,26 +79,56 @@ public class GuestController extends MainUserController {
 
     //Sign-Up for fan only
     @PostMapping (value = "/signUp")
-    public ResponseEntity signUp(@RequestBody Fan fan)throws UserNameAlreadyExistException {
+    public ResponseEntity signUp(@RequestBody Map<String,String> body )throws UserNameAlreadyExistException {
         Controller controller = Controller.getInstance();
-        Fan newFan = controller.signUp(fan.getId(),fan.getName(),fan.getPassword(),fan.getUserName());
+        controller.signUp(Integer.parseInt(body.get("id")) ,body.get("name"),body.get("password"),body.get("user_name"));
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
     //Login
     @PostMapping (value = "/login")
-    public ResponseEntity login(@RequestBody HashMap<String, String> body ) throws WrongPasswordException, NoSuchAUserNamedException {
+    public ResponseEntity login( @RequestBody Map<String,String> body ) throws WrongPasswordException, NoSuchAUserNamedException {
         int type= getUserType(body.get("user_name"),body.get("password"));
         return new ResponseEntity(type,HttpStatus.ACCEPTED);
     }
 
-
     //Log-Out
-    @GetMapping(path = "logOut/{user_Name}")
-    public ResponseEntity logOut(@PathVariable("user_Name")String userName){
+    @GetMapping(path = "logOut/{user_name}")
+    public ResponseEntity logOut(@PathVariable("user_name")String userName){
         Controller controller = Controller.getInstance();
         User user= controller.getUser(userName);
         controller.logOut(user);
         return new ResponseEntity(user,HttpStatus.ACCEPTED);
+    }
+
+    private int getUserType(String userName , String password) throws WrongPasswordException, NoSuchAUserNamedException {
+        Controller controller = Controller.getInstance();
+        User existUser = controller.login(userName,password);
+        if(existUser instanceof Fan){
+            return 1;
+        }
+        if(existUser instanceof Referee){
+            return 2;
+        }
+        if(existUser instanceof Coach){
+            return 3;
+        }
+        if(existUser instanceof Player){
+            return 4;
+        }
+        if(existUser instanceof FootballAssociation){
+            return 5;
+        }
+        if(existUser instanceof SystemManager){
+            return 6;
+        }
+        if(existUser instanceof TeamOwner){
+            return 7;
+        }
+        if(existUser instanceof TeamManager){
+            return 8;
+        }
+        return 0;
+
     }
 }

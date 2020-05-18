@@ -25,7 +25,7 @@ public class FootballSystemApplication {
 
         Controller.getInstance().initSystem();
         GuestController guestController = new GuestController();
-        guestController.signUp(1,"Pudge","1234","Pudge");
+//        guestController.signUp(1,"Pudge","1234","Pudge");
         User systemManager = Controller.getInstance().login("Admin","2&^4BcE#@6");
         User teamOwner = SystemManagerController.getInstance().createNewTeamOwner((SystemManager)systemManager,4,"Puck","1234","Puck",0,0);
 
