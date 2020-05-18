@@ -15,8 +15,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/api/user")
 @RestController
@@ -117,10 +119,12 @@ public class GuestController extends MainUserController {
     }
 
     //Login
-    @GetMapping(path = "login/{user_Name}/{password}")
-    public ResponseEntity login(@PathVariable("user_Name")String userName, @PathVariable("password") String password ) throws WrongPasswordException, NoSuchAUserNamedException {
-        return new ResponseEntity(Controller.getInstance().login(userName,password),HttpStatus.ACCEPTED);
+    @PostMapping (value = "/login")
+    public ResponseEntity login(@RequestBody HashMap<String, String> body ) throws WrongPasswordException, NoSuchAUserNamedException {
+        int type= getUserType(body.get("user_name"),body.get("password"));
+        return new ResponseEntity(type,HttpStatus.ACCEPTED);
     }
+
 
     //Log-Out
     @GetMapping(path = "logOut/{user_Name}")
