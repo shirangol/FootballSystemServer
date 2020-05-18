@@ -1,5 +1,4 @@
 package FootballSystem.ServiceLayer;
-
 import FootballSystem.ServiceLayer.Exceptions.OnlyForReferee;
 import FootballSystem.System.Exeptions.NoRefereePermissions;
 import FootballSystem.System.Exeptions.NoSuchEventException;
@@ -160,7 +159,7 @@ public class RefereeController extends MainUserController {
         return new ResponseEntity(false,HttpStatus.ACCEPTED) ;
     }
 
-    @GetMapping(path = "isGameLive/{game_id}/{referee_name}")
+    @GetMapping(path = "getEvents/{game_id}/{referee_name}")
     public ResponseEntity getEvents(@PathVariable("game_id")String gameID,@PathVariable("referee_name") String refereeName)throws OnlyForReferee {
         User referee =  Controller.getInstance().getUser(refereeName);
         if(!(referee instanceof Referee)){

@@ -16,9 +16,14 @@ import FootballSystem.System.Users.FootballAssociation;
 import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.TeamOwner;
 import FootballSystem.System.Log;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@RequestMapping("/api/FootballAssosiation")
+@RestController
 public class FootballAssosiationController {
 
     private static FootballAssosiationController ourInstance = new FootballAssosiationController();
@@ -42,15 +47,6 @@ public class FootballAssosiationController {
      */
     public List<Team> getAllTeams() {
         return Controller.getInstance().getAllTeams();
-    }
-
-    /**
-     * Get all leagues in the system
-     *
-     * @return
-     */
-    public List<League> getAllLeague() {
-        return Controller.getInstance().getAllLeagues();
     }
 
     /**
@@ -282,12 +278,14 @@ public class FootballAssosiationController {
         return team;
     }
 
-    public void createTeam(String teamName, String teamOwner) {
+    @GetMapping(path = "createTeam/{team_name}/{team_owner_name}")
+    public ResponseEntity createTeam(@PathVariable("team_name") String teamName,@PathVariable("team_owner_name") String teamOwner) {
         for (TeamOwner tO : getAllTeamOwner()) {
             if (tO.getUserName().equals(teamOwner)) {
                 createTeam(teamName, tO);
             }
         }
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
     /**
@@ -315,12 +313,14 @@ public class FootballAssosiationController {
      *
      * @return
      */
-    public List<String> getAllLeagueString() {
+
+    @GetMapping(path = "/getAllLeague")
+    public ResponseEntity getAllLeague() {
         List<String> list = new ArrayList<>();
         for (League l : Controller.getInstance().getAllLeagues()) {
             list.add(l.getName());
         }
-        return list;
+        return new ResponseEntity(list, HttpStatus.ACCEPTED) ;
     }
 
     /**
@@ -352,31 +352,33 @@ public class FootballAssosiationController {
     /**
      * get all league information by League name
      *
-     * @param str to search
+     * @param leagueName to search
      * @return
      */
-    public List<String> getLeagueInformationString(String str) {
+    @GetMapping(path = "/getLeagueInformation/{league_name}")
+    public ResponseEntity getLeagueInformation(@PathVariable("league_name") String leagueName) {
         List<String> list = new ArrayList<>();
-        for (League l : getAllLeague()) {
-            if (l.getName().equals(str)) {
+        for (League l : Controller.getInstance().getAllLeagues()) {
+            if (l.getName().equals(leagueName)) {
                 for (LeagueInformation leagueInfo : l.getLeagueInformation()) {
                     list.add(leagueInfo.getSeason().getYear());
                 }
             }
         }
-        return list;
+        return new ResponseEntity(list,HttpStatus.ACCEPTED);
     }
 
     /**
      * edit the league policy (use case)
-     *
-     * @param league
-     * @param season
-     * @param scoreMethodPolicy
-     * @param schedulingPolicy
+
      */
-    public void editLeaguePolicy(String league, String season, String scoreMethodPolicy, String schedulingPolicy) {
-        for (League l : getAllLeague()) {
+    @PostMapping(value = "/editLeaguePolicy")
+    public ResponseEntity editLeaguePolicy(@RequestBody Map<String,String> body) {
+        String league= body.get("league_name");
+        String season= body.get("season_year");
+        String scoreMethodPolicy= body.get("scoreMethodPolicy");
+        String schedulingPolicy=body.get("schedulingPolicy");
+        for (League l : Controller.getInstance().getAllLeagues()) {
             if (l.getName().equals(league)) {
                 for (LeagueInformation leagueInfo : l.getLeagueInformation()) {
                     if (leagueInfo.getSeason().getYear().equals(season)) {
@@ -387,9 +389,9 @@ public class FootballAssosiationController {
                     }
                 }
             }
+
         }
         //</editor-fold>
-
-
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }
