@@ -64,6 +64,7 @@ public class FootballSystemApplication {
 			FanController.getInstance().followGame((Fan) fan, leagueInformation.getGames().get(1));
 //
 			FootballAssosiationController.getInstance().schedulingReferee((FootballAssociation) footballAs, leagueInformation, referees);
+			ObserverController.notify("aaa","aaa");
 		} catch (Exception e) {
 
 		}
