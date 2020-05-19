@@ -136,6 +136,8 @@ public class SystemManagerController {
     public Fan createNewFan(SystemManager systemManager, int id, String name, String password, String userName) throws UserNameAlreadyExistException {
         return systemManager.createNewFan(id,name,password,userName);
     }
+
+
     public Referee createNewReferee(SystemManager systemManager, int id, String name, String password, String userName, RefereeType refereeType) throws UserNameAlreadyExistException
     { return systemManager.createNewReferee(id,  name,  password,  userName,refereeType);
     }

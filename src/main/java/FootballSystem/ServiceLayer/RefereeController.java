@@ -1,5 +1,5 @@
 package FootballSystem.ServiceLayer;
-
+import FootballSystem.ServiceLayer.Exceptions.OnlyForReferee;
 import FootballSystem.System.Exeptions.NoRefereePermissions;
 import FootballSystem.System.Exeptions.NoSuchEventException;
 import FootballSystem.System.FootballObjects.Event.AEvent;
@@ -8,12 +8,14 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.User;
 import FootballSystem.System.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
+@RequestMapping("/api/referee")
+@RestController
 public class RefereeController extends MainUserController {
     private static RefereeController ourInstance = new RefereeController();
 
@@ -42,35 +44,8 @@ public class RefereeController extends MainUserController {
     }
 
 
-    public void addEventDuringGame(Referee referee, Game game, String type, int min, String playerName, String teamName) throws NoRefereePermissions, NoSuchEventException {
+    private void addEventDuringGame(Referee referee, Game game, String type, int min, String playerName, String teamName) throws NoRefereePermissions, NoSuchEventException {
         referee.addEventMidGame(game, type, min, playerName, teamName);
-    }
-
-    public void addEventDuringGame(String name, String game, String type, int min, String playerName, String team) throws NoRefereePermissions, NoSuchEventException {
-        HashMap<String, User> dic = Controller.getInstance().getUsers();
-        Referee referee = ((Referee) dic.get(name));
-        Game game1 = null;
-        for (Game g : referee.getGames()) {
-            if (g.getId() == Integer.parseInt(game)) {
-                game1 = g;
-            }
-        }
-        addEventDuringGame(referee, game1, type, min, playerName, team);
-        if (type.equals("Goal")) {
-            if (game1.getHome().getName().equals(team)) {
-                if (game1.getResult() == null) {
-                    game1.setResult(0, 0);
-                }
-                game1.setResult(Integer.parseInt(game1.getResult().split(":")[0]) + 1, Integer.parseInt(game1.getResult().split(":")[1]));
-            } else {
-                if (game1.getResult() == null) {
-                    game1.setResult(0, 0);
-                }
-                String home = game1.getResult().split(":")[0];
-                int away = (Integer.parseInt(game1.getResult().split(":")[1]) + 1);
-                game1.setResult(Integer.parseInt(home), away);
-            }
-        }
     }
 
     public List<AEvent> getEventsOfGame(User user, Game game) throws NoRefereePermissions {
@@ -98,24 +73,63 @@ public class RefereeController extends MainUserController {
         referee.createGameReport(game);
     }
 
-    public List<String> getMyGames(String refereeName) {
-        HashMap<String, User> dic = Controller.getInstance().getUsers();
-        Referee referee = ((Referee) dic.get(refereeName));
-        List<Game> games = this.getMyGames(referee);
+    @PostMapping(value = "/addEventDuringGame")
+    public ResponseEntity addEventDuringGame(@RequestBody Map<String,String> body) throws NoRefereePermissions, NoSuchEventException, OnlyForReferee {
+        User referee =  Controller.getInstance().getUser(body.get("user_name"));
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+        Game game = null;
+        for (Game g : ((Referee)referee).getGames()) {
+            if (g.getId() == Integer.parseInt(body.get("game"))) {
+                game = g;
+            }
+        }
+        addEventDuringGame(((Referee)referee), game, body.get("type"), Integer.valueOf(body.get("min")), body.get("playerName"), body.get("team"));
+        if (body.get("type").equals("Goal")) {
+            if (game.getHome().getName().equals( body.get("team"))) {
+                if (game.getResult() == null) {
+                    game.setResult(0, 0);
+                }
+                game.setResult(Integer.parseInt(game.getResult().split(":")[0]) + 1, Integer.parseInt(game.getResult().split(":")[1]));
+            } else {
+                if (game.getResult() == null) {
+                    game.setResult(0, 0);
+                }
+                String home = game.getResult().split(":")[0];
+                int away = (Integer.parseInt(game.getResult().split(":")[1]) + 1);
+                game.setResult(Integer.parseInt(home), away);
+            }
+        }
+        return new ResponseEntity(HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(path = "getMyGames/{user_name}")
+    public ResponseEntity getMyGames(@PathVariable("user_name") String refereeName) throws OnlyForReferee {
+        User referee =  Controller.getInstance().getUser(refereeName);
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+
+        List<Game> games = this.getMyGames((Referee)referee);
         LinkedList<String> output = new LinkedList<>();
         for (Game g : games) {
             String[] strA = g.getDate().toString().split(" ");
             String str = g.getHome().getName() + "," + g.getAway().getName() + "," + strA[1] + " " + strA[2] + "," + strA[3].substring(0, strA[3].length() - 3) + "," + g.getId();
             output.add(str);
         }
-        return output;
+        return new ResponseEntity(output, HttpStatus.ACCEPTED);
     }
 
-    public String getScore(String idGame, String refereeName) {
+    @GetMapping(path = "getScore/{game_id}/{referee_name}")
+    public ResponseEntity getScore(@PathVariable("game_id")String idGame,@PathVariable("referee_name") String refereeName) throws OnlyForReferee {
         String output = "";
-        HashMap<String, User> dic = Controller.getInstance().getUsers();
-        Referee referee = ((Referee) dic.get(refereeName));
-        for (Game g : referee.getGames()) {
+        User referee =  Controller.getInstance().getUser(refereeName);
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+
+        for (Game g : ((Referee)referee).getGames()) {
             if (g.getId() == Integer.parseInt(idGame)) {
                 if (g.getResult() != null) {
                     output = g.getResult();
@@ -124,45 +138,59 @@ public class RefereeController extends MainUserController {
                 }
             }
         }
-        return output;
+        return new ResponseEntity(output,HttpStatus.ACCEPTED) ;
     }
 
-    public Boolean isGameLive(String idGame, String refereeName) {
-        HashMap<String, User> dic = Controller.getInstance().getUsers();
-        Referee referee = ((Referee) dic.get(refereeName));
-        for (Game g : referee.getGames()) {
+    @GetMapping(path = "isGameLive/{game_id}/{referee_name}")
+    public ResponseEntity isGameLive(@PathVariable("game_id")String idGame,@PathVariable("referee_name") String refereeName)throws OnlyForReferee {
+        User referee =  Controller.getInstance().getUser(refereeName);
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+        for (Game g : ((Referee)referee).getGames()) {
             if (g.getId() == Integer.parseInt(idGame)) {
                 Date startTime = new Date();
                 Date endTime = new Date(startTime.getTime() + 2 * (3600 * 1000));
                 if (startTime.after(g.getDate()))
                     if (g.getDate().before(endTime))
-                        return true;
+                        return new ResponseEntity(true,HttpStatus.ACCEPTED) ;
             }
         }
-        return false;
+        return new ResponseEntity(false,HttpStatus.ACCEPTED) ;
     }
 
-    public List<String> getEvents(String gameID, String refereeName) {
-        HashMap<String, User> dic = Controller.getInstance().getUsers();
-        List<String> events = new LinkedList<>();
-        Referee referee = ((Referee) dic.get(refereeName));
-        for (Game g : referee.getGames()) {
+    @GetMapping(path = "getEvents/{game_id}/{referee_name}")
+    public ResponseEntity getEvents(@PathVariable("game_id")String gameID,@PathVariable("referee_name") String refereeName)throws OnlyForReferee {
+        User referee =  Controller.getInstance().getUser(refereeName);
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+        List<String> events=new LinkedList<>();
+        for (Game g : ((Referee)referee).getGames()) {
             if (g.getId() == Integer.parseInt(gameID)) {
                 for(AEvent event : g.getEventLog().getEventList()){
                     events.add(event.getClass().getName()+","+"'"+event.getMinute()+","+event.getPlayerName()+","+event.getTeamName());
                 }
             }
         }
-        return events;
+        return new ResponseEntity(events,HttpStatus.ACCEPTED);
     }
 
-    public void postEventReport(String userName , String gameID , String report){
-        HashMap<String, User> dic = Controller.getInstance().getUsers();
-        Referee referee = ((Referee) dic.get(userName));
-        for (Game g : referee.getGames()) {
+    @PostMapping(value = "/postEventReport")
+    public ResponseEntity postEventReport(@RequestBody Map<String,String> body) throws OnlyForReferee {
+        String refereeName=body.get("user_name");
+        String gameID=body.get("game_id");
+        String report=body.get("report");
+        User referee =  Controller.getInstance().getUser(refereeName);
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+
+        for (Game g : ((Referee)referee).getGames()) {
             if (g.getId() == Integer.parseInt(gameID)) {
               g.getEventLog().setReport(report);
             }
         }
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }
