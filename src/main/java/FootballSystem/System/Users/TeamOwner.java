@@ -9,6 +9,7 @@ import FootballSystem.System.I_Observer.IObserverTeam;
 import FootballSystem.System.I_Observer.ISubjectTeam;
 import FootballSystem.System.SystemEventLog;
 import FootballSystem.System.ErrorLog;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -35,7 +36,7 @@ public class TeamOwner extends User implements IObserverTeam {
      * @param name
      * @param salary
      */
-    public TeamOwner(int id, String name, String password, String userName,int salary) {
+    public TeamOwner(@JsonProperty("id")int id, @JsonProperty("name")String name, @JsonProperty("password")String password,@JsonProperty("userName") String userName,@JsonProperty("salary") int salary) {
         super(id,name, password, userName);
         this.selfCoach = null;
         this.selfTeamManager = null;

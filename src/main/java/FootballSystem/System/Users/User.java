@@ -19,7 +19,7 @@ public abstract class User extends Guest {
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
-    public User( int id, String name, String password, @JsonProperty("user_Name")String userName) {
+    public User( @JsonProperty("id")int id,@JsonProperty("name") String name,@JsonProperty("password") String password, @JsonProperty("user_Name")String userName) {
         this.id = id;
         this.name = name;
         this.password = password;

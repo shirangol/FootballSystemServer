@@ -9,6 +9,7 @@ import FootballSystem.System.I_Observer.IObserverTeam;
 import FootballSystem.System.I_Observer.ISubjectTeam;
 import FootballSystem.System.SystemEventLog;
 import FootballSystem.System.Report;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.IOException;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class SystemManager extends User implements IObserverTeam {
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
-    public SystemManager(int id, String name, String password, String userName){
+    public SystemManager(@JsonProperty("id")int id, @JsonProperty("name")String name,@JsonProperty("password") String password, @JsonProperty("userName")String userName){
         super(id,name,password,userName);
     }
     //</editor-fold>

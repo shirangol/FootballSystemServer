@@ -17,7 +17,7 @@ public class EventLogSQL implements DataBase<EventLog> {
     }
 
     @Override
-    public Optional<EventLog> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

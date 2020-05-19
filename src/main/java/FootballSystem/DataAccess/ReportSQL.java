@@ -17,7 +17,7 @@ public class ReportSQL implements DataBase<Report> {
     }
 
     @Override
-    public Optional<Report> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

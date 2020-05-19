@@ -17,7 +17,7 @@ public class SeasonSQL implements DataBase<Season> {
     }
 
     @Override
-    public Optional<Season> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

@@ -1,5 +1,11 @@
 package FootballSystem;
 
+import FootballSystem.DataAccess.DBConnector;
+import FootballSystem.DataAccess.UserSQL;
+import FootballSystem.System.Enum.RefereeType;
+import FootballSystem.System.Users.Fan;
+import FootballSystem.System.Users.Player;
+import FootballSystem.System.Users.Referee;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -8,6 +14,53 @@ class FootballSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
+//	@Test
+//	void getFanById(){
+//		UserSQL userSQL=UserSQL.getInstance();
+//		Fan f=(Fan)(userSQL.get(123));
+//		userSQL.getAll();
+//		//Player p=new Player(654,"playerName","22d0","nickName",null,null,0,0);
+//	}
+
+//	@Test
+//	void addFanUser(){
+//		UserSQL userSQL=UserSQL.getInstance();
+//		Fan f=new Fan(7654,"fanName5","123456","newNick5");
+//		userSQL.save(f);
+//		userSQL.getAll();
+//	}
+
+//	@Test
+//	void addRefreeUser(){
+//		UserSQL userSQL=UserSQL.getInstance();
+//		Referee harelush=new Referee("harel", RefereeType.MAIN,345,"123456","harelush");
+//		//userSQL.save(harelush);
+//		//userSQL.get("harelush");
+//		//userSQL.getAll();//get all before delete
+//	}
+
+//	@Test
+//	void getRefreeUser(){
+//		UserSQL userSQL=UserSQL.getInstance();
+//		Referee harelush=(Referee)(userSQL.get(345));
+//		userSQL.getAll();//get all before delete
+//	}
+
+//	@Test
+//	void deleteRefreeUser1(){//here we send user object to the delete
+//		UserSQL userSQL=UserSQL.getInstance();
+//		Referee harelush=new Referee("harel", RefereeType.MAIN,345,"123456","harelush");
+//		userSQL.delete(harelush);
+//		userSQL.getAll();//get all after delete
+//	}
+
+//	@Test
+//	void deleteUserByUserName(){//here we send string userName and by this parameter we execute the delete
+//		UserSQL userSQL=UserSQL.getInstance();
+//		userSQL.deleteByUserName("newNick4");
+//		userSQL.getAll();//get all after delete
+//	}
 }

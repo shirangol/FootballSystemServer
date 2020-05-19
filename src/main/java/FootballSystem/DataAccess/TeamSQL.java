@@ -17,7 +17,7 @@ public class TeamSQL implements DataBase<Team> {
     }
 
     @Override
-    public Optional<Team> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

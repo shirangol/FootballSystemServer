@@ -11,6 +11,7 @@ import FootballSystem.System.SystemEventLog;
 import FootballSystem.System.Exeptions.*;
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.FinancialReport;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.*;
 
@@ -22,7 +23,7 @@ public class FootballAssociation extends User {
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
-    public FootballAssociation(int id, String name, String password, String userName) {
+    public FootballAssociation(@JsonProperty("id")int id, @JsonProperty("name")String name,@JsonProperty("password") String password, @JsonProperty("userName")String userName) {
         super(id,name,password,userName);
         leaguesInformation=new HashMap<>();
     }

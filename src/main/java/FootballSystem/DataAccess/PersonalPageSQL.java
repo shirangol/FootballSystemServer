@@ -17,7 +17,7 @@ public class PersonalPageSQL implements DataBase<PersonalPage> {
     }
 
     @Override
-    public Optional<PersonalPage> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

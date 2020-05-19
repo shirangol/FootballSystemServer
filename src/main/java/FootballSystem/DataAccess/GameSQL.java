@@ -17,7 +17,7 @@ public class GameSQL implements DataBase<Game> {
     }
 
     @Override
-    public Optional<Game> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

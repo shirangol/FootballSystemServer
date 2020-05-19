@@ -17,7 +17,7 @@ public class EventSQL implements DataBase<AEvent> {
     }
 
     @Override
-    public Optional<AEvent> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

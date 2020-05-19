@@ -11,6 +11,7 @@ import FootballSystem.System.IShowable;
 import FootballSystem.System.I_Observer.IObserverGame;
 import FootballSystem.System.I_Observer.ISubjectGame;
 import FootballSystem.System.SystemEventLog;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.*;
 
@@ -24,7 +25,7 @@ public class Referee extends User implements IObserverGame,IShowable {
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
-    public Referee(String name, RefereeType type, int id, String pass, String userName) {
+    public Referee(@JsonProperty("name")String name, @JsonProperty("type") RefereeType type, @JsonProperty("id") int id,  @JsonProperty("pass")String pass,  @JsonProperty("userName")String userName) {
         super(id, name, pass, userName);
         this.type = type;
         games = new LinkedList<>();

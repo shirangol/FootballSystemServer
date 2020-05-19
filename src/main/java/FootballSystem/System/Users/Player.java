@@ -9,6 +9,7 @@ import FootballSystem.System.PersonalPages.IPageAvailable;
 import FootballSystem.System.PersonalPages.PersonalPage;
 import FootballSystem.System.IShowable;
 import FootballSystem.System.SystemEventLog;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -38,7 +39,7 @@ public class Player extends User implements Asset, IPageAvailable, IShowable {
      * @param assetValue
      * @param salary
      */
-    public Player(int id, String name, String password, String userName, Date birthDate, String role, int assetValue, int salary) {
+    public Player(@JsonProperty("id")int id, @JsonProperty("name")String name, @JsonProperty("password")String password, @JsonProperty("userName")String userName, @JsonProperty("birthDate")Date birthDate,@JsonProperty("role") String role, @JsonProperty("assetValue")int assetValue,@JsonProperty("salary") int salary) {
         super(id, name, password, userName);
         this.birthDate = birthDate;
         this.role = role;

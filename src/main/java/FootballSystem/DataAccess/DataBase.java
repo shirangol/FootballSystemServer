@@ -1,9 +1,10 @@
 package FootballSystem.DataAccess;
+
 import java.sql.SQLException;
 import java.util.*;
 public interface DataBase <T> {
 
-        Optional<T> get(long id);
+        Object get(long id);
 
         List<T> getAll();
 

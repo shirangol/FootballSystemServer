@@ -19,7 +19,7 @@ public class LeagueSQL implements DataBase<League> {
     }
 
     @Override
-    public Optional<League> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 

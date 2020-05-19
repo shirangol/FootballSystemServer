@@ -17,7 +17,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
     }
 
     @Override
-    public Optional<LeagueInformation> get(long id) {
+    public Object get(long id) {
         return Optional.empty();
     }
 
