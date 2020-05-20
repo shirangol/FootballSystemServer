@@ -1,6 +1,7 @@
 package FootballSystem.System.Users;
 
 
+import FootballSystem.ServiceLayer.ObserverController;
 import FootballSystem.System.I_Observer.IObserverGame;
 import FootballSystem.System.I_Observer.ISubjectGame;
 import FootballSystem.System.PersonalPages.PersonalPage;
@@ -119,9 +120,8 @@ public class Fan extends User implements IObserverGame {
 
     @Override
     public void update(String alert) {
-      //  FanController.getInstance().addAlert(userName,alert);
-        //log
-       // SystemEventLog.getInstance().writeToLog("Fan was updated about a msg. username's fan:"+getUserName());
+        SystemEventLog.getInstance().writeToLog("Fan was updated about a msg. username's fan:"+getUserName());
+        ObserverController.notify(this.userName,alert);
     }
 
     /**

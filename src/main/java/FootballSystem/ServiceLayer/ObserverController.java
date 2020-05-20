@@ -18,20 +18,27 @@ public class ObserverController {
     public void addOnlineUser(@PathVariable("userName")String userName , @PathVariable("myPort")String portNumber ,@PathVariable("myIP") String ipAddress){
         String value = ipAddress+":"+portNumber;
         onlineUsers.put(userName,value);
-        System.out.println("added");
 }
 
     public static void notify(String userName , String event){
-        String info = onlineUsers.get(userName);
-        String notify = "http://"+info+"/api/notification/notify/"+event;
+//        String info = onlineUsers.get(userName);
+//        String notify = "http://"+info+"/api/notification/notify/"+event;
+//
+//        RestTemplate restTemplate = new RestTemplate();
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.set("Content-Type","application/json");
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        HttpEntity<String> e = new HttpEntity<>(headers);
+//        ResponseEntity<String> responseEntity = restTemplate.exchange(notify, HttpMethod.GET, e , String.class);
+
+        String addListener = "http://localHost:8091/api/notification";
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type","application/json");
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> e = new HttpEntity<>(headers);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(notify, HttpMethod.GET, e , String.class);
-        System.out.println("added");
+        restTemplate.exchange(addListener, HttpMethod.GET, e , String.class);
 
     }
 }
