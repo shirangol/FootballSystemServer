@@ -153,10 +153,10 @@ public class RefereeController extends MainUserController {
                 Date endTime = new Date(startTime.getTime() + 2 * (3600 * 1000));
                 if (startTime.after(g.getDate()))
                     if (g.getDate().before(endTime))
-                        return new ResponseEntity(true,HttpStatus.ACCEPTED) ;
+                        return new ResponseEntity("true",HttpStatus.ACCEPTED) ;
             }
         }
-        return new ResponseEntity(false,HttpStatus.ACCEPTED) ;
+        return new ResponseEntity("false",HttpStatus.ACCEPTED) ;
     }
 
     @GetMapping(path = "getEvents/{game_id}/{referee_name}")
