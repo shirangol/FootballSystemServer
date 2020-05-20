@@ -57,6 +57,21 @@ public class Game implements ISubjectGame {
         this.iObserverGameListForFans= new LinkedList<>();
         this.iObserverGameListForReferees =new LinkedList<>();
     }
+
+    public Game(int id,Date date,int hour,String result,  Referee mainReferee, Referee assistantRefereeOne, Referee assistantRefereeTwo, Team away, Team home) {
+        this.id= id;
+        this.date = date;
+        this.hour = hour;
+        this.result=result;
+        this.mainReferee = mainReferee;
+        this.assistantRefereeOne = assistantRefereeOne;
+        this.assistantRefereeTwo = assistantRefereeTwo;
+        this.away=away;
+        this.home=home;
+        this.eventLog = new EventLog();
+        this.iObserverGameListForFans= new LinkedList<>();
+        this.iObserverGameListForReferees =new LinkedList<>();
+    }
     //</editor-fold>
 
     //<editor-fold desc="Getters">

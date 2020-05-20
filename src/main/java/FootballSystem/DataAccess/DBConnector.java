@@ -33,22 +33,7 @@ public class DBConnector {
 
 
             //check connect
-////            try {
-////                Statement stat = con.createStatement();
-////                String sql = "select * from Score_Policy";
-////                ResultSet rs = stat.executeQuery(sql);
-////
-////                while (rs.next()) {
-////                    int id_col = rs.getInt("code");
-////                    String fullName = rs.getString("policyName");
-////                    String p = id_col +  " " + fullName ;
-////                    System.out.println(p);
-////                }
-////                con.close();
-////
-////            }catch (SQLException err) {
-////                throw new RuntimeException("Error connecting to the database", err);
-////            }
+            //testConnection(con);
 
             return con;
 
@@ -59,6 +44,24 @@ public class DBConnector {
     /**
      * Test Connection
      */
+    public static void testConnection(Connection con){
+                    try {
+                Statement stat = con.createStatement();
+                String sql = "select * from Score_Policy";
+                ResultSet rs = stat.executeQuery(sql);
+
+                while (rs.next()) {
+                    int id_col = rs.getInt("code");
+                    String fullName = rs.getString("policyName");
+                    String p = id_col +  " " + fullName ;
+                    System.out.println(p);
+                }
+                con.close();
+
+            }catch (SQLException err) {
+                throw new RuntimeException("Error connecting to the database", err);
+            }
+    }
 
 
 }

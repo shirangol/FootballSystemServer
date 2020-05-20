@@ -1,11 +1,14 @@
 package FootballSystem.System;
 
+import FootballSystem.DataAccess.GameSQL;
+import FootballSystem.DataAccess.TeamSQL;
 import FootballSystem.System.*;
 import FootballSystem.System.Enum.UserStatus;
 import FootballSystem.System.Exeptions.NoSuchAUserNamedException;
 import FootballSystem.System.Exeptions.UserNameAlreadyExistException;
 import FootballSystem.System.Exeptions.WrongPasswordException;
 import FootballSystem.System.FootballObjects.Field;
+import FootballSystem.System.FootballObjects.Game;
 import FootballSystem.System.FootballObjects.League;
 import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.FootballObjects.Team.*;
@@ -13,10 +16,9 @@ import FootballSystem.System.Users.*;
 import FootballSystem.DataAccess.UserSQL;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class Controller {
@@ -75,7 +77,31 @@ public class Controller {
     }
 
     public User getUser(String userName){
-        return users.get(userName);
+        Iterator it = users.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            if(pair.getKey().equals(userName)){
+                return (User)pair.getValue();
+            }
+            it.remove(); // avoids a ConcurrentModificationException
+
+            User u=(User)UserSQL.getInstance().get(userName);
+            return u;
+        }
+        return null;
+        //return users.get(userName);
+    }
+    public Team getTeam(int id) {
+        for (Team team : teams) {
+            if (team.getId() == id) {
+                return team;
+            } else {
+                Team t= TeamSQL.getInstance().get(id);
+                teams.add(t);
+                return t;
+            }
+        }
+        return null;
     }
     //</editor-fold>
 
@@ -362,5 +388,44 @@ public class Controller {
         return scorePolicies;
     }
     //</editor-fold>
+
+    ////SQL
+
+    public Game getGameFromDB(int id){
+        String game= GameSQL.getInstance().get(id);
+
+        String[] seperate = game.split(" ");
+
+        String date=seperate[1];
+
+        Date date2=null;
+        try{
+            DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+            date2 = format.parse(date);
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        int hour=Integer.parseInt(seperate[2]);
+        String result=seperate[3];
+
+        //teams
+        int pTeamAway=Integer.parseInt(seperate[4]);
+        int pTeamHome= Integer.parseInt(seperate[5]);
+        Team away= getTeam(pTeamAway);
+        Team home= getTeam(pTeamHome);
+
+        Referee main= (Referee) UserSQL.getInstance().get(seperate[6]);
+        Referee ass1= (Referee)UserSQL.getInstance().get(seperate[7]);
+        Referee ass2=(Referee) UserSQL.getInstance().get(seperate[8]);
+
+        Game newGame = new Game(id,date2,hour,result,main,ass1,ass2,away,home);
+        return newGame;
+
+    }
+//    public Game getAllGamesFromDB(){
+//        List <Game> games=new ArrayList<>();
+//
+//    }
 
 }
