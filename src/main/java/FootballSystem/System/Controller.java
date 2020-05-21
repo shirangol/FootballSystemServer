@@ -361,6 +361,15 @@ public class Controller {
     public HashMap<String, IScoreMethodPolicy> getScorePolicies() {
         return scorePolicies;
     }
+
+    public void saveAlertToUser(String userName, String event) {
+        //save to DB by username
+    }
+
+    public List<String> getMyAlerts(String userName) {
+        //getUserAlerts--->> and delete them from DB
+        return null;
+    }
     //</editor-fold>
 
 }

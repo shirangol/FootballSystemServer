@@ -98,6 +98,7 @@ public class GuestController extends MainUserController {
         Controller controller = Controller.getInstance();
         User user= controller.getUser(userName);
         controller.logOut(user);
+        ObserverController.removeOnlineUser(userName);
         return new ResponseEntity(user,HttpStatus.ACCEPTED);
     }
 
