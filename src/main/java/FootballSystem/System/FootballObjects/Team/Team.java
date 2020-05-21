@@ -63,6 +63,31 @@ public class Team implements IPageAvailable, ISubjectTeam, IShowable {
         this.gamesOfTeams= new ArrayList<>();
         this.financialReport = new LinkedList<>();
     }
+
+    public Team( int teamID, String name, TeamStatus status, Field field, PersonalPage pPersonalPage, int income, int expense){
+        id=teamID;
+        this.name=name;
+        this.teamStatus=status;
+        this.field=field;
+        this.personalPage=pPersonalPage;
+        this.income=income;
+        this.expense=expense;
+
+        this.assets = new LinkedList<>();
+        this.teamManagersList = new LinkedList<>();
+        this.teamOwners = new HashMap<>();
+//        teamOwners.put(teamOwner,new LinkedList<TeamOwner>());
+//        this.allTeamOwners=new LinkedList<>();
+//        if(teamOwner != null) {
+//            allTeamOwners.add(teamOwner);
+//            teamOwner.addTeamToMyTeamList(this);
+//        }
+        this.financialReport = new LinkedList<FinancialReport>();
+        this.iObserverTeamListForSystemManagers=new LinkedList<>();
+        this.iObserverTeamListForTeamOwnersAndManagers=new LinkedList<>();
+        this.gamesOfTeams= new ArrayList<>();
+        this.financialReport = new LinkedList<>();
+    }
     //</editor-fold>
 
     //<editor-fold desc="Getters">
