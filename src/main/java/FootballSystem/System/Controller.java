@@ -401,6 +401,16 @@ public class Controller {
         SystemEventLog.getInstance().writeToLog("Removed user restart to the system. userName("+userName+").");
     }
 
+    public List<String> getMyAlerts(String userName) {
+        
+        return  null;
+    }
+
+    public void saveAlertToUser(String userName, String event) {
+    }
+
     //</editor-fold>
+
+
 
 }
