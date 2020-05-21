@@ -23,92 +23,101 @@ public class TeamSQL implements DataBase<Team> {
         dbc = DBConnector.getInstance();
     }
 
+//    @Override
+//    public Team get(long id) {
+//        try {
+//            Connection con = DBConnector.getConnection();
+//            Statement stat = con.createStatement();
+//            String sql = "select * from Team where teamID="+id;
+//            ResultSet rs = stat.executeQuery(sql);
+//            while (rs.next()) {
+//                int teamID = rs.getInt("teamID");
+//                String name = rs.getString("name");
+//                int status = rs.getInt("TeamStatus");
+//                int fieldID = rs.getInt("fieldID");
+//                int pPersonalPage = rs.getInt("pPersonalPage");
+//                int income = rs.getInt("income");
+//                int expense = rs.getInt("expense");
+//                int pLeague = rs.getInt("pLeague");
+//
+//
+//                String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
+//                System.out.println(p);
+//
+//                TeamStatus teamStatus=null;
+//                if(status==1){
+//                    teamStatus=TeamStatus.Active;
+//                }else if(status==2){
+//                    teamStatus=TeamStatus.Close;
+//                }else{
+//                    teamStatus=TeamStatus.PermanentlyClose;
+//                }
+//
+//                Team team=new Team(teamID,name,teamStatus, null, null, income, expense);
+//                return team;
+//            }
+//            con.close();
+//
+//        } catch (SQLException err) {
+//            throw new RuntimeException("Error connecting to the database", err);
+//        }
+//        return null;
+//    }
+
+//    @Override
+//    public List<Team> getAll() {
+//        List<Team> teams= new ArrayList<>();
+//        try {
+//            Connection con = DBConnector.getConnection();
+//            Statement stat = con.createStatement();
+//            String sql = "select * from Team";
+//
+//            ResultSet rs = stat.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                int teamID = rs.getInt("teamID");
+//                String name = rs.getString("name");
+//                int status = rs.getInt("TeamStatus");
+//                int fieldID = rs.getInt("fieldID");
+//                int pPersonalPage = rs.getInt("pPersonalPage");
+//                int income = rs.getInt("income");
+//                int expense = rs.getInt("expense");
+//                int pLeague = rs.getInt("pLeague");
+//
+//                String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
+//                System.out.println(p);
+//
+//                TeamStatus teamStatus=null;
+//                if(status==1){
+//                    teamStatus=TeamStatus.Active;
+//                }else if(status==2){
+//                    teamStatus=TeamStatus.Close;
+//                }else{
+//                    teamStatus=TeamStatus.PermanentlyClose;
+//                }
+//
+//                Team team=new Team(teamID,name,teamStatus, null, null, income, expense);
+//                teams.add(team);
+//
+//            }
+//
+//            con.close();
+//            return teams;
+//        } catch (SQLException err) {
+//            throw new RuntimeException("Error connecting to the database", err);
+//        }
+//
+//    }
+
     @Override
-    public Team get(long id) {
-        try {
-            Connection con = DBConnector.getConnection();
-            Statement stat = con.createStatement();
-            String sql = "select * from Team where teamID="+id;
-            ResultSet rs = stat.executeQuery(sql);
-            while (rs.next()) {
-                int teamID = rs.getInt("teamID");
-                String name = rs.getString("name");
-                int status = rs.getInt("TeamStatus");
-                int fieldID = rs.getInt("fieldID");
-                int pPersonalPage = rs.getInt("pPersonalPage");
-                int income = rs.getInt("income");
-                int expense = rs.getInt("expense");
-                int pLeague = rs.getInt("pLeague");
-
-
-                String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
-                System.out.println(p);
-
-                TeamStatus teamStatus=null;
-                if(status==1){
-                    teamStatus=TeamStatus.Active;
-                }else if(status==2){
-                    teamStatus=TeamStatus.Close;
-                }else{
-                    teamStatus=TeamStatus.PermanentlyClose;
-                }
-
-                Team team=new Team(teamID,name,teamStatus, null, null, income, expense);
-                return team;
-            }
-            con.close();
-
-        } catch (SQLException err) {
-            throw new RuntimeException("Error connecting to the database", err);
-        }
+    public String get(long id) {
         return null;
     }
 
     @Override
-    public List<Team> getAll() {
-        List<Team> teams= new ArrayList<>();
-        try {
-            Connection con = DBConnector.getConnection();
-            Statement stat = con.createStatement();
-            String sql = "select * from Team";
-
-            ResultSet rs = stat.executeQuery(sql);
-
-            while (rs.next()) {
-                int teamID = rs.getInt("teamID");
-                String name = rs.getString("name");
-                int status = rs.getInt("TeamStatus");
-                int fieldID = rs.getInt("fieldID");
-                int pPersonalPage = rs.getInt("pPersonalPage");
-                int income = rs.getInt("income");
-                int expense = rs.getInt("expense");
-                int pLeague = rs.getInt("pLeague");
-
-                String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
-                System.out.println(p);
-
-                TeamStatus teamStatus=null;
-                if(status==1){
-                    teamStatus=TeamStatus.Active;
-                }else if(status==2){
-                    teamStatus=TeamStatus.Close;
-                }else{
-                    teamStatus=TeamStatus.PermanentlyClose;
-                }
-
-                Team team=new Team(teamID,name,teamStatus, null, null, income, expense);
-                teams.add(team);
-
-            }
-
-            con.close();
-            return teams;
-        } catch (SQLException err) {
-            throw new RuntimeException("Error connecting to the database", err);
-        }
-
+    public List<String> getAll() {
+        return null;
     }
-
     @Override
     public void save(Team team) throws SQLException {
         try {

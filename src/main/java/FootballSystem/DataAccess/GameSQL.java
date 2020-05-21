@@ -50,9 +50,9 @@ public class GameSQL implements DataBase<Game> {
         return null;
     }
 
-    @Override
-    public List<Game> getAll() {
-        List<String> games=new ArrayList<>();
+//    @Override
+//    public List<Game> getAll() {
+//        List<String> games=new ArrayList<>();
 //        try {
 //            Connection con = DBConnector.getConnection();
 //            Statement stat = con.createStatement();
@@ -81,6 +81,11 @@ public class GameSQL implements DataBase<Game> {
 //        } catch (SQLException err) {
 //            throw new RuntimeException("Error connecting to the database", err);
 //        }
+//        return null;
+//    }
+
+    @Override
+    public List<String> getAll() {
         return null;
     }
 

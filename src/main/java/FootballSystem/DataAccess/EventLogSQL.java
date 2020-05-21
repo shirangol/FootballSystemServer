@@ -17,12 +17,12 @@ public class EventLogSQL implements DataBase<EventLog> {
     }
 
     @Override
-    public Object get(long id) {
-        return Optional.empty();
+    public String get(long id) {
+        return null;
     }
 
     @Override
-    public List<EventLog> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

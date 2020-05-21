@@ -17,12 +17,12 @@ public class ReportSQL implements DataBase<Report> {
     }
 
     @Override
-    public Object get(long id) {
-        return Optional.empty();
+    public String get(long id) {
+        return null;
     }
 
     @Override
-    public List<Report> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

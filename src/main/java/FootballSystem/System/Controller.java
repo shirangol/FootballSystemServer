@@ -454,16 +454,16 @@ public class Controller {
 //
 //    }
 
-    public Team getTeam(int id) {
-        for (Team team : teams) {
-            if (team.getId() == id) {
-                return team;
-            } else {
-                Team t= TeamSQL.getInstance().get(id);
-                teams.add(t);
-                return t;
-            }
-        }
-        return null;
-    }
+//    public Team getTeam(int id) {
+//        for (Team team : teams) {
+//            if (team.getId() == id) {
+//                return team;
+//            } else {
+//                Team t= TeamSQL.getInstance().get(id);
+//                teams.add(t);
+//                return t;
+//            }
+//        }
+//        return null;
+//    }
 }

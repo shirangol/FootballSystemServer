@@ -17,12 +17,12 @@ public class SeasonSQL implements DataBase<Season> {
     }
 
     @Override
-    public Object get(long id) {
-        return Optional.empty();
+    public String get(long id) {
+        return null;
     }
 
     @Override
-    public List<Season> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

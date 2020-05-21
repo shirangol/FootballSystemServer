@@ -1,16 +1,23 @@
 package FootballSystem;
 
 import FootballSystem.DataAccess.DBConnector;
+import FootballSystem.DataAccess.LeagueSQL;
 import FootballSystem.DataAccess.UserSQL;
 import FootballSystem.ServiceLayer.GuestController;
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.Exeptions.NoSuchAUserNamedException;
 import FootballSystem.System.Exeptions.WrongPasswordException;
+import FootballSystem.System.FootballObjects.League;
+import FootballSystem.System.FootballObjects.Team.Team;
 import FootballSystem.System.Users.Fan;
 import FootballSystem.System.Users.Player;
 import FootballSystem.System.Users.Referee;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 @SpringBootTest
 class FootballSystemApplicationTests {
@@ -67,10 +74,50 @@ class FootballSystemApplicationTests {
 //		userSQL.getAll();//get all after delete
 //	}
 
+//	@Test
+//	void userLoginTest() throws NoSuchAUserNamedException, WrongPasswordException {
+//		GuestController guestController=new GuestController();
+//		int userType=guestController.getUserType("Dana","123");
+//		assert(userType==2);
+//	}
+
 	@Test
-	void userLoginTest() throws NoSuchAUserNamedException, WrongPasswordException {
-		GuestController guestController=new GuestController();
-		int userType=guestController.getUserType("Dana","123");
-		assert(userType==2);
+	void getLeagueTest(){
+		System.out.println("getLeagueTest :");
+		List<Team> teams=new LinkedList<>();
+		League l=new League("Premier League",teams);
+		String s= LeagueSQL.getInstance().get(l);
+		System.out.println(s);
+		System.out.println("");
 	}
+
+	@Test
+	void getAllLeagueTest(){
+		System.out.println("getAllLeagueTest :");
+		List<String> list=LeagueSQL.getInstance().getAll();
+		for (int i=0;i<list.size();i++){
+			System.out.println(list.get(i));
+		}
+		System.out.println("");
+	}
+
+//	@Test
+//	void saveLeagueTest() throws SQLException {
+//		List<Team> teams=new LinkedList<>();
+//		League l=new League("The best League ever",teams);
+//		LeagueSQL.getInstance().save(l);
+//	}
+
+//	@Test
+//	void deleteLeagueTest(){
+//		List<Team> teams=new LinkedList<>();
+//		League l=new League("The best League ever",teams);
+//		LeagueSQL.getInstance().delete(l);
+//	}
+
+//	@Test
+//	void deleteLeagueByNameTest(){
+//		LeagueSQL.getInstance().delete("The best League ever");
+//	}
+
 }

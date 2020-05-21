@@ -17,12 +17,12 @@ public class PersonalPageSQL implements DataBase<PersonalPage> {
     }
 
     @Override
-    public Object get(long id) {
-        return Optional.empty();
+    public String get(long id) {
+        return null;
     }
 
     @Override
-    public List<PersonalPage> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

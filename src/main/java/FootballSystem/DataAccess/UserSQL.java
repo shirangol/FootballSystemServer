@@ -107,7 +107,7 @@ public class UserSQL implements DataBase<User> {
 
     //<editor-fold desc="Override">
     @Override
-    public Object get(long id) {
+    public String get(long id) {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
@@ -122,42 +122,45 @@ public class UserSQL implements DataBase<User> {
                 switch(UserTypeCode) {
                     case 1:
                          //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
-                         String fanStr=id_col+" "+fullName_col+" "+password_col+" "+username_col;
+                         String fanStr="Fan "+id_col+" "+fullName_col+" "+password_col+" "+username_col;
                          con.close();
                          return fanStr;
                     case 2:
                          RefereeType type=getRefereeTypeSQL(username_col);
                          //Referee referee=new Referee(fullName_col, type, id_col, password_col, username_col);
-                         String refereeStr=fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
+                         String refereeStr="Referee "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
                          con.close();
                          return refereeStr;
                     case 3:
                          //Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
-                        String coachStr=id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        String coachStr="Coach "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         con.close();
                          return coachStr;
                     case 4:
                         //Player player=new Player(id_col, fullName_col, password_col, username_col, null, null, 0, 0);
-                        String playerStr=id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        String playerStr="Player "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         con.close();
                         return playerStr;
                     case 5:
                         //FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
-                        String faStr=id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        String faStr="FootballAssociation "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         con.close();
                         return faStr;
-//                    case 6:
-//                        SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
-//                        con.close();
-//                        return systemManager;
-//                    case 7:
-//                        TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
-//                        con.close();
-//                        return teamOwner;
-//                    case 8:
-//                         TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
-//                         con.close();
-//                         return teamManager;
+                    case 6:
+                        //SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
+                        String systemManagerStr="SystemManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        con.close();
+                        return systemManagerStr;
+                    case 7:
+                        //TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
+                        String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
+                        con.close();
+                        return teamOwnerStr;
+                    case 8:
+                         //TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
+                         String teamManagerStr="TeamManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0+" "+0;
+                         con.close();
+                         return teamManagerStr;
 
                 }//close switch
             }
@@ -209,9 +212,9 @@ public class UserSQL implements DataBase<User> {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<String> getAll() {
         try {
-            List<User>listToReturn=new LinkedList<>();
+            List<String>listToReturn=new LinkedList<>();
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
             String sql = "select * from users";
@@ -224,29 +227,38 @@ public class UserSQL implements DataBase<User> {
                 int UserTypeCode = rs.getInt("UserTypeCode");
                 switch(UserTypeCode) {
                     case 1:
-                        Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
-                        listToReturn.add(fan);
+                        //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
+                        String fanStr="Fan "+id_col+" "+fullName_col+" "+password_col+" "+username_col;
+                        listToReturn.add(fanStr);
                     case 2:
-                        Referee referee=new Referee(fullName_col, null, id_col, password_col, username_col);
-                        listToReturn.add(referee);
+                        //Referee referee=new Referee(fullName_col, null, id_col, password_col, username_col);
+                        RefereeType type=getRefereeTypeSQL(username_col);
+                        String refereeStr="Referee "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
+                        listToReturn.add(refereeStr);
                     case 3:
-                        Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
-                        listToReturn.add(coach);
+                        //Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
+                        String coachStr="Coach "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(coachStr);
                     case 4:
-                        Player player=new Player(id_col, fullName_col, password_col, username_col, null, null, 0, 0);
-                        listToReturn.add(player);
+                        //Player player=new Player(id_col, fullName_col, password_col, username_col, null, null, 0, 0);
+                        String playerStr="Player "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(playerStr);
                     case 5:
-                        FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
-                        listToReturn.add(footballAssociation);
+                        //FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
+                        String faStr="FootballAssociation "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(faStr);
                     case 6:
-                        SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
-                        listToReturn.add(systemManager);
+                        //SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
+                        String systemManagerStr="SystemManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(systemManagerStr);
                     case 7:
-                        TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
-                        listToReturn.add(teamOwner);
+                        //TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
+                        String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
+                        listToReturn.add(teamOwnerStr);
                     case 8:
-                        TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
-                        listToReturn.add(teamManager);
+                        //TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
+                        String teamManagerStr="TeamManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0+" "+0;
+                        listToReturn.add(teamManagerStr);
                     // default:
                 }//close switch
                 String p = id_col + " " + username_col + " " + fullName_col + " " + password_col + " " + UserTypeCode ;
