@@ -3,7 +3,7 @@ package FootballSystem.DataAccess;
 import java.sql.SQLException;
 import java.util.*;
 public interface DataBase <T> {
-
+//טטט
         Object get(long id);
 
         List<T> getAll();
