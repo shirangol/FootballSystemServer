@@ -36,6 +36,8 @@ public class EventLogSQL implements DataBase<EventLog> {
 
     }
 
+
+
     @Override
     public void delete(EventLog eventLog) {
 

@@ -6,7 +6,7 @@ public interface DataBase <T> {
 
         Object get(long id);
 
-        List<T> getAll();
+        List<String> getAll();
 
         void save(T t) throws SQLException;
 

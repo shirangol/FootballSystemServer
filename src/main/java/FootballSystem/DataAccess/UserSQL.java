@@ -170,7 +170,15 @@ public class UserSQL implements DataBase<User> {
 
     @Override
     public void update(User user, String[] params) {
+        try {
+//            UPDATE Customers
+//            SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+//            WHERE CustomerID = 1;
 
+
+        }catch (Exception e){
+
+        }
     }
 
     @Override
@@ -182,7 +190,16 @@ public class UserSQL implements DataBase<User> {
              try {
                  PreparedStatement preparedStmt = con.prepareStatement(query);
                  preparedStmt.execute();
-             }catch (SQLException err){
+
+                 if (user instanceof Referee) {
+                   try {
+                       String queryReff = "DELETE FROM referee WHERE Id ="+id;
+                       preparedStmt = con.prepareStatement(queryReff);
+                       preparedStmt.execute();
+                   }catch (Exception e){}
+
+                 }
+             } catch (SQLException err){
                  throw new RuntimeException("Cannot delete a non-existing user", err);
              }
              con.close();
@@ -319,6 +336,13 @@ public class UserSQL implements DataBase<User> {
             try {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 preparedStmt.execute();
+
+                    try {
+                        String queryReff = "DELETE FROM referee WHERE username ="+ "'" +userName + "'";
+                        preparedStmt = con.prepareStatement(queryReff);
+                        preparedStmt.execute();
+                    }catch (Exception e){}
+
             }catch (SQLException err){
                 throw new RuntimeException("Cannot delete a non-existing user", err);
             }
@@ -350,7 +374,7 @@ public class UserSQL implements DataBase<User> {
 
     }
 
-    public Object get(String userName) {
+    public String get(String userName) {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
@@ -364,13 +388,13 @@ public class UserSQL implements DataBase<User> {
                 switch(UserTypeCode) {
                     case 1:
                         //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
-                        String fanStr=id_col+" "+fullName_col+" "+password_col+" "+userName;
+                        String fanStr="Fan"+" "+id_col+" "+fullName_col+" "+password_col+" "+userName;
                         con.close();
                         return fanStr;
                     case 2:
                         RefereeType type=getRefereeTypeSQL(userName);
                         //Referee referee=new Referee(fullName_col, type, id_col, password_col, username_col);
-                        String refereeStr=fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ userName;
+                        String refereeStr="Referee"+" "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ userName;
                         System.out.println(refereeStr);//*********************************
                         con.close();
                         return refereeStr;
@@ -386,7 +410,7 @@ public class UserSQL implements DataBase<User> {
                         return playerStr;
                     case 5:
                         //FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
-                        String faStr=id_col+" "+ fullName_col+" "+ password_col+" "+userName;
+                        String faStr="FootballAssociation"+" "+id_col+" "+ fullName_col+" "+ password_col+" "+userName;
                         con.close();
                         return faStr;
 //                    case 6:

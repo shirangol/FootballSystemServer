@@ -1,6 +1,7 @@
 package FootballSystem.System;
 
 import FootballSystem.System.*;
+import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.Enum.UserStatus;
 import FootballSystem.System.Exeptions.NoSuchAUserNamedException;
 import FootballSystem.System.Exeptions.UserNameAlreadyExistException;
@@ -74,8 +75,37 @@ public class Controller {
         seasons.add(season);
     }
 
-    public User getUser(String userName){
-        return users.get(userName);
+    /**
+     * According to proxy attitude - first check if user exist in the hashMap, otherwise we get the user from DB
+     * @param userName
+     * @return
+     */
+    public User getUser(String userName) {
+        User user=null;
+        if (users.containsKey(userName)) {
+            user = users.get(userName);
+        } else {
+            String userStr = UserSQL.getInstance().get(userName);
+            String[] userArr = userStr.split(" ");
+            switch (userArr[0]) {
+                case "Fan":
+                    user = new Fan(Integer.parseInt(userArr[1]), userArr[2], userArr[3], userArr[4]);
+                    break;
+                case "Referee":
+                    RefereeType type;
+                    if (userArr[2] == "MAIN") {
+                        type = RefereeType.MAIN;
+                    } else {
+                        type = RefereeType.ASSISTANT;
+                    }
+                    user = new Referee(userArr[1], type, Integer.parseInt(userArr[3]), userArr[4], userArr[5]);
+                    break;
+                case "FootballAssociation":
+                    user = new FootballAssociation(Integer.parseInt(userArr[1]), userArr[2], userArr[3], userArr[4]);
+
+            }
+        }
+        return user;
     }
     //</editor-fold>
 
@@ -120,36 +150,6 @@ public class Controller {
         methodAllocatePolicies.put(iScoreAllocate.getClass().getSimpleName(),iScoreAllocate);
     } //UC-1
 
-    public User login(String userName , String password) throws WrongPasswordException , NoSuchAUserNamedException { //UC-3
-        User user = users.get(userName);
-        if(user == null) {
-            throw new NoSuchAUserNamedException();
-        }
-        if(user.getPassword().equals(password)) {
-            user.setStatus(UserStatus.ACTIVE);
-            SystemEventLog.getInstance().writeToLog("User log in to the system. id("+user.getId()+").");
-            return user;
-        }
-        throw new WrongPasswordException();
-    } //UC-3
-
-    public void logOut(User user){ //UC-6
-        user.setStatus(UserStatus.INACTIVE);
-        SystemEventLog.getInstance().writeToLog("User log out from the system. id("+user.getUserName()+").");
-    } //UC-6
-
-    public Fan signUp(int id, String name, String password, String userName) throws UserNameAlreadyExistException{ //UC-2
-        User user = users.get(userName);
-        User user1 = removedUser.get(userName);
-        if(user != null || user1 != null) {
-            throw new UserNameAlreadyExistException();
-        }//more details
-        Fan fan = new Fan(id,name, password,userName);
-        users.put(fan.getUserName(),fan);
-        SystemEventLog.getInstance().writeToLog("A new user signUp to the system. ("+fan.getId()+","+fan.getUserName()+").");
-        return fan;
-    } //UC-2
-
     /**
      * add field to the system fields
      * @param field
@@ -157,25 +157,13 @@ public class Controller {
     public void addField(Field field){
         fields.add(field);
     }
+
     /**
      * remove field from the system fields
      * @param field
      */
     public void removeField(Field field){
         fields.remove(field);
-    }
-    /**
-     * Checks if user name exist in the system
-     * @param userName
-     * @return
-     */
-    public boolean isUserNameExist(String userName){
-        User user = users.get(userName);
-        User user1 = removedUser.get(userName);
-        if(user != null || user1 != null) {
-            return true;
-        }
-        return false;
     }
 
     /**
@@ -206,16 +194,6 @@ public class Controller {
         return false;
     }
 
-    public List<Fan> getAllFan() {
-        List <Fan> fanList = new LinkedList<>();
-        for(User user : users.values()){
-            if(user instanceof Fan){
-                fanList.add((Fan) user);
-            }
-        }
-        return fanList;
-    }
-
     public List<TeamManager> getAllTeamManager() {
         List <TeamManager> teamMangerList = new LinkedList<>();
         for(User user : users.values()){
@@ -235,6 +213,7 @@ public class Controller {
         }
         return teamOwnerList;
     }
+
     /**
      * get string of the policies
      * @return
@@ -246,6 +225,7 @@ public class Controller {
         }
         return list;
     }
+
     public List<Player> getAllPlayers(){
         List <Player> players = new LinkedList<>();
         for(User user : users.values()){
@@ -265,16 +245,6 @@ public class Controller {
         }
         return sysList;
     }
-
-    public List<Referee> getAllReferee(){
-        List <Referee> referees = new LinkedList<>();
-        for(User user : users.values()){
-            if(user instanceof Referee){
-                referees.add((Referee)user);
-            }
-        }
-        return referees;
-    } //UC-4
 
     public List<Coach> getAllCoach(){
         List <Coach> Coachs = new LinkedList<>();
@@ -312,6 +282,96 @@ public class Controller {
         teams.add(team);
     }
 
+    public void removeTeam(Team team){ teams.remove(team); }
+
+    /**
+     * get string of the policies
+     * @return
+     */
+    public List<String> getMethodAllocatePoliciesString() {
+        List<String> list=new ArrayList<>();
+        for (int i = 0; i <methodAllocatePolicies.size() ; i++) {
+            list.add(methodAllocatePolicies.keySet().toArray()[i].toString());
+        }
+        return list;
+    }
+
+    public HashMap<String, ITeamAllocatePolicy> getMethodAllocatePolicies() {
+        return methodAllocatePolicies;
+    }
+
+    public HashMap<String, IScoreMethodPolicy> getScorePolicies() {
+        return scorePolicies;
+    }
+
+
+    //*************************  Necessary functions for iteration 3 + 4 ***********************************
+    public User login(String userName , String password) throws WrongPasswordException , NoSuchAUserNamedException { //UC-3
+        User user=this.getUser(userName);
+        if(user == null) {
+            throw new NoSuchAUserNamedException();
+        }
+        if(user.getPassword().equals(password)) {
+           // user.setStatus(UserStatus.ACTIVE);
+            //UserSQL.getInstance().delete(user);
+            //UserSQL.getInstance().save(user);
+            SystemEventLog.getInstance().writeToLog("User log in to the system. id("+user.getId()+").");
+            return user;
+        }
+        throw new WrongPasswordException();
+    } //UC-3
+
+    public void logOut(User user){ //UC-6
+        user.setStatus(UserStatus.INACTIVE);
+        SystemEventLog.getInstance().writeToLog("User log out from the system. id("+user.getUserName()+").");
+    } //UC-6
+
+    public Fan signUp(int id, String name, String password, String userName) throws UserNameAlreadyExistException{ //UC-2
+        User user = users.get(userName);
+        User user1 = removedUser.get(userName);
+        if(user != null || user1 != null) {
+            throw new UserNameAlreadyExistException();
+        }//more details
+        Fan fan = new Fan(id,name, password,userName);
+        users.put(fan.getUserName(),fan);
+        SystemEventLog.getInstance().writeToLog("A new user signUp to the system. ("+fan.getId()+","+fan.getUserName()+").");
+        return fan;
+    } //UC-2
+
+    /**
+     * Checks if user name exist in the system
+     * @param userName
+     * @return
+     */
+    public boolean isUserNameExist(String userName){
+        User user = users.get(userName);
+        User user1 = removedUser.get(userName);
+        if(user != null || user1 != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public List<Fan> getAllFan() {
+        List <Fan> fanList = new LinkedList<>();
+        for(User user : users.values()){
+            if(user instanceof Fan){
+                fanList.add((Fan) user);
+            }
+        }
+        return fanList;
+    }
+
+    public List<Referee> getAllReferee(){
+        List <Referee> referees = new LinkedList<>();
+        for(User user : users.values()){
+            if(user instanceof Referee){
+                referees.add((Referee)user);
+            }
+        }
+        return referees;
+    } //UC-4
+
     /**
      * add the removed users to a list of users
      * @param userName unique nickname
@@ -341,26 +401,6 @@ public class Controller {
         SystemEventLog.getInstance().writeToLog("Removed user restart to the system. userName("+userName+").");
     }
 
-    public void removeTeam(Team team){ teams.remove(team); }
-
-    /**
-     * get string of the policies
-     * @return
-     */
-    public List<String> getMethodAllocatePoliciesString() {
-        List<String> list=new ArrayList<>();
-        for (int i = 0; i <methodAllocatePolicies.size() ; i++) {
-            list.add(methodAllocatePolicies.keySet().toArray()[i].toString());
-        }
-        return list;
-    }
-
-    public HashMap<String, ITeamAllocatePolicy> getMethodAllocatePolicies() {
-        return methodAllocatePolicies;
-    }
-    public HashMap<String, IScoreMethodPolicy> getScorePolicies() {
-        return scorePolicies;
-    }
     //</editor-fold>
 
 }

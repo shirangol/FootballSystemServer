@@ -244,3 +244,4 @@ Mon May 18 17:57:33 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added 
 Mon May 18 17:57:33 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker3 (id: 2) register to receive a game (id: 2) alert
 Mon May 18 17:57:33 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref3
 Mon May 18 17:57:33 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.schedulingReferee: League information- The referees inaugural season was successfully completed. League name: Major
+Thu May 21 09:18:17 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(4).
