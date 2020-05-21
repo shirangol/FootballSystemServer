@@ -8,9 +8,11 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.User;
 import FootballSystem.System.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
@@ -86,6 +88,7 @@ public class RefereeController extends MainUserController {
             }
         }
         addEventDuringGame(((Referee)referee), game, body.get("type"), Integer.valueOf(body.get("min")), body.get("playerName"), body.get("team"));
+
         if (body.get("type").equals("Goal")) {
             if (game.getHome().getName().equals( body.get("team"))) {
                 if (game.getResult() == null) {
