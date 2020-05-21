@@ -33,7 +33,7 @@ public class FootballSystemApplication {
         Field field2 = TeamOwnerController.getInstance().createField(1,"ukr");
 
 
-        User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA","1234","PA");
+        User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"A","A","A");
         User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","a","a", RefereeType.MAIN);
         User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","Invoker2", RefereeType.ASSISTANT);
         User refereeSide2 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker3","1234","Invoker3", RefereeType.ASSISTANT);
