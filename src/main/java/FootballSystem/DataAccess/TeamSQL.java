@@ -24,7 +24,7 @@ public class TeamSQL implements DataBase<Team> {
     }
 
     @Override
-    public Team get(long id) {
+    public String get(long id) {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
@@ -43,18 +43,7 @@ public class TeamSQL implements DataBase<Team> {
 
                 String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
                 System.out.println(p);
-
-                TeamStatus teamStatus=null;
-                if(status==1){
-                    teamStatus=TeamStatus.Active;
-                }else if(status==2){
-                    teamStatus=TeamStatus.Close;
-                }else{
-                    teamStatus=TeamStatus.PermanentlyClose;
-                }
-
-                Team team=new Team(teamID,name,teamStatus, null, null, income, expense);
-                return team;
+                return (p);
             }
             con.close();
 
@@ -65,8 +54,8 @@ public class TeamSQL implements DataBase<Team> {
     }
 
     @Override
-    public List<Team> getAll() {
-        List<Team> teams= new ArrayList<>();
+    public List<String> getAll() {
+        List<String> teams= new ArrayList<>();
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
@@ -86,19 +75,7 @@ public class TeamSQL implements DataBase<Team> {
 
                 String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
                 System.out.println(p);
-
-                TeamStatus teamStatus=null;
-                if(status==1){
-                    teamStatus=TeamStatus.Active;
-                }else if(status==2){
-                    teamStatus=TeamStatus.Close;
-                }else{
-                    teamStatus=TeamStatus.PermanentlyClose;
-                }
-
-                Team team=new Team(teamID,name,teamStatus, null, null, income, expense);
-                teams.add(team);
-
+                teams.add(p);
             }
 
             con.close();

@@ -1,10 +1,15 @@
 package FootballSystem.DataAccess;
 
+import FootballSystem.System.Controller;
 import FootballSystem.System.FootballObjects.Game;
+import FootballSystem.System.FootballObjects.LeagueInformation;
+import FootballSystem.System.FootballObjects.Team.Team;
+import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.User;
 
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 
 public class GameSQL implements DataBase<Game> {
     private static GameSQL ourInstance = new GameSQL();
@@ -51,37 +56,36 @@ public class GameSQL implements DataBase<Game> {
     }
 
     @Override
-    public List<Game> getAll() {
+    public List<String> getAll() {
         List<String> games=new ArrayList<>();
-//        try {
-//            Connection con = DBConnector.getConnection();
-//            Statement stat = con.createStatement();
-//            String sql = "select * from Games";
-//            ResultSet rs = stat.executeQuery(sql);
-//            while (rs.next()) {
-//                int teamID = rs.getInt("gameID");
-//                String date = rs.getString("date");
-//                int hour = rs.getInt("hour");
-//                String result = rs.getString("result");
-//                int pTeamAway = rs.getInt("pTeamAway");
-//                int pTeamHome = rs.getInt("pTeamAway");
-//                String pMainReferee = rs.getString("pMainReferee");
-//                String pAssistant1Referee = rs.getString("pAssistant1Referee");
-//                String pAssistant2Referee = rs.getString("pAssistant2Referee");
-//                int pEventLogID = rs.getInt("pEventLogID");
-//                int pLeagueInformation = rs.getInt("pLeagueInformation");
-//
-//                String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
-//                System.out.println(p);
-//                games.add(p);
-//
-//            }
-//            con.close();
-//            return games;
-//        } catch (SQLException err) {
-//            throw new RuntimeException("Error connecting to the database", err);
-//        }
-        return null;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "select * from Games";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                int teamID = rs.getInt("gameID");
+                String date = rs.getString("date");
+                int hour = rs.getInt("hour");
+                String result = rs.getString("result");
+                int pTeamAway = rs.getInt("pTeamAway");
+                int pTeamHome = rs.getInt("pTeamAway");
+                String pMainReferee = rs.getString("pMainReferee");
+                String pAssistant1Referee = rs.getString("pAssistant1Referee");
+                String pAssistant2Referee = rs.getString("pAssistant2Referee");
+                int pEventLogID = rs.getInt("pEventLogID");
+                int pLeagueInformation = rs.getInt("pLeagueInformation");
+
+                String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
+                System.out.println(p);
+                games.add(p);
+
+            }
+            con.close();
+            return games;
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
     }
 
     @Override
@@ -161,5 +165,50 @@ public class GameSQL implements DataBase<Game> {
             throw new RuntimeException("Error connecting to the database", err);
         }
 
+    }
+
+    public List<String> getAllgamesForReferee(String username) {
+        List<String> games=new ArrayList<>();
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM games WHERE pMainReferee ="+ username +"OR pAssistant1Referee ="+ username +"OR pAssistant2Referee ="+ username ;
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                int teamID = rs.getInt("gameID");
+                String date = rs.getString("date");
+                Date date2= new Date();
+                int temp= Integer.parseInt(date);
+                date2.setTime(temp);
+
+                int hour = rs.getInt("hour");
+                String result = rs.getString("result");
+                int pTeamAway = rs.getInt("pTeamAway");
+                Team t1= Controller.getInstance().getTeam(pTeamAway);
+
+                int pTeamHome = rs.getInt("pTeamAway");
+                Team t2= Controller.getInstance().getTeam(pTeamHome);
+
+                String pMainReferee = rs.getString("pMainReferee");
+                Referee main= (Referee)Controller.getInstance().getUser(pMainReferee);
+
+                String pAssistant1Referee = rs.getString("pAssistant1Referee");
+                Referee ass1= (Referee)Controller.getInstance().getUser(pAssistant1Referee);
+
+                String pAssistant2Referee = rs.getString("pAssistant2Referee");
+                Referee ass2= (Referee)Controller.getInstance().getUser(pAssistant2Referee);
+
+                int pEventLogID = rs.getInt("pEventLogID");
+                int pLeagueInformation = rs.getInt("pLeagueInformation");
+                String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
+                System.out.println(p);
+                //Game game=new Game(teamID,date2,hour,result,t1,t2,main,ass1,ass2,pEventLogID,null);
+                games.add(p);
+            }
+            con.close();
+            return games;
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
     }
 }

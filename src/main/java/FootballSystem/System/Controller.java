@@ -3,6 +3,7 @@ package FootballSystem.System;
 import FootballSystem.DataAccess.GameSQL;
 import FootballSystem.DataAccess.TeamSQL;
 import FootballSystem.System.*;
+import FootballSystem.System.Enum.TeamStatus;
 import FootballSystem.System.Enum.UserStatus;
 import FootballSystem.System.Exeptions.NoSuchAUserNamedException;
 import FootballSystem.System.Exeptions.UserNameAlreadyExistException;
@@ -95,14 +96,170 @@ public class Controller {
         for (Team team : teams) {
             if (team.getId() == id) {
                 return team;
-            } else {
-                Team t= TeamSQL.getInstance().get(id);
-                teams.add(t);
-                return t;
             }
         }
-        return null;
+        //not found- get from DB
+        String t= TeamSQL.getInstance().get(id);
+        String[] result=t.split(" ");
+        int teamID = Integer.parseInt(result[0]);
+        String name = result[1];
+        int status = Integer.parseInt(result[2]);
+        int fieldID = Integer.parseInt(result[3]);
+        int pPersonalPage = Integer.parseInt(result[4]);
+        int income = Integer.parseInt(result[5]);
+        int expense = Integer.parseInt(result[6]);
+        int pLeague = Integer.parseInt(result[7]);
+
+        TeamStatus teamStatus=null;
+        if(status==1){
+            teamStatus=TeamStatus.Active;
+        }else if(status==2){
+            teamStatus=TeamStatus.Close;
+        }else{
+            teamStatus=TeamStatus.PermanentlyClose;
+        }
+
+        Team team2=new Team(teamID,name,teamStatus, null, null, income, expense);
+        teams.add(team2);
+        return team2;
+
     }
+    public List<Team> getTeams(int id) {
+        if(teams.size()!=0){
+            return teams;
+        }
+        //not found- get from DB
+        List <String> t= TeamSQL.getInstance().getAll();
+        for(int i=0;i<t.size();i++){
+            String[] result=t.get(i).split(" ");
+            int teamID = Integer.parseInt(result[0]);
+            String name = result[1];
+            int status = Integer.parseInt(result[2]);
+            int fieldID = Integer.parseInt(result[3]);
+            int pPersonalPage = Integer.parseInt(result[4]);
+            int income = Integer.parseInt(result[5]);
+            int expense = Integer.parseInt(result[6]);
+            int pLeague = Integer.parseInt(result[7]);
+
+            TeamStatus teamStatus=null;
+            if(status==1){
+                teamStatus=TeamStatus.Active;
+            }else if(status==2){
+                teamStatus=TeamStatus.Close;
+            }else{
+                teamStatus=TeamStatus.PermanentlyClose;
+            }
+
+            Team team2=new Team(teamID,name,teamStatus, null, null, income, expense);
+            teams.add(team2);
+        }
+        return teams;
+    }
+
+    public Game getGame(int id){
+        String game= GameSQL.getInstance().get(id);
+
+        String[] seperate = game.split(" ");
+
+        String date=seperate[1];
+
+        Date date2=null;
+        try{
+            DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+            date2 = format.parse(date);
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        int hour=Integer.parseInt(seperate[2]);
+        String result=seperate[3];
+
+        //teams
+        int pTeamAway=Integer.parseInt(seperate[4]);
+        int pTeamHome= Integer.parseInt(seperate[5]);
+        Team away= getTeam(pTeamAway);
+        Team home= getTeam(pTeamHome);
+
+        Referee main= (Referee) UserSQL.getInstance().get(seperate[6]);
+        Referee ass1= (Referee)UserSQL.getInstance().get(seperate[7]);
+        Referee ass2=(Referee) UserSQL.getInstance().get(seperate[8]);
+
+        Game newGame = new Game(id,date2,hour,result,main,ass1,ass2,away,home);
+        return newGame;
+
+    }
+    public List <Game> getAllGames(){
+        List <Game> games=new ArrayList<>();
+
+        List<String> StringGames = GameSQL.getInstance().getAll();
+        for(int i=0;i<StringGames.size();i++){
+            String[] seperate = StringGames.get(i).split(" ");
+            int id=Integer.parseInt(seperate[0]);
+            String date=seperate[1];
+
+            Date date2=null;
+            try{
+                DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+                date2 = format.parse(date);
+
+            }catch (Exception e){
+                System.out.println(e);
+            }
+            int hour=Integer.parseInt(seperate[2]);
+            String result=seperate[3];
+
+            //teams
+            int pTeamAway=Integer.parseInt(seperate[4]);
+            int pTeamHome= Integer.parseInt(seperate[5]);
+            Team away= getTeam(pTeamAway);
+            Team home= getTeam(pTeamHome);
+
+            Referee main= (Referee) UserSQL.getInstance().get(seperate[6]);
+            Referee ass1= (Referee)UserSQL.getInstance().get(seperate[7]);
+            Referee ass2=(Referee) UserSQL.getInstance().get(seperate[8]);
+
+            Game newGame = new Game(id,date2,hour,result,main,ass1,ass2,away,home);
+            games.add(newGame);
+        }
+        return games;
+    }
+
+    public List <Game> getAllGamesForReferee(String username){
+        List <Game> games=new ArrayList<>();
+
+        List<String> StringGames = GameSQL.getInstance().getAllgamesForReferee(username);
+        for(int i=0;i<StringGames.size();i++){
+            String[] seperate = StringGames.get(i).split(" ");
+            int id=Integer.parseInt(seperate[0]);
+            String date=seperate[1];
+
+            Date date2=null;
+            try{
+                DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
+                date2 = format.parse(date);
+
+            }catch (Exception e){
+                System.out.println(e);
+            }
+            int hour=Integer.parseInt(seperate[2]);
+            String result=seperate[3];
+
+            //teams
+            int pTeamAway=Integer.parseInt(seperate[4]);
+            int pTeamHome= Integer.parseInt(seperate[5]);
+            Team away= getTeam(pTeamAway);
+            Team home= getTeam(pTeamHome);
+
+            Referee main= (Referee) UserSQL.getInstance().get(seperate[6]);
+            Referee ass1= (Referee)UserSQL.getInstance().get(seperate[7]);
+            Referee ass2=(Referee) UserSQL.getInstance().get(seperate[8]);
+
+            Game newGame = new Game(id,date2,hour,result,main,ass1,ass2,away,home);
+            games.add(newGame);
+        }
+        return games;
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Setters">
@@ -391,41 +548,7 @@ public class Controller {
 
     ////SQL
 
-    public Game getGameFromDB(int id){
-        String game= GameSQL.getInstance().get(id);
 
-        String[] seperate = game.split(" ");
 
-        String date=seperate[1];
-
-        Date date2=null;
-        try{
-            DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
-            date2 = format.parse(date);
-
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        int hour=Integer.parseInt(seperate[2]);
-        String result=seperate[3];
-
-        //teams
-        int pTeamAway=Integer.parseInt(seperate[4]);
-        int pTeamHome= Integer.parseInt(seperate[5]);
-        Team away= getTeam(pTeamAway);
-        Team home= getTeam(pTeamHome);
-
-        Referee main= (Referee) UserSQL.getInstance().get(seperate[6]);
-        Referee ass1= (Referee)UserSQL.getInstance().get(seperate[7]);
-        Referee ass2=(Referee) UserSQL.getInstance().get(seperate[8]);
-
-        Game newGame = new Game(id,date2,hour,result,main,ass1,ass2,away,home);
-        return newGame;
-
-    }
-//    public Game getAllGamesFromDB(){
-//        List <Game> games=new ArrayList<>();
-//
-//    }
 
 }
