@@ -192,7 +192,7 @@ public class UserSQL implements DataBase<User> {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<String> getAll() {
         try {
             List<User>listToReturn=new LinkedList<>();
             Connection con = DBConnector.getConnection();
