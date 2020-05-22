@@ -44,6 +44,7 @@ public class EventLog {
         aEventList.add(event);
         sortEventLog();
         SystemEventLog.getInstance().writeToLog("Event was added to eventLog. Id:"+event.getId());
+        //**************save to db
     }
 
     /**

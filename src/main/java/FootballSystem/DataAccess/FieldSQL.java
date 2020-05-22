@@ -22,7 +22,7 @@ public class FieldSQL implements DataBase<Field> {
     }
 
     @Override
-    public List<Field> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

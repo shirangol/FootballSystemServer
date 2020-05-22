@@ -107,7 +107,7 @@ public class UserSQL implements DataBase<User> {
 
     //<editor-fold desc="Override">
     @Override
-    public Object get(long id) {
+    public String get(long id) {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
@@ -121,43 +121,46 @@ public class UserSQL implements DataBase<User> {
                 int UserTypeCode = rs.getInt("UserTypeCode");
                 switch(UserTypeCode) {
                     case 1:
-                         //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
-                         String fanStr=id_col+" "+fullName_col+" "+password_col+" "+username_col;
-                         con.close();
-                         return fanStr;
-                    case 2:
-                         RefereeType type=getRefereeTypeSQL(username_col);
-                         //Referee referee=new Referee(fullName_col, type, id_col, password_col, username_col);
-                         String refereeStr=fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
-                         con.close();
-                         return refereeStr;
-                    case 3:
-                         //Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
-                        String coachStr=id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
+                        String fanStr="Fan "+id_col+" "+fullName_col+" "+password_col+" "+username_col;
                         con.close();
-                         return coachStr;
+                        return fanStr;
+                    case 2:
+                        RefereeType type=getRefereeTypeSQL(username_col);
+                        //Referee referee=new Referee(fullName_col, type, id_col, password_col, username_col);
+                        String refereeStr="Referee "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
+                        con.close();
+                        return refereeStr;
+                    case 3:
+                        //Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
+                        String coachStr="Coach "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        con.close();
+                        return coachStr;
                     case 4:
                         //Player player=new Player(id_col, fullName_col, password_col, username_col, null, null, 0, 0);
-                        String playerStr=id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        String playerStr="Player "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         con.close();
                         return playerStr;
                     case 5:
                         //FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
-                        String faStr=id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        String faStr="FootballAssociation "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         con.close();
                         return faStr;
-//                    case 6:
-//                        SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
-//                        con.close();
-//                        return systemManager;
-//                    case 7:
-//                        TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
-//                        con.close();
-//                        return teamOwner;
-//                    case 8:
-//                         TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
-//                         con.close();
-//                         return teamManager;
+                    case 6:
+                        //SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
+                        String systemManagerStr="SystemManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        con.close();
+                        return systemManagerStr;
+                    case 7:
+                        //TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
+                        String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
+                        con.close();
+                        return teamOwnerStr;
+                    case 8:
+                        //TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
+                        String teamManagerStr="TeamManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0+" "+0;
+                        con.close();
+                        return teamManagerStr;
 
                 }//close switch
             }
@@ -170,7 +173,15 @@ public class UserSQL implements DataBase<User> {
 
     @Override
     public void update(User user, String[] params) {
+        try {
+//            UPDATE Customers
+//            SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+//            WHERE CustomerID = 1;
 
+
+        }catch (Exception e){
+
+        }
     }
 
     @Override
@@ -179,13 +190,22 @@ public class UserSQL implements DataBase<User> {
         try {
             Connection con = DBConnector.getConnection();
             String query = "DELETE FROM users WHERE Id ="+id;
-             try {
-                 PreparedStatement preparedStmt = con.prepareStatement(query);
-                 preparedStmt.execute();
-             }catch (SQLException err){
-                 throw new RuntimeException("Cannot delete a non-existing user", err);
-             }
-             con.close();
+            try {
+                PreparedStatement preparedStmt = con.prepareStatement(query);
+                preparedStmt.execute();
+
+                if (user instanceof Referee) {
+                    try {
+                        String queryReff = "DELETE FROM referee WHERE Id ="+id;
+                        preparedStmt = con.prepareStatement(queryReff);
+                        preparedStmt.execute();
+                    }catch (Exception e){}
+
+                }
+            } catch (SQLException err){
+                throw new RuntimeException("Cannot delete a non-existing user", err);
+            }
+            con.close();
         } catch (SQLException err) {
             throw new RuntimeException("Error connecting to the database", err);
         }
@@ -194,7 +214,7 @@ public class UserSQL implements DataBase<User> {
     @Override
     public List<String> getAll() {
         try {
-            List<User>listToReturn=new LinkedList<>();
+            List<String>listToReturn=new LinkedList<>();
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
             String sql = "select * from users";
@@ -207,30 +227,39 @@ public class UserSQL implements DataBase<User> {
                 int UserTypeCode = rs.getInt("UserTypeCode");
                 switch(UserTypeCode) {
                     case 1:
-                        Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
-                        listToReturn.add(fan);
+                        //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
+                        String fanStr="Fan "+id_col+" "+fullName_col+" "+password_col+" "+username_col;
+                        listToReturn.add(fanStr);
                     case 2:
-                        Referee referee=new Referee(fullName_col, null, id_col, password_col, username_col);
-                        listToReturn.add(referee);
+                        //Referee referee=new Referee(fullName_col, null, id_col, password_col, username_col);
+                        RefereeType type=getRefereeTypeSQL(username_col);
+                        String refereeStr="Referee "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
+                        listToReturn.add(refereeStr);
                     case 3:
-                        Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
-                        listToReturn.add(coach);
+                        //Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
+                        String coachStr="Coach "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(coachStr);
                     case 4:
-                        Player player=new Player(id_col, fullName_col, password_col, username_col, null, null, 0, 0);
-                        listToReturn.add(player);
+                        //Player player=new Player(id_col, fullName_col, password_col, username_col, null, null, 0, 0);
+                        String playerStr="Player "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(playerStr);
                     case 5:
-                        FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
-                        listToReturn.add(footballAssociation);
+                        //FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
+                        String faStr="FootballAssociation "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(faStr);
                     case 6:
-                        SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
-                        listToReturn.add(systemManager);
+                        //SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
+                        String systemManagerStr="SystemManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
+                        listToReturn.add(systemManagerStr);
                     case 7:
-                        TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
-                        listToReturn.add(teamOwner);
+                        //TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
+                        String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
+                        listToReturn.add(teamOwnerStr);
                     case 8:
-                        TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
-                        listToReturn.add(teamManager);
-                    // default:
+                        //TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
+                        String teamManagerStr="TeamManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0+" "+0;
+                        listToReturn.add(teamManagerStr);
+                        // default:
                 }//close switch
                 String p = id_col + " " + username_col + " " + fullName_col + " " + password_col + " " + UserTypeCode ;
                 System.out.println(p);
@@ -254,54 +283,52 @@ public class UserSQL implements DataBase<User> {
             ps.setString(3, user.getName());
             ps.setString(4, user.getPassword());
             ps.setInt(5, 1);
-            ps.setInt(6, 2);
-            ps.executeUpdate();
 
             //<editor-fold desc="Set the user type">
             if(user instanceof Fan){
                 try{
-                   ps.setInt(2,1);
-                   ps.executeUpdate();}catch (Exception e){}
+                    ps.setInt(6,1);
+                    ps.executeUpdate();}catch (Exception e){}
             }else if(user instanceof Referee){
                 try{
-                   ps.setInt(2,2);
-                   ps.executeUpdate();}catch (Exception e){}
-                   saveReferee((Referee) user,connection);
+                    ps.setInt(6,2);
+                    ps.executeUpdate();}catch (Exception e){}
+                saveReferee((Referee) user,connection);
             }else if(user instanceof Coach){
                 try{
-                   ps.setInt(2,3);
-                   ps.executeUpdate();}catch (Exception e){}
-                   saveCoach((Coach) user,connection);
+                    ps.setInt(6,3);
+                    ps.executeUpdate();}catch (Exception e){}
+                saveCoach((Coach) user,connection);
             }
             else if(user instanceof Player){
                 try{
-                    ps.setInt(2,4);
+                    ps.setInt(6,4);
                     ps.executeUpdate();}catch (Exception e){}
-                    savePlayer((Player) user,connection);
+                savePlayer((Player) user,connection);
             }
             else if(user instanceof FootballAssociation){
                 try{
-                    ps.setInt(2,5);
+                    ps.setInt(6,5);
                     ps.executeUpdate();}catch (Exception e){}
-                    saveFootballAssociation((FootballAssociation) user,connection);
+                saveFootballAssociation((FootballAssociation) user,connection);
             }
             else if(user instanceof SystemManager){
                 try{
-                    ps.setInt(2,6);
+                    ps.setInt(6,6);
                     ps.executeUpdate();}catch (Exception e){}
-                    saveSyatemManager((SystemManager) user,connection);
+                saveSyatemManager((SystemManager) user,connection);
             }
             else if(user instanceof TeamOwner){
                 try{
-                    ps.setInt(2,7);
+                    ps.setInt(6,7);
                     ps.executeUpdate();}catch (Exception e){}
-                    saveTeamOwner((TeamOwner) user,connection);
+                saveTeamOwner((TeamOwner) user,connection);
             }
             else if(user instanceof TeamManager){
                 try{
-                    ps.setInt(2,8);
+                    ps.setInt(6,8);
                     ps.executeUpdate();}catch (Exception e){}
-                    saveTeamManager((TeamManager) user,connection);
+                saveTeamManager((TeamManager) user,connection);
             }
             //</editor-fold>
 
@@ -319,6 +346,13 @@ public class UserSQL implements DataBase<User> {
             try {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 preparedStmt.execute();
+
+                try {
+                    String queryReff = "DELETE FROM referee WHERE username ="+ "'" +userName + "'";
+                    preparedStmt = con.prepareStatement(queryReff);
+                    preparedStmt.execute();
+                }catch (Exception e){}
+
             }catch (SQLException err){
                 throw new RuntimeException("Cannot delete a non-existing user", err);
             }
@@ -350,7 +384,7 @@ public class UserSQL implements DataBase<User> {
 
     }
 
-    public Object get(String userName) {
+    public String get(String userName) {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
@@ -364,13 +398,13 @@ public class UserSQL implements DataBase<User> {
                 switch(UserTypeCode) {
                     case 1:
                         //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
-                        String fanStr=id_col+" "+fullName_col+" "+password_col+" "+userName;
+                        String fanStr="Fan"+" "+id_col+" "+fullName_col+" "+password_col+" "+userName;
                         con.close();
                         return fanStr;
                     case 2:
                         RefereeType type=getRefereeTypeSQL(userName);
                         //Referee referee=new Referee(fullName_col, type, id_col, password_col, username_col);
-                        String refereeStr=fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ userName;
+                        String refereeStr="Referee"+" "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ userName;
                         System.out.println(refereeStr);//*********************************
                         con.close();
                         return refereeStr;
@@ -386,7 +420,7 @@ public class UserSQL implements DataBase<User> {
                         return playerStr;
                     case 5:
                         //FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
-                        String faStr=id_col+" "+ fullName_col+" "+ password_col+" "+userName;
+                        String faStr="FootballAssociation"+" "+id_col+" "+ fullName_col+" "+ password_col+" "+userName;
                         con.close();
                         return faStr;
 //                    case 6:

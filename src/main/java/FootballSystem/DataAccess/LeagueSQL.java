@@ -24,7 +24,7 @@ public class LeagueSQL implements DataBase<League> {
     }
 
     @Override
-    public List<League> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

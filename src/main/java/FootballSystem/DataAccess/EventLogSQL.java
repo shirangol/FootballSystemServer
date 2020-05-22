@@ -22,7 +22,7 @@ public class EventLogSQL implements DataBase<EventLog> {
     }
 
     @Override
-    public List<EventLog> getAll() {
+    public List<String>getAll() {
         return null;
     }
 
@@ -35,6 +35,8 @@ public class EventLogSQL implements DataBase<EventLog> {
     public void update(EventLog eventLog, String[] params) {
 
     }
+
+
 
     @Override
     public void delete(EventLog eventLog) {

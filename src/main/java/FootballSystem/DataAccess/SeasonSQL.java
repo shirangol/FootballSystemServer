@@ -22,7 +22,7 @@ public class SeasonSQL implements DataBase<Season> {
     }
 
     @Override
-    public List<Season> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

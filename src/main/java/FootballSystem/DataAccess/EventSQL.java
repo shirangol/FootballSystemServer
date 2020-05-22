@@ -22,7 +22,7 @@ public class EventSQL implements DataBase<AEvent> {
     }
 
     @Override
-    public List<AEvent> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

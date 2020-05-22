@@ -2,7 +2,10 @@ package FootballSystem;
 
 import FootballSystem.DataAccess.DBConnector;
 import FootballSystem.DataAccess.UserSQL;
+import FootballSystem.ServiceLayer.GuestController;
 import FootballSystem.System.Enum.RefereeType;
+import FootballSystem.System.Exeptions.NoSuchAUserNamedException;
+import FootballSystem.System.Exeptions.WrongPasswordException;
 import FootballSystem.System.Users.Fan;
 import FootballSystem.System.Users.Player;
 import FootballSystem.System.Users.Referee;
@@ -63,4 +66,11 @@ class FootballSystemApplicationTests {
 //		userSQL.deleteByUserName("newNick4");
 //		userSQL.getAll();//get all after delete
 //	}
+
+	@Test
+	void userLoginTest() throws NoSuchAUserNamedException, WrongPasswordException {
+		GuestController guestController=new GuestController();
+		int userType=guestController.getUserType("Dana","123");
+		assert(userType==2);
+	}
 }
