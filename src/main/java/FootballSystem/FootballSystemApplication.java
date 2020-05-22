@@ -58,7 +58,9 @@ public class FootballSystemApplication {
 			referees.add((Referee) refereeSide1);
 			referees.add((Referee) refereeSide2);
 //
-			leagueInformation.getGames().get(0).setDate(new Date());
+			Date d=new Date();
+			d.setHours(d.getHours()+1);
+			leagueInformation.getGames().get(0).setDate(d);
 			leagueInformation.getGames().get(1).setResult(0, 9);
 			FanController.getInstance().followGame((Fan) fan, leagueInformation.getGames().get(0));
 			FanController.getInstance().followGame((Fan) fan, leagueInformation.getGames().get(1));

@@ -191,7 +191,7 @@ public class Game implements ISubjectGame {
      */
     public void addEventToLogEvent(AEvent event){
         eventLog.addEventToLog(event);
-        notifyFan(event);
+        //notifyFan(event);
     }
 
     /**

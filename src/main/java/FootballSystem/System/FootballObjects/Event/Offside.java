@@ -11,7 +11,7 @@ public class Offside extends AEvent {
     //</editor-fold>
     @Override
     public String getType() {
-        return "offside";
+        return "Offside";
     }
 
 }

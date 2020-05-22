@@ -11,6 +11,6 @@ public class YellowCard extends AEvent {
     //</editor-fold>
     @Override
     public String getType() {
-        return "yellow card";
+        return "YellowCard";
     }
 }
