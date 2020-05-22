@@ -51,7 +51,7 @@ public class GameSQL implements DataBase<Game> {
     }
 
     @Override
-    public List<Game> getAll() {
+    public List<String> getAll() {
         List<String> games=new ArrayList<>();
 //        try {
 //            Connection con = DBConnector.getConnection();

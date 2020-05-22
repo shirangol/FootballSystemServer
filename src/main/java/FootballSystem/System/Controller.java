@@ -1,5 +1,6 @@
 package FootballSystem.System;
 /////
+import FootballSystem.DataAccess.AlertSQL;
 import FootballSystem.DataAccess.GameSQL;
 import FootballSystem.DataAccess.TeamSQL;
 import FootballSystem.System.*;
@@ -403,12 +404,29 @@ public class Controller {
         SystemEventLog.getInstance().writeToLog("Removed user restart to the system. userName("+userName+").");
     }
 
+    /**
+     * get all alerts for user
+     * @param userName
+     * @return
+     */
     public List<String> getMyAlerts(String userName) {
-
-        return  null;
+        return AlertSQL.getInstance().get(userName);
     }
 
+    /**
+     * save alert for user in DB
+     * @param userName
+     * @param event
+     */
     public void saveAlertToUser(String userName, String event) {
+        List<String> toSave= new LinkedList<>();
+        toSave.add(userName);
+        toSave.add(event);
+        try {
+            AlertSQL.getInstance().save(toSave);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     //</editor-fold>

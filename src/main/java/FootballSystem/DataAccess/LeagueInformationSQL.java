@@ -22,7 +22,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
     }
 
     @Override
-    public List<LeagueInformation> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

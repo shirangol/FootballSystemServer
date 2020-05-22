@@ -22,7 +22,7 @@ public class PersonalPageSQL implements DataBase<PersonalPage> {
     }
 
     @Override
-    public List<PersonalPage> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

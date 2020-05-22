@@ -1,5 +1,6 @@
 package FootballSystem;
 
+import FootballSystem.DataAccess.DBConnector;
 import FootballSystem.ServiceLayer.*;
 import FootballSystem.System.Controller;
 import FootballSystem.System.Enum.RefereeType;
@@ -21,6 +22,7 @@ public class FootballSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FootballSystemApplication.class, args);
 		try {
+//			DBConnector.getConnection();
 			intiallieSystem();
 		}catch (Exception e){
 			e.printStackTrace();
@@ -39,7 +41,7 @@ public class FootballSystemApplication {
 		Field field2 = TeamOwnerController.getInstance().createField(1,"ukr");
 
 
-		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA","1234","PA");
+		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA1","1234","PA1");
 		User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","1234","ref1", RefereeType.MAIN);
 		User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","ref2", RefereeType.ASSISTANT);
 		User refereeSide2 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker3","1234","ref3", RefereeType.ASSISTANT);

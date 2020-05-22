@@ -22,7 +22,7 @@ public class ReportSQL implements DataBase<Report> {
     }
 
     @Override
-    public List<Report> getAll() {
+    public List<String> getAll() {
         return null;
     }
 

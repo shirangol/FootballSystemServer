@@ -3,10 +3,10 @@ package FootballSystem.DataAccess;
 import java.sql.SQLException;
 import java.util.*;
 public interface DataBase <T> {
-//טטטc
+
         Object get(long id);
 
-        List<T> getAll();
+        List<String> getAll();
 
         void save(T t) throws SQLException;
 

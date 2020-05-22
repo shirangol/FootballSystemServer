@@ -1,5 +1,6 @@
 package FootballSystem.System.Users;
 
+import FootballSystem.DataAccess.UserSQL;
 import FootballSystem.System.Controller;
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.Exeptions.NoSuchAUserNamedException;
@@ -179,6 +180,7 @@ public class SystemManager extends User implements IObserverTeam {
             throw new UserNameAlreadyExistException();
         }
         FootballAssociation user=new FootballAssociation(id,name,password,userName);
+        UserSQL.getInstance().save(user);
         Controller.getInstance().addUser(userName,user);
         SystemEventLog.getInstance().writeToLog("Add a new Football Association : "+ user.getUserName());
         return user;
