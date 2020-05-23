@@ -161,6 +161,7 @@ public class SystemManager extends User implements IObserverTeam {
             throw new UserNameAlreadyExistException();
         }
         Referee user=new Referee(name,refereeType,id,password,userName);
+//        UserSQL.getInstance().save(user);
         Controller.getInstance().addUser(userName,user);
         SystemEventLog.getInstance().writeToLog("Add a new Referee : "+ user.getUserName());
         return user;
@@ -180,7 +181,7 @@ public class SystemManager extends User implements IObserverTeam {
             throw new UserNameAlreadyExistException();
         }
         FootballAssociation user=new FootballAssociation(id,name,password,userName);
-        UserSQL.getInstance().save(user);
+//        UserSQL.getInstance().save(user);
         Controller.getInstance().addUser(userName,user);
         SystemEventLog.getInstance().writeToLog("Add a new Football Association : "+ user.getUserName());
         return user;

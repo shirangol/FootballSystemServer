@@ -337,6 +337,7 @@ public class Controller {
         }//more details
         Fan fan = new Fan(id,name, password,userName);
         users.put(fan.getUserName(),fan);
+//        UserSQL.getInstance().save(fan);
         SystemEventLog.getInstance().writeToLog("A new user signUp to the system. ("+fan.getId()+","+fan.getUserName()+").");
         return fan;
     } //UC-2
@@ -410,7 +411,14 @@ public class Controller {
      * @return
      */
     public List<String> getMyAlerts(String userName) {
-        return AlertSQL.getInstance().get(userName);
+        List<String> list=  AlertSQL.getInstance().get(userName);
+        for (String s: list){
+            List<String> toDelete= new LinkedList<>();
+            toDelete.add(userName);
+            toDelete.add(s);
+            AlertSQL.getInstance().delete(toDelete);
+        }
+        return list;
     }
 
     /**

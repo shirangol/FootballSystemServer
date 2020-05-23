@@ -1,10 +1,15 @@
 package FootballSystem;
 
 import FootballSystem.DataAccess.DBConnector;
+import FootballSystem.DataAccess.EventLogSQL;
+import FootballSystem.DataAccess.EventSQL;
 import FootballSystem.ServiceLayer.*;
 import FootballSystem.System.Controller;
 import FootballSystem.System.Enum.RefereeType;
+import FootballSystem.System.FootballObjects.Event.EventLog;
+import FootballSystem.System.FootballObjects.Event.Goal;
 import FootballSystem.System.FootballObjects.Field;
+import FootballSystem.System.FootballObjects.Game;
 import FootballSystem.System.FootballObjects.League;
 import FootballSystem.System.FootballObjects.LeagueInformation;
 import FootballSystem.System.FootballObjects.Team.Team;
@@ -12,6 +17,7 @@ import FootballSystem.System.Users.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.awt.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +29,8 @@ public class FootballSystemApplication {
 		SpringApplication.run(FootballSystemApplication.class, args);
 		try {
 //			DBConnector.getConnection();
+//			testEventSql();
+//			testEventLog();
 			intiallieSystem();
 		}catch (Exception e){
 			e.printStackTrace();
@@ -40,8 +48,7 @@ public class FootballSystemApplication {
 		Field field1 = TeamOwnerController.getInstance().createField(0,"rus");
 		Field field2 = TeamOwnerController.getInstance().createField(1,"ukr");
 
-
-		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA1","1234","PA1");
+		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA2","1234","PA2");
 		User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","1234","ref1", RefereeType.MAIN);
 		User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","ref2", RefereeType.ASSISTANT);
 		User refereeSide2 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker3","1234","ref3", RefereeType.ASSISTANT);
@@ -74,5 +81,16 @@ public class FootballSystemApplication {
 
 		FootballAssosiationController.getInstance().schedulingReferee((FootballAssociation)footballAs ,leagueInformation ,referees);
 	}
+	public static void testEventSql(){
+		EventLog eventLog= new EventLog();
+		Goal event =new Goal(2,"shiranTest1","team1");
+		EventSQL.getInstance().save(event,eventLog);
+		Goal event1 =new Goal(3,"shiranTest2","team2");
+		EventSQL.getInstance().save(event1,eventLog);
+	}
 
+	public static void testEventLog(){
+		List<String> list= EventLogSQL.getInstance().get(1);
+		System.out.println(list);
+	}
 }
