@@ -48,10 +48,11 @@ public class AlertSQL implements DataBase {
                     + "values (?,?)");
             ps.setString(1,userName );
             ps.setString(2,content );
-            ps.executeUpdate();
+            ps.execute();
             con.close();
         }catch (SQLException err) {
-            throw new RuntimeException("Error connecting to the database", err);
+            err.printStackTrace();
+//            throw new RuntimeException("Error connecting to the database", err);
         }
     }
 
@@ -62,6 +63,22 @@ public class AlertSQL implements DataBase {
 
     @Override
     public void delete(Object o) {
+        String userName = ((List<String>)o).get(0);
+        String content = ((List<String>)o).get(1);
+        try {
+            Connection con = DBConnector.getConnection();
+            String query = "DELETE FROM Alert_To_Fan WHERE username="+" '" + userName + "'"+" and content=" + " '" + content + "'";
+            try {
+                PreparedStatement preparedStmt = con.prepareStatement(query);
+                preparedStmt.execute();
+
+            } catch (SQLException err){
+                throw new RuntimeException("Cannot delete a non-existing user", err);
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
 
     }
 
@@ -76,6 +93,7 @@ public class AlertSQL implements DataBase {
                 alerts.add(rs.getString("content"));
             }
             con.close();
+
         }catch (SQLException err) {
             throw new RuntimeException("Error connecting to the database", err);
 

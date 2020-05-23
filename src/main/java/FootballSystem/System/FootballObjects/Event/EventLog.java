@@ -8,18 +8,23 @@ import java.util.List;
 
 public class EventLog {
 
+    private static int ID=1;
     //<editor-fold desc="Fields">
+    private int id;
     private List<AEvent> aEventList;
     private String report;
     //</editor-fold>
 
     //<editor-fold desc="Constructor">
     public EventLog(){
+        id=ID;
+        ID++;
         aEventList=new ArrayList<AEvent>();
     }
     //</editor-fold>
 
     //<editor-fold desc="Getters">
+    public int getId(){return id;}
     public List<AEvent> getEventList(){
         return aEventList;
     }

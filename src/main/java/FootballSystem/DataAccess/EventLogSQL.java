@@ -2,7 +2,11 @@ package FootballSystem.DataAccess;
 
 import FootballSystem.System.FootballObjects.Event.EventLog;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +21,36 @@ public class EventLogSQL implements DataBase<EventLog> {
     }
 
     @Override
-    public Object get(long id) {
-        return Optional.empty();
+    public List<String> get(long id) {
+        List<String> events= new LinkedList<>();
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "select * from event_log where eventLogID=" + id;
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+
+                String sqlEvent=  "select * from event where eventID=" + rs.getInt("eventID");
+                Statement statEvent = con.createStatement();
+                ResultSet rsEvent = statEvent.executeQuery(sqlEvent);
+                while (rsEvent.next()){
+                    int eventID= rsEvent.getInt("eventID");
+                    String date=rsEvent.getString("date");
+                    String minute=rsEvent.getString("Minute");
+                    String playerName=rsEvent.getString("playerName");
+                    String teamName=rsEvent.getString("teamName");
+                    int type=rsEvent.getInt("type");
+                    String event= eventID+","+date+","+minute+","+playerName+","+teamName+","+type;
+                    events.add(event);
+                }
+
+            }
+            con.close();
+            return events;
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return null;
     }
 
     @Override
