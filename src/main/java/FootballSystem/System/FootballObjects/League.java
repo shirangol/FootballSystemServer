@@ -33,6 +33,9 @@ public class League implements IShowable {
     public String getName() {
         return name;
     }
+    public int getid(){
+        return id;
+    }
 
     @Override
     public String getType() {

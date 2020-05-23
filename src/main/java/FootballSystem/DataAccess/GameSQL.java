@@ -8,6 +8,7 @@ import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.User;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
@@ -94,7 +95,12 @@ public class GameSQL implements DataBase<Game> {
             Connection connection = DBConnector.getConnection();
 
             int id= game.getId();
-            String name= game.getDate().toString();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+            String dateString = format.format(game.getDate());
+            //Date   date       = format.parse (dateString);
+            //String name= game.getDate().toString();
+
             int hour = game.getHour();
             String result= game.getResult();
             int away=game.getAway().getId();
@@ -103,15 +109,13 @@ public class GameSQL implements DataBase<Game> {
             String ass1= game.getAssistantRefereeOne().getName();
             String ass2= game.getAssistantRefereeTwo().getName();
             //int pEventLogID= game.getEventLog().toString();
-            int pLeagueInformation= game.getLeagueInformation().getId();
+            //int pLeagueInformation= game.getLeagueInformation().getId();
 
 
-
-
-            PreparedStatement ps=connection.prepareStatement("insert into Games(gameID, date, hour,result,pTeamAway,pTeamAway,pMainReferee,pAssistant1Referee,pAssistant2Referee,pEventLogID,pLeagueInformation ) "
+            PreparedStatement ps=connection.prepareStatement("insert into Games(gameID, date, hour,result,pTeamAway,pTeamHome,pMainReferee,pAssistant1Referee,pAssistant2Referee,pEventLogID,pLeagueInformation ) "
                     + "values (?,?,?,?,?,?,?,?,?,?,?)");
             ps.setInt(1, id);
-            ps.setString(2, name);
+            ps.setString(2, dateString);
             ps.setInt(3, hour);
             ps.setString(4, result);
             ps.setInt(5, away);
@@ -120,7 +124,7 @@ public class GameSQL implements DataBase<Game> {
             ps.setString(8, ass1);
             ps.setString(9, ass2);
             ps.setInt(10, 0);
-            ps.setInt(11, pLeagueInformation);
+            ps.setInt(11, 0);
 
 
             ps.executeUpdate();
@@ -148,7 +152,7 @@ public class GameSQL implements DataBase<Game> {
 
             //String sql = "DELETE FROM users WHERE ID="+id;
 
-            String query = "DELETE FROM Games WHERE ID = ?";
+            String query = "DELETE FROM Games WHERE gameID = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, id);
 
