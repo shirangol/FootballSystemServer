@@ -72,10 +72,12 @@ public abstract class AEvent {
     }
 
     public abstract String getType();
+    public abstract String getTypeToAlert();
 
     public String toString(){
-        return this.teamName+": the player "+ this.playerName +" get " + getType()+" in minute "+ this.minute;
+        return this.teamName+": the player "+ this.playerName +" get " + getTypeToAlert()+" in minute "+ this.minute;
     }
+
 
     //</editor-fold>
 

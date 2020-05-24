@@ -13,4 +13,9 @@ public class YellowCard extends AEvent {
     public String getType() {
         return "YellowCard";
     }
+
+    @Override
+    public String getTypeToAlert() {
+        return "yellow card";
+    }
 }

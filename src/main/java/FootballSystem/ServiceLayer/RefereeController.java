@@ -57,8 +57,8 @@ public class RefereeController extends MainUserController {
         return game.getEventLog().getEventList();
     }
 
-    public void editEventAfterGame(Referee referee, Game game, String type, AEvent oldEvent, String playerName, String teamName,String time) throws NoRefereePermissions, NoSuchEventException {
-        referee.editEventAfterGame(game, oldEvent, type, playerName, teamName,time);
+    public void editEventAfterGame(Referee referee, Game game, String type, AEvent oldEvent, String playerName, String teamName,String minute) throws NoRefereePermissions, NoSuchEventException {
+        referee.editEventAfterGame(game, oldEvent, type, playerName, teamName,minute);
     }
     @PostMapping(value = "/editEventAfterGame")
     public ResponseEntity<String> editEventAfterGame(@RequestBody Map<String,String> body) throws OnlyForReferee, NoSuchEventException {
@@ -111,6 +111,42 @@ public class RefereeController extends MainUserController {
         }
         referee.addEventToLogEvent(game, type, minute, playerName, teamName);
     }
+    @PostMapping(value = "/addEventAfterGame")
+    public ResponseEntity<String> addEventAfterGame(@RequestBody Map<String,String> body) throws OnlyForReferee, NoSuchEventException {
+        User referee =  Controller.getInstance().getUser(body.get("user_name"));
+        if(!(referee instanceof Referee)){
+            throw new OnlyForReferee();
+        }
+        Game game = null;
+        for (Game g : ((Referee)referee).getGames()) {
+            if (g.getId() == Integer.parseInt(body.get("game"))) {
+                game = g;
+            }
+        }
+        try {
+            addEventAfterGame(((Referee)referee), game, body.get("type"),Integer.valueOf(body.get("min")), body.get("playerName"), body.get("team"));
+        } catch (NoRefereePermissions noRefereePermissions) {
+            return new ResponseEntity("fail",HttpStatus.EXPECTATION_FAILED);
+        }
+
+        if (body.get("type").equals("Goal")) {
+            if (game.getHome().getName().equals( body.get("team"))) {
+                if (game.getResult() == null) {
+                    game.setResult(0, 0);
+                }
+                game.setResult(Integer.parseInt(game.getResult().split(":")[0]) + 1, Integer.parseInt(game.getResult().split(":")[1]));
+            } else {
+                if (game.getResult() == null) {
+                    game.setResult(0, 0);
+                }
+                String home = game.getResult().split(":")[0];
+                int away = (Integer.parseInt(game.getResult().split(":")[1]) + 1);
+                game.setResult(Integer.parseInt(home), away);
+            }
+        }
+        return new ResponseEntity("succes",HttpStatus.ACCEPTED) ;
+    }
+
 
     public void createGameReport(Referee referee, Game game) throws NoRefereePermissions {
         if (game.getMainReferee() != referee) {
@@ -170,7 +206,7 @@ public class RefereeController extends MainUserController {
         LinkedList<String> output = new LinkedList<>();
         for (Game g : games) {
             String[] strA = g.getDate().toString().split(" ");
-            String str = g.getHome().getName() + "," + g.getAway().getName() + "," + strA[1] + " " + strA[2] + "," + strA[3].substring(0, strA[3].length() - 3) + "," + g.getId();
+            String str = g.getHome().getName() + "," + g.getAway().getName() + "," + strA[1] + " " + strA[2] + "," + strA[3].substring(0, strA[3].length() - 3) + "," + g.getId()+ "," + g.getDate().getTime();
             output.add(str);
         }
         return new ResponseEntity(output, HttpStatus.ACCEPTED);

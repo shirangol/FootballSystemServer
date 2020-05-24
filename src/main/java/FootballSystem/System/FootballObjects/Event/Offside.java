@@ -14,4 +14,9 @@ public class Offside extends AEvent {
         return "Offside";
     }
 
+    @Override
+    public String getTypeToAlert() {
+        return "offside";
+    }
+
 }
