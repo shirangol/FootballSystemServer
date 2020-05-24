@@ -41,6 +41,23 @@ public class EventSQL implements DataBase<AEvent> {
 
     @Override
     public void delete(AEvent event) {
+        try {
+            Connection con = DBConnector.getConnection();
+            String query = "DELETE FROM Event WHERE eventID="+event.getId();
+            try {
+                PreparedStatement preparedStmt = con.prepareStatement(query);
+                preparedStmt.execute();
+                query = "DELETE FROM event_log WHERE eventID="+event.getId();
+                preparedStmt = con.prepareStatement(query);
+                preparedStmt.execute();
+
+            } catch (SQLException err){
+                throw new RuntimeException("Cannot delete a non-existing user", err);
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
 
     }
 

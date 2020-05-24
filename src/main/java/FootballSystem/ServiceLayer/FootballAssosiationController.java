@@ -270,7 +270,7 @@ public class FootballAssosiationController {
         return team;
     }
 
-    @GetMapping(path = "createTeam/{team_name}/{team_owner_name}")
+    @PostMapping(path = "createTeam/{team_name}/{team_owner_name}")
     public ResponseEntity createTeam(@PathVariable("team_name") String teamName,@PathVariable("team_owner_name") String teamOwner) {
         for (TeamOwner tO :  Controller.getInstance().getAllTeamOwner()) {
             if (tO.getUserName().equals(teamOwner)) {

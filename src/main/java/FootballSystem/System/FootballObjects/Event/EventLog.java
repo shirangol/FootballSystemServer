@@ -1,4 +1,5 @@
 package FootballSystem.System.FootballObjects.Event;
+import FootballSystem.DataAccess.EventSQL;
 import FootballSystem.System.SystemEventLog;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class EventLog {
      */
     public void addEventToLog(AEvent event){
         aEventList.add(event);
+        EventSQL.getInstance().save(event,this);
         sortEventLog();
         SystemEventLog.getInstance().writeToLog("Event was added to eventLog. Id:"+event.getId());
         //**************save to db
@@ -58,6 +60,8 @@ public class EventLog {
      */
     public void removeEvent(AEvent event){
         aEventList.remove(event);
+        EventSQL.getInstance().delete(event);
+
         sortEventLog();
         SystemEventLog.getInstance().writeToLog("Event was removed from eventLog. Id:"+event.getId());
 
@@ -66,7 +70,7 @@ public class EventLog {
     /**
      * Sorting event log by time
      */
-    public void sortEventLog(){
+    public void  sortEventLog(){
         Collections.sort(this.aEventList, new Comparator<AEvent>() {
             public int compare(AEvent o1, AEvent o2) {
                 if(o1.getMinute()==o2.getMinute()){
