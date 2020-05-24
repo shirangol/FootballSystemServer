@@ -108,8 +108,8 @@ public class GameSQL implements DataBase<Game> {
             String main=game.getMainReferee().getName();
             String ass1= game.getAssistantRefereeOne().getName();
             String ass2= game.getAssistantRefereeTwo().getName();
-            //int pEventLogID= game.getEventLog().toString();
-            //int pLeagueInformation= game.getLeagueInformation().getId();
+            int pEventLogID= game.getEventLog().getId();
+            int pLeagueInformation= game.getLeagueInformation().getId();
 
 
             PreparedStatement ps=connection.prepareStatement("insert into Games(gameID, date, hour,result,pTeamAway,pTeamHome,pMainReferee,pAssistant1Referee,pAssistant2Referee,pEventLogID,pLeagueInformation ) "
@@ -172,41 +172,58 @@ public class GameSQL implements DataBase<Game> {
     }
 
     public List<String> getAllgamesForReferee(String username) {
+        String name="'"+username+"'";
         List<String> games=new ArrayList<>();
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
-            String sql = "SELECT * FROM games WHERE pMainReferee ="+ username +"OR pAssistant1Referee ="+ username +"OR pAssistant2Referee ="+ username ;
+            //SELECT * FROM games WHERE pMainReferee = 'Hen' OR pAssistant1Referee = 'Hen'  OR pAssistant2Referee ='Hen';
+            String sql = "SELECT * FROM games WHERE pMainReferee = "+ name +" OR pAssistant1Referee = "+ name +" OR pAssistant2Referee = "+ name ;
             ResultSet rs = stat.executeQuery(sql);
             while (rs.next()) {
+//                int teamID = rs.getInt("gameID");
+//                String date = rs.getString("date");
+//                Date date2= new Date();
+//                int temp= Integer.parseInt(date);
+//                date2.setTime(temp);
+//
+//                int hour = rs.getInt("hour");
+//                String result = rs.getString("result");
+//                int pTeamAway = rs.getInt("pTeamAway");
+//                Team t1= Controller.getInstance().getTeam(pTeamAway);
+//
+//                int pTeamHome = rs.getInt("pTeamAway");
+//                Team t2= Controller.getInstance().getTeam(pTeamHome);
+//
+//                String pMainReferee = rs.getString("pMainReferee");
+//                Referee main= (Referee)Controller.getInstance().getUser(pMainReferee);
+//
+//                String pAssistant1Referee = rs.getString("pAssistant1Referee");
+//                Referee ass1= (Referee)Controller.getInstance().getUser(pAssistant1Referee);
+//
+//                String pAssistant2Referee = rs.getString("pAssistant2Referee");
+//                Referee ass2= (Referee)Controller.getInstance().getUser(pAssistant2Referee);
+//
+//                int pEventLogID = rs.getInt("pEventLogID");
+//                int pLeagueInformation = rs.getInt("pLeagueInformation");
+//                String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
+//                System.out.println(p);
+//                //Game game=new Game(teamID,date2,hour,result,t1,t2,main,ass1,ass2,pEventLogID,null);
+//                games.add(p);
                 int teamID = rs.getInt("gameID");
                 String date = rs.getString("date");
-                Date date2= new Date();
-                int temp= Integer.parseInt(date);
-                date2.setTime(temp);
-
                 int hour = rs.getInt("hour");
                 String result = rs.getString("result");
                 int pTeamAway = rs.getInt("pTeamAway");
-                Team t1= Controller.getInstance().getTeam(pTeamAway);
-
                 int pTeamHome = rs.getInt("pTeamAway");
-                Team t2= Controller.getInstance().getTeam(pTeamHome);
-
                 String pMainReferee = rs.getString("pMainReferee");
-                Referee main= (Referee)Controller.getInstance().getUser(pMainReferee);
-
                 String pAssistant1Referee = rs.getString("pAssistant1Referee");
-                Referee ass1= (Referee)Controller.getInstance().getUser(pAssistant1Referee);
-
                 String pAssistant2Referee = rs.getString("pAssistant2Referee");
-                Referee ass2= (Referee)Controller.getInstance().getUser(pAssistant2Referee);
-
                 int pEventLogID = rs.getInt("pEventLogID");
                 int pLeagueInformation = rs.getInt("pLeagueInformation");
+
                 String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
                 System.out.println(p);
-                //Game game=new Game(teamID,date2,hour,result,t1,t2,main,ass1,ass2,pEventLogID,null);
                 games.add(p);
             }
             con.close();

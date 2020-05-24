@@ -48,12 +48,12 @@ public class FootballSystemApplication {
 //			GameSQL.getInstance().get(1);
 //			GameSQL.getInstance().getAll();
 
-				Referee referee =new Referee("a",RefereeType.MAIN,100,"123","a");
-			Referee referee2 =new Referee("b",RefereeType.ASSISTANT,150,"123","b");
-			Referee referee3 =new Referee("c",RefereeType.ASSISTANT,200,"123","c");
-				Game game=new Game(100,new Date(),2000,"0:0",referee  , referee2, referee3, t, t2);
+//				Referee referee =new Referee("a",RefereeType.MAIN,100,"123","a");
+//			Referee referee2 =new Referee("b",RefereeType.ASSISTANT,150,"123","b");
+//			Referee referee3 =new Referee("c",RefereeType.ASSISTANT,200,"123","c");
+//				Game game=new Game(100,new Date(),2000,"0:0",referee  , referee2, referee3, t, t2);
 //				GameSQL.getInstance().save(game);
-			GameSQL.getInstance().getAll();
+			//GameSQL.getInstance().getAll();
 			//GameSQL.getInstance().delete(game);
 
 //			LeagueInformationSQL.getInstance().get(1);
@@ -67,6 +67,17 @@ public class FootballSystemApplication {
 //			LeagueInformationSQL.getInstance().getAll();
 //			LeagueInformationSQL.getInstance().delete(leagueInformation);
 //			LeagueInformationSQL.getInstance().getAll();
+
+
+			//test to controller
+			//Team tt=Controller.getInstance().getTeam(1);
+			//List<Team> teams2=Controller.getInstance().getAllTeams();
+
+			//Game g=Controller.getInstance().getGame(1);
+			//List<Game> games=Controller.getInstance().getAllGames();
+			//List<String> lll=GameSQL.getInstance().getAllgamesForReferee("Hen");
+			List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
+			boolean i=true;
 
 		}catch (Exception e){
 			e.printStackTrace();

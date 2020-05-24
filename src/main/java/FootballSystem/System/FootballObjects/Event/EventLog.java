@@ -21,6 +21,10 @@ public class EventLog {
         ID++;
         aEventList=new ArrayList<AEvent>();
     }
+    public EventLog(int id, List<AEvent>aEventList){
+        this.id=id;
+        this.aEventList=aEventList;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Getters">
