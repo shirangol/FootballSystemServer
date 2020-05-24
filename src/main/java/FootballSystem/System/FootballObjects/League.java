@@ -27,6 +27,15 @@ public class League implements IShowable {
             this.teams.add(t);
         }
     }
+    public League(int id,String name, List<Team> teams) {
+        this.id= id;
+        this.name=name;
+        this.teams= new ArrayList<>();
+        this.leaguesInformation = new ArrayList<>();
+        for (Team t : teams) {
+            this.teams.add(t);
+        }
+    }
     //</editor-fold>
 
     //<editor-fold desc="Getters">

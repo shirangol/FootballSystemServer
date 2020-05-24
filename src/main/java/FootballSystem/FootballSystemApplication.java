@@ -76,7 +76,8 @@ public class FootballSystemApplication {
 			//Game g=Controller.getInstance().getGame(1);
 			//List<Game> games=Controller.getInstance().getAllGames();
 			//List<String> lll=GameSQL.getInstance().getAllgamesForReferee("Hen");
-			List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
+			//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
+			List<League>ll=Controller.getInstance().getAllLeagues();
 			boolean i=true;
 
 		}catch (Exception e){

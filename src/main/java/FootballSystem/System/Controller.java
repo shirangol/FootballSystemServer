@@ -60,8 +60,54 @@ public class Controller {
 
     //<editor-fold desc="Getters">
     public List<League> getAllLeagues() { //UC-4
+        if (leagues.size() != 0) {
+            return leagues;
+        }
+        //not found- get from DB
+        List<String> t = LeagueSQL.getInstance().getAll();
+        for (int i = 0; i < t.size(); i++) {
+            String[] result = t.get(i).split(" ");
+
+            int leagueID = Integer.parseInt(result[0]);
+            String name = result[1];
+
+            List<Team> teams= getAllTeamsForLeague(leagueID);
+            League league=new League(leagueID,name,teams);
+            leagues.add(league);
+        }
         return leagues;
     } //UC-4
+
+    public List<Team> getAllTeamsForLeague(int id) {
+        List<String> t = TeamSQL.getInstance().getAllForLeague(id);
+        List<Team> teamsToReturn= new ArrayList<>();
+        for (int i = 0; i < t.size(); i++) {
+            String[] result = t.get(i).split(" ");
+            int teamID = Integer.parseInt(result[0]);
+            String name = result[1];
+            int status = Integer.parseInt(result[2]);
+            int fieldID = Integer.parseInt(result[3]);
+            int pPersonalPage = Integer.parseInt(result[4]);
+            int income = Integer.parseInt(result[5]);
+            int expense = Integer.parseInt(result[6]);
+            int pLeague = Integer.parseInt(result[7]);
+
+            TeamStatus teamStatus = null;
+            if (status == 1) {
+                teamStatus = TeamStatus.Active;
+            } else if (status == 2) {
+                teamStatus = TeamStatus.Close;
+            } else {
+                teamStatus = TeamStatus.PermanentlyClose;
+            }
+
+            Team team2 = new Team(teamID, name, teamStatus, null, null, income, expense);
+            teamsToReturn.add(team2);
+        }
+        return teamsToReturn;
+    } //UC-4
+
+
 
     public List<Team> getAllTeams() {
         if (teams.size() != 0) {
@@ -684,6 +730,14 @@ public class Controller {
     }
 
     public HashMap<String, ITeamAllocatePolicy> getMethodAllocatePolicies () {
+        if(methodAllocatePolicies.size()!=0){
+            return methodAllocatePolicies;
+        }
+        ITeamAllocatePolicy iTeamAllocatePolicy=new DefaultAllocate();
+       methodAllocatePolicies.put("DefaultAllocate",iTeamAllocatePolicy);
+
+        ITeamAllocatePolicy iTeamAllocatePolicy2=new OneGameAllocatePolicy();
+        methodAllocatePolicies.put("OneGameAllocatePolicy",iTeamAllocatePolicy2);
         return methodAllocatePolicies;
     }
 

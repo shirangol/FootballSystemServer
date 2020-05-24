@@ -62,6 +62,7 @@ public class LeagueSQL implements DataBase<League> {
 
                 String p = leagueID_col + " " + name_col ;
                 System.out.println(p);
+                listToReturn.add(p);
             }
             con.close();
             return listToReturn;

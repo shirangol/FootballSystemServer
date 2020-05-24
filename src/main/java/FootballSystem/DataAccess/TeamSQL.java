@@ -85,6 +85,37 @@ public class TeamSQL implements DataBase<Team> {
         }
 
     }
+    public List<String> getAllForLeague(int id) {
+        List<String> teams= new ArrayList<>();
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "select * from Team where pLeague="+id;
+
+            ResultSet rs = stat.executeQuery(sql);
+
+            while (rs.next()) {
+                int teamID = rs.getInt("teamID");
+                String name = rs.getString("name");
+                int status = rs.getInt("TeamStatus");
+                int fieldID = rs.getInt("fieldID");
+                int pPersonalPage = rs.getInt("pPersonalPage");
+                int income = rs.getInt("income");
+                int expense = rs.getInt("expense");
+                int pLeague = rs.getInt("pLeague");
+
+                String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
+                System.out.println(p);
+                teams.add(p);
+            }
+
+            con.close();
+            return teams;
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+
+    }
 
     @Override
     public void save(Team team) throws SQLException {
