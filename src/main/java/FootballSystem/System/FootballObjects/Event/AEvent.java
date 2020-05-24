@@ -33,6 +33,14 @@ public abstract class AEvent {
         this.playerName = playerName;
         this.teamName = teamName;
     }
+    public AEvent(int id,Date date, int minuteInTheGame, String playerName ,String teamName ) {
+        this.minute = minuteInTheGame;
+        this.id=id;
+        this.date=date ;
+        SystemEventLog.getInstance().writeToLog("New Event was created. ("+id+")");
+        this.playerName = playerName;
+        this.teamName = teamName;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Getters">

@@ -1,5 +1,7 @@
 package FootballSystem.System.Users;
 
+import FootballSystem.DataAccess.GameSQL;
+import FootballSystem.System.Controller;
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.Exeptions.NoRefereePermissions;
 import FootballSystem.System.Exeptions.NoSuchEventException;
@@ -43,6 +45,9 @@ public class Referee extends User implements IObserverGame,IShowable {
     }
 
     public List<Game> getGames() {
+        if(games.size()==0){
+            games= Controller.getInstance().getAllGamesForReferee(this.userName);
+        }
         Collections.sort(games, new Comparator<Game>() {
             public int compare(Game o1, Game o2) {
                 return o1.getDate().compareTo(o2.getDate());

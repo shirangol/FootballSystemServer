@@ -58,7 +58,7 @@ public class Game implements ISubjectGame {
         this.iObserverGameListForReferees =new LinkedList<>();
     }
 
-    public Game(int id,Date date,int hour,String result,  Referee mainReferee, Referee assistantRefereeOne, Referee assistantRefereeTwo, Team away, Team home) {
+    public Game(int id,Date date,int hour,String result,  Referee mainReferee, Referee assistantRefereeOne, Referee assistantRefereeTwo, Team away, Team home, EventLog eventLog ) {
         this.id= id;
         this.date = date;
         this.hour = hour;
@@ -68,7 +68,7 @@ public class Game implements ISubjectGame {
         this.assistantRefereeTwo = assistantRefereeTwo;
         this.away=away;
         this.home=home;
-        this.eventLog = new EventLog();
+        this.eventLog = eventLog;
         this.iObserverGameListForFans= new LinkedList<>();
         this.iObserverGameListForReferees =new LinkedList<>();
     }
