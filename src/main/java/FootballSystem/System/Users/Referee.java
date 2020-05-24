@@ -98,7 +98,8 @@ public class Referee extends User implements IObserverGame,IShowable {
         if (diffHours <= 6.5 && this.type == RefereeType.MAIN) {// 1.5 hours after the beginning
             AEvent editedEvent = createEvent(type, Integer.valueOf(time),playerName,teamName);
             game.getEventLog().removeEvent(oldEvent);
-            game.getEventLog().addEventToLog(editedEvent);
+//            game.getEventLog().addEventToLog(editedEvent);
+            game.addEventToLogEvent(editedEvent);
             SystemEventLog.getInstance().writeToLog("The referee " + getUserName() + " edited event" + "(event Id:" + oldEvent.getId() + ").");
         } else {
             SystemEventLog.getInstance().writeToLog("The referee " + getUserName() + " edited event" + "(event Id:" + oldEvent.getId() + ").");

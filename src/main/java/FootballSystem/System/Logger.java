@@ -75,7 +75,6 @@ public abstract class Logger {
             fstream.close();
 
         } catch (Exception e) {
-
             System.err.println("Error: " + e.getMessage());
         }
 

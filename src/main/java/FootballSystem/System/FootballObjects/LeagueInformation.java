@@ -1,6 +1,7 @@
 package FootballSystem.System.FootballObjects;
 
 import FootballSystem.System.Enum.RefereeType;
+import FootballSystem.System.FootballObjects.Event.EventLog;
 import FootballSystem.System.FootballObjects.Team.*;
 import FootballSystem.System.Users.FootballAssociation;
 import FootballSystem.System.Users.Referee;
@@ -208,8 +209,9 @@ public class LeagueInformation {
      * @param iTeamAllocatePolicy Interface that refers to change policy.
      */
     public void editGameSchedulingPolicy(ITeamAllocatePolicy iTeamAllocatePolicy){
-
         this.iTeamAllocatePolicy=iTeamAllocatePolicy;
+        SystemEventLog.getInstance().writeToLog("game scheduling policy set");
+
     } //UC-34
 
     /**
@@ -217,6 +219,7 @@ public class LeagueInformation {
      * @param iScoreMethodPolicy  Interface that refers to change policy.
      */
     public void editScoreSchedulingPolicy(IScoreMethodPolicy iScoreMethodPolicy){//UC-37
+        SystemEventLog.getInstance().writeToLog("Score policy set");
         this.iScoreMethodPolicy=iScoreMethodPolicy;
     }
 

@@ -12,4 +12,9 @@ public class Injury extends AEvent {
     public String getType() {
         return "Injury";
     }
+
+    @Override
+    public String getTypeToAlert() {
+        return "injury";
+    }
 }

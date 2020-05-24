@@ -13,4 +13,9 @@ public class Offense extends AEvent {
     public String getType() {
         return "Offense";
     }
+
+    @Override
+    public String getTypeToAlert() {
+        return "offense";
+    }
 }

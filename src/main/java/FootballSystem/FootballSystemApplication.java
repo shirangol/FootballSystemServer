@@ -40,8 +40,8 @@ public class FootballSystemApplication {
 
 
 		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA","1234","PA");
-		User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","1234","ref1", RefereeType.MAIN);
-		User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","ref2", RefereeType.ASSISTANT);
+		User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","1234","MainReferee", RefereeType.MAIN);
+		User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","AssistantReferee", RefereeType.ASSISTANT);
 		User refereeSide2 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker3","1234","ref3", RefereeType.ASSISTANT);
 		User fan= SystemManagerController.getInstance().createNewFan((SystemManager)systemManager,2,"fan","1234","fan");
 
@@ -65,7 +65,10 @@ public class FootballSystemApplication {
 		referees.add((Referee)refereeSide1);
 		referees.add((Referee)refereeSide2);
 
-		leagueInformation.getGames().get(0).setDate(new Date());
+
+		Date d= new Date();
+//		d.setHours(11);
+		leagueInformation.getGames().get(0).setDate(d);
 		leagueInformation.getGames().get(1).setResult(0,9);
 		FanController.getInstance().followGame((Fan)fan,leagueInformation.getGames().get(0));
 		FanController.getInstance().followGame((Fan)fan,leagueInformation.getGames().get(1));
