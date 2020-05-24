@@ -93,10 +93,10 @@ public class Referee extends User implements IObserverGame,IShowable {
      * @param oldEvent old event to edit
      * @param type type of event
      */
-    public void editEventAfterGame(Game game, AEvent oldEvent, String type,String playerName, String teamName) throws NoRefereePermissions, NoSuchEventException {
+    public void editEventAfterGame(Game game, AEvent oldEvent, String type,String playerName, String teamName,String time) throws NoRefereePermissions, NoSuchEventException {
         long diffHours = (new Date(System.currentTimeMillis()).getTime() - game.getDate().getTime()) / (60 * 60 * 1000);
         if (diffHours <= 6.5 && this.type == RefereeType.MAIN) {// 1.5 hours after the beginning
-            AEvent editedEvent = createEvent(type, oldEvent.getMinute(),playerName,teamName);
+            AEvent editedEvent = createEvent(type, Integer.valueOf(time),playerName,teamName);
             game.getEventLog().removeEvent(oldEvent);
             game.getEventLog().addEventToLog(editedEvent);
             SystemEventLog.getInstance().writeToLog("The referee " + getUserName() + " edited event" + "(event Id:" + oldEvent.getId() + ").");

@@ -10,6 +10,6 @@ public class Injury extends AEvent {
     //</editor-fold>
     @Override
     public String getType() {
-        return "injury";
+        return "Injury";
     }
 }

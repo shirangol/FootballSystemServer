@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@RequestMapping("/api/FootballAssosiation")
+@RequestMapping("/api/FootballAssociation")
 @RestController
 public class FootballAssosiationController {
 
@@ -270,11 +270,11 @@ public class FootballAssosiationController {
         return team;
     }
 
-    @GetMapping(path = "createTeam/{team_name}/{team_owner_name}")
-    public ResponseEntity createTeam(@PathVariable("team_name") String teamName,@PathVariable("team_owner_name") String teamOwner) {
+    @GetMapping(path = "/createTeam")
+    public ResponseEntity createTeam(@RequestBody Map<String,String> body) {
         for (TeamOwner tO :  Controller.getInstance().getAllTeamOwner()) {
-            if (tO.getUserName().equals(teamOwner)) {
-                createTeam(teamName, tO);
+            if (tO.getUserName().equals(body.get("team_owner"))) {
+                createTeam(body.get("team_name"), tO);
             }
         }
         return new ResponseEntity(HttpStatus.ACCEPTED);

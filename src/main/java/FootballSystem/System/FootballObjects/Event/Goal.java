@@ -9,10 +9,7 @@ public class Goal extends AEvent {
 
     @Override
      public String getType() {
-        return "goal";
+        return "Goal";
     }
     //</editor-fold>
-
-
-
 }

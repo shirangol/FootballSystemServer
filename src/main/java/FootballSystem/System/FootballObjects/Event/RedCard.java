@@ -11,6 +11,6 @@ public class RedCard extends AEvent {
 
     @Override
     public String getType() {
-        return "red card";
+        return "RedCard";
     }
 }
