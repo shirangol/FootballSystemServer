@@ -322,3 +322,113 @@ Sun May 24 15:45:44 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added 
 Sun May 24 15:45:44 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker3 (id: 2) register to receive a game (id: 2) alert
 Sun May 24 15:45:44 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref3
 Sun May 24 15:45:44 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.schedulingReferee: League information- The referees inaugural season was successfully completed. League name: Major
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Controller.initSystem: Successfully connected to Tax FootballSystem.System
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Controller.initSystem: Successfully connected to Accounting FootballSystem.System
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.User.setStatus: Administrator(id: 0) update his status
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(0).
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.SystemManager.createNewTeamOwner: Add a new TeamOwner : Puck
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.SystemManager.createNewFootballAssociation: Add a new Football Association : PA
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.SystemManager.createNewReferee: Add a new Referee : ref1
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.SystemManager.createNewReferee: Add a new Referee : ref2
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.SystemManager.createNewReferee: Add a new Referee : ref3
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,fan).
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : Navi , id :0was added to the teams list of : Puck , id :4
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : VP , id :0was added to the teams list of : Puck , id :4
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Field.addMyTeam: The team for field : rus id : 0was added to the home teams list.
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Team.Team.addAsset: New asset wae added to team :Navi , id :0Asset details : @name:rus , id : 0
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Field.addMyTeam: The team for field : ukr id : 1was added to the home teams list.
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Team.Team.addAsset: New asset wae added to team :VP , id :0Asset details : @name:ukr , id : 1
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.FootballAssociation.initLeague: Football assosiation -Init new League. Name:Major
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Team.DefaultAllocate.setTeamPolicy: League Information inaugural games for the league- home and away games for each league team
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan fan (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan fan (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref1
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker2 (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref2
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker3 (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref3
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref1
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker2 (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref2
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker3 (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:01:56 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref3
+Sun May 24 20:01:56 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.schedulingReferee: League information- The referees inaugural season was successfully completed. League name: Major
+Sun May 24 20:02:02 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:02:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:02:03 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:02:03 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:02:14 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:02:14 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Controller.initSystem: Successfully connected to Tax FootballSystem.System
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Controller.initSystem: Successfully connected to Accounting FootballSystem.System
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.User.setStatus: Administrator(id: 0) update his status
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(0).
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.SystemManager.createNewTeamOwner: Add a new TeamOwner : Puck
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.SystemManager.createNewFootballAssociation: Add a new Football Association : PA
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.SystemManager.createNewReferee: Add a new Referee : ref1
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.SystemManager.createNewReferee: Add a new Referee : ref2
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.SystemManager.createNewReferee: Add a new Referee : ref3
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Controller.signUp: A new user signUp to the system. (2,fan).
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : Navi , id :0was added to the teams list of : Puck , id :4
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : VP , id :0was added to the teams list of : Puck , id :4
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Field.addMyTeam: The team for field : rus id : 0was added to the home teams list.
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Team.Team.addAsset: New asset wae added to team :Navi , id :0Asset details : @name:rus , id : 0
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Field.addMyTeam: The team for field : ukr id : 1was added to the home teams list.
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Team.Team.addAsset: New asset wae added to team :VP , id :0Asset details : @name:ukr , id : 1
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.FootballAssociation.initLeague: Football assosiation -Init new League. Name:Major
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Team.DefaultAllocate.setTeamPolicy: League Information inaugural games for the league- home and away games for each league team
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan fan (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan fan (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref1
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker2 (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref2
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker3 (id: 2) register to receive a game (id: 1) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref3
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref1
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker2 (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref2
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.Game.registerRefereeToAlert: Referee Invoker3 (id: 2) register to receive a game (id: 2) alert
+Sun May 24 20:02:34 IDT 2020 lSystem.System.Users.Referee.addGame: a Game added to referee list. Referee's username:ref3
+Sun May 24 20:02:34 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.schedulingReferee: League information- The referees inaugural season was successfully completed. League name: Major
+Sun May 24 20:02:45 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:02:45 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:02:49 IDT 2020 lSystem.System.Users.User.setStatus: fan(id: 2) update his status
+Sun May 24 20:02:49 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:02:53 IDT 2020 lSystem.System.Users.User.setStatus: fan(id: 2) update his status
+Sun May 24 20:02:53 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(fan).
+Sun May 24 20:07:09 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:07:09 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:07:57 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:07:57 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:08:33 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:08:33 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:11:16 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:11:16 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:16:58 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:16:58 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:17:32 IDT 2020 lSystem.System.Users.User.setStatus: fan(id: 2) update his status
+Sun May 24 20:17:32 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:17:34 IDT 2020 lSystem.System.Users.User.setStatus: fan(id: 2) update his status
+Sun May 24 20:17:34 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(fan).
+Sun May 24 20:17:37 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:17:37 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:17:38 IDT 2020 lSystem.System.Users.User.setStatus: fan(id: 2) update his status
+Sun May 24 20:17:38 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(fan).
+Sun May 24 20:19:19 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:19:19 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:20:31 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:20:31 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:20:33 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:20:33 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:21:40 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:21:40 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:22:53 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:22:53 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:23:24 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:23:24 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sun May 24 20:23:56 IDT 2020 lSystem.System.Users.User.setStatus: Invoker(id: 2) update his status
+Sun May 24 20:23:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
