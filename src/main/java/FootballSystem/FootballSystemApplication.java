@@ -67,7 +67,7 @@ public class FootballSystemApplication {
 
 
 		Date d= new Date();
-//		d.setHours(11);
+//		d.setHours(3);
 		leagueInformation.getGames().get(0).setDate(d);
 		leagueInformation.getGames().get(1).setResult(0,9);
 		FanController.getInstance().followGame((Fan)fan,leagueInformation.getGames().get(0));

@@ -86,6 +86,15 @@ public class RefereeController extends MainUserController {
         } catch (NoRefereePermissions noRefereePermissions) {
             return new ResponseEntity("fail",HttpStatus.EXPECTATION_FAILED);
         }
+        if(body.get("old_eventType").equals("Goal")){
+            if (game.getHome().getName().equals( body.get("old_team"))) {
+                game.setResult(Integer.parseInt(game.getResult().split(":")[0]) - 1, Integer.parseInt(game.getResult().split(":")[1]));
+            } else {
+                String home = game.getResult().split(":")[0];
+                int away = (Integer.parseInt(game.getResult().split(":")[1]) - 1);
+                game.setResult(Integer.parseInt(home), away);
+            }
+        }
 
         if (body.get("type").equals("Goal")) {
             if (game.getHome().getName().equals( body.get("team"))) {
