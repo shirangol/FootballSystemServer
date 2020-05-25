@@ -1,7 +1,9 @@
 package FootballSystem.System.FootballObjects.Event;
+import FootballSystem.DataAccess.EventLogSQL;
 import FootballSystem.DataAccess.EventSQL;
 import FootballSystem.System.SystemEventLog;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -39,7 +41,8 @@ public class EventLog {
         return report;
     }
 
-    public void setReport(String report) {
+    public void setReport(String report) throws SQLException {
+        EventLogSQL.getInstance().save(this);
         this.report = report;
     }
     //</editor-fold>

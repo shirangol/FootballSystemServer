@@ -14,6 +14,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.SQLException;
 import java.util.*;
 
 @RequestMapping("/api/referee")
@@ -180,7 +181,7 @@ public class RefereeController extends MainUserController {
     }
 
     @PostMapping(value = "/postEventReport")
-    public ResponseEntity postEventReport(@RequestBody Map<String,String> body) throws OnlyForReferee {
+    public ResponseEntity postEventReport(@RequestBody Map<String,String> body) throws OnlyForReferee, SQLException {
         String refereeName=body.get("user_name");
         String gameID=body.get("game_id");
         String report=body.get("report");

@@ -2,10 +2,7 @@ package FootballSystem.DataAccess;
 
 import FootballSystem.System.FootballObjects.Event.EventLog;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -60,7 +57,18 @@ public class EventLogSQL implements DataBase<EventLog> {
 
     @Override
     public void save(EventLog eventLog) throws SQLException {
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            PreparedStatement ps = con.prepareStatement("insert into event_log_report(eventLogID,report) values (?,?,?,?,?,?) ");
 
+            ps.setInt(1,eventLog.getId() );
+            ps.setString(2,eventLog.getReport() );
+            ps.execute();
+
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
     }
 
     @Override
