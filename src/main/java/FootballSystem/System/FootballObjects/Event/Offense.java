@@ -17,6 +17,11 @@ public class Offense extends AEvent {
     //</editor-fold>
     @Override
     public String getType() {
+        return "Offense";
+    }
+
+    @Override
+    public String getTypeToAlert() {
         return "offense";
     }
 }

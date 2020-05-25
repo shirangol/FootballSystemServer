@@ -16,6 +16,11 @@ public class Injury extends AEvent {
     //</editor-fold>
     @Override
     public String getType() {
+        return "Injury";
+    }
+
+    @Override
+    public String getTypeToAlert() {
         return "injury";
     }
 }

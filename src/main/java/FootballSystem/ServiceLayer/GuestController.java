@@ -1,5 +1,6 @@
 package FootballSystem.ServiceLayer;
 
+import FootballSystem.ServiceLayer.Exceptions.OnlyForReferee;
 import FootballSystem.System.*;
 import FootballSystem.System.Enum.SearchCategory;
 import FootballSystem.System.Exeptions.UserNameAlreadyExistException;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -79,17 +81,33 @@ public class GuestController extends MainUserController {
 
     //Sign-Up for fan only
     @PostMapping (value = "/signUp")
-    public ResponseEntity signUp(@RequestBody Map<String,String> body )throws UserNameAlreadyExistException {
-        Controller controller = Controller.getInstance();
-        controller.signUp(Integer.parseInt(body.get("id")) ,body.get("name"),body.get("password"),body.get("user_name"));
-        return new ResponseEntity(HttpStatus.ACCEPTED);
+    public ResponseEntity signUp(@RequestBody Map<String,String> body ) throws UserNameAlreadyExistException{
+        try {
+            Controller controller = Controller.getInstance();
+            controller.signUp(Integer.parseInt(body.get("id")), body.get("name"), body.get("password"), body.get("user_name"));
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }
+        catch (UserNameAlreadyExistException u){
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new UserNameAlreadyExistException()).toString());
+            throw new UserNameAlreadyExistException();
+        }
     }
 
     //Login
     @PostMapping (value = "/login")
     public ResponseEntity login( @RequestBody Map<String,String> body ) throws WrongPasswordException, NoSuchAUserNamedException {
-        int type= getUserType(body.get("user_name"),body.get("password"));
-        return new ResponseEntity(type,HttpStatus.ACCEPTED);
+        try {
+            int type = getUserType(body.get("user_name"), body.get("password"));
+            return new ResponseEntity(type, HttpStatus.ACCEPTED);
+        }
+        catch (WrongPasswordException w){
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new WrongPasswordException()).toString());
+            throw new WrongPasswordException();
+        }
+        catch (NoSuchAUserNamedException w){
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new NoSuchAUserNamedException()).toString());
+            throw new NoSuchAUserNamedException();
+        }
     }
 
     //Log-Out

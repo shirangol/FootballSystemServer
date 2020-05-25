@@ -12,6 +12,7 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.FootballObjects.Team.IScoreMethodPolicy;
 import FootballSystem.System.FootballObjects.Team.ITeamAllocatePolicy;
 import FootballSystem.System.FootballObjects.Team.Team;
+import FootballSystem.System.SystemErrorLog;
 import FootballSystem.System.Users.FootballAssociation;
 import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.TeamOwner;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@RequestMapping("/api/FootballAssosiation")
+@RequestMapping("/api/FootballAssociation")
 @RestController
 public class FootballAssosiationController {
 
@@ -150,8 +151,14 @@ public class FootballAssosiationController {
      * @throws UserNameAlreadyExistException
      */
     public Referee addReferee(FootballAssociation footballAssociation, String name, RefereeType type, int id, String pass, String userName) throws UserNameAlreadyExistException {
-        Referee referee = footballAssociation.addNewReferee(name, type, id, pass, userName);
-        return referee;
+        try {
+            Referee referee = footballAssociation.addNewReferee(name, type, id, pass, userName);
+            return referee;
+        }
+        catch (UserNameAlreadyExistException e){
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new UserNameAlreadyExistException()).toString());
+            throw new UserNameAlreadyExistException();
+        }
     }
 
     /**
@@ -162,7 +169,7 @@ public class FootballAssosiationController {
      * @param referee
      * @throws IllegalInputException
      */
-    public void removeReferee(FootballAssociation footballAssociation, Referee referee) throws IllegalInputException, NoSuchAUserNamedException {
+    private void removeReferee(FootballAssociation footballAssociation, Referee referee) throws IllegalInputException, NoSuchAUserNamedException {
         footballAssociation.removeReferee(referee);
     }
 
@@ -190,9 +197,11 @@ public class FootballAssosiationController {
         }
 
         if (mainNum == 0) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new MustHaveLeastOneMainReferee()).toString());
             throw new MustHaveLeastOneMainReferee();
         }
         if (sideNum < 2) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new MustHaveLeastTwoSideReferee()).toString());
             throw new MustHaveLeastTwoSideReferee();
         }
 
@@ -225,6 +234,7 @@ public class FootballAssosiationController {
             leagueInformation.editGameSchedulingPolicy(policy);
             return;
         }
+        SystemErrorLog.getInstance().writeToLog("Type: "+(new IsNotStartOFSeason()).toString());
         throw new IsNotStartOFSeason();
     }
 
@@ -236,6 +246,7 @@ public class FootballAssosiationController {
      */
     public void schedulingGames(FootballAssociation footballAssociation, LeagueInformation leagueInformation) throws MustHaveLeastTwoTeams {
         if (leagueInformation.getLeague().getTeams().size() < 2) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new MustHaveLeastTwoTeams()).toString());
             throw new MustHaveLeastTwoTeams();
         }
         footballAssociation.initLeagueInformation(leagueInformation);
@@ -251,7 +262,7 @@ public class FootballAssosiationController {
      * @throws IllegalInputException
      * @throws NoSuchAUserNamedException
      */
-    public void replaceReferee(FootballAssociation footballAssociation, LeagueInformation leagueInformation, List<Referee> referees, Referee referee) throws IllegalInputException, NoSuchAUserNamedException {
+    private void replaceReferee(FootballAssociation footballAssociation, LeagueInformation leagueInformation, List<Referee> referees, Referee referee) throws IllegalInputException, NoSuchAUserNamedException {
         footballAssociation.manualChangingReferee(leagueInformation, referees, referee);
         footballAssociation.removeReferee(referee);//remove referee's user after chang
     }
@@ -270,11 +281,11 @@ public class FootballAssosiationController {
         return team;
     }
 
-    @PostMapping(path = "createTeam/{team_name}/{team_owner_name}")
-    public ResponseEntity createTeam(@PathVariable("team_name") String teamName,@PathVariable("team_owner_name") String teamOwner) {
+    @PostMapping(path = "/createTeam")
+    public ResponseEntity createTeam(@RequestBody Map<String,String> body) {
         for (TeamOwner tO :  Controller.getInstance().getAllTeamOwner()) {
-            if (tO.getUserName().equals(teamOwner)) {
-                createTeam(teamName, tO);
+            if (tO.getUserName().equals(body.get("team_owner"))) {
+                createTeam(body.get("team_name"), tO);
             }
         }
         return new ResponseEntity(HttpStatus.ACCEPTED);
@@ -287,7 +298,7 @@ public class FootballAssosiationController {
      * @param homeScore
      * @param awayScore
      */
-    public void updateResultToGame(Game game, int homeScore, int awayScore) {
+    private void updateResultToGame(Game game, int homeScore, int awayScore) {
         game.setResult(homeScore, awayScore);
     }
     //</editor-fold>

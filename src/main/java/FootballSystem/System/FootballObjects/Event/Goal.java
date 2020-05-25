@@ -17,10 +17,12 @@ public class Goal extends AEvent {
 
     @Override
      public String getType() {
+        return "Goal";
+    }
+
+    @Override
+    public String getTypeToAlert() {
         return "goal";
     }
     //</editor-fold>
-
-
-
 }

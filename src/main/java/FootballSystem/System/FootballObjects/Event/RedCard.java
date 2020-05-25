@@ -16,6 +16,11 @@ public class RedCard extends AEvent {
 
     @Override
     public String getType() {
+        return "RedCard";
+    }
+
+    @Override
+    public String getTypeToAlert() {
         return "red card";
     }
 }
