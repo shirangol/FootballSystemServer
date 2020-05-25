@@ -60,7 +60,7 @@ public class EventLogSQL implements DataBase<EventLog> {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
-            PreparedStatement ps = con.prepareStatement("insert into event_log_report(eventLogID,report) values (?,?,?,?,?,?) ");
+            PreparedStatement ps = con.prepareStatement("insert into event_log_report(eventLogID,report) values (?,?) ");
 
             ps.setInt(1,eventLog.getId() );
             ps.setString(2,eventLog.getReport() );
