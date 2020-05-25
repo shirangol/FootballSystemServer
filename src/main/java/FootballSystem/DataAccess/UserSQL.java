@@ -87,7 +87,14 @@ public class UserSQL implements DataBase<User> {
     private void saveTeamOwner(TeamOwner user,Connection connection) {
         try {
             PreparedStatement ps=connection.prepareStatement("insert into team_owner(username,salary,coach,teamManager,player) "
-                    + "values (user.getUserName(),0,null ,null ,null )");
+                    + "values (?,?,? ,? ,? )");
+            ps.setString(1, user.getUserName());
+            ps.setInt(2, 0);
+            ps.setString(3, "");
+            ps.setString(4, "");
+            ps.setString(5, "");
+            ps.executeUpdate();
+
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -230,15 +237,20 @@ public class UserSQL implements DataBase<User> {
                         //Fan fan=new Fan(id_col,fullName_col,password_col,username_col);
                         String fanStr="Fan "+id_col+" "+fullName_col+" "+password_col+" "+username_col;
                         listToReturn.add(fanStr);
+                        break;
                     case 2:
                         //Referee referee=new Referee(fullName_col, null, id_col, password_col, username_col);
                         RefereeType type=getRefereeTypeSQL(username_col);
+                        if(type==null)
+                            type=RefereeType.ASSISTANT;
                         String refereeStr="Referee "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
                         listToReturn.add(refereeStr);
+                        break;
                     case 3:
                         //Coach coach=new Coach(id_col, fullName_col, password_col,username_col, null, null, 0, 0);
                         String coachStr="Coach "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         listToReturn.add(coachStr);
+                        break;
                     case 4:
                         //Player player=new Player(id_col, fullName_col, password_col, username_col, null, null, 0, 0);
                         String playerStr="Player "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
@@ -247,18 +259,22 @@ public class UserSQL implements DataBase<User> {
                         //FootballAssociation footballAssociation=new FootballAssociation(id_col, fullName_col, password_col, username_col);
                         String faStr="FootballAssociation "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         listToReturn.add(faStr);
+                        break;
                     case 6:
                         //SystemManager systemManager=new SystemManager(id_col, fullName_col, password_col, username_col);
                         String systemManagerStr="SystemManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col;
                         listToReturn.add(systemManagerStr);
+                        break;
                     case 7:
                         //TeamOwner teamOwner=new TeamOwner(id_col, fullName_col, password_col, username_col,0);
                         String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
                         listToReturn.add(teamOwnerStr);
+                        break;
                     case 8:
                         //TeamManager teamManager=new TeamManager(id_col, fullName_col, password_col, username_col,0,0);
                         String teamManagerStr="TeamManager "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0+" "+0;
                         listToReturn.add(teamManagerStr);
+                        break;
                     // default:
                 }//close switch
                 String p = id_col + " " + username_col + " " + fullName_col + " " + password_col + " " + UserTypeCode ;
@@ -283,52 +299,54 @@ public class UserSQL implements DataBase<User> {
             ps.setString(3, user.getName());
             ps.setString(4, user.getPassword());
             ps.setInt(5, 1);
-            ps.setInt(6, 2);
-            ps.executeUpdate();
+
 
             //<editor-fold desc="Set the user type">
             if(user instanceof Fan){
                 try{
-                   ps.setInt(2,1);
+                   ps.setInt(6,1);
                    ps.executeUpdate();}catch (Exception e){}
             }else if(user instanceof Referee){
                 try{
-                   ps.setInt(2,2);
+                   ps.setInt(6,2);
                    ps.executeUpdate();}catch (Exception e){}
                    saveReferee((Referee) user,connection);
             }else if(user instanceof Coach){
                 try{
-                   ps.setInt(2,3);
+                   ps.setInt(6,3);
                    ps.executeUpdate();}catch (Exception e){}
                    saveCoach((Coach) user,connection);
             }
             else if(user instanceof Player){
                 try{
-                    ps.setInt(2,4);
+                    ps.setInt(6,4);
                     ps.executeUpdate();}catch (Exception e){}
                     savePlayer((Player) user,connection);
             }
             else if(user instanceof FootballAssociation){
                 try{
-                    ps.setInt(2,5);
+                    ps.setInt(6,5);
                     ps.executeUpdate();}catch (Exception e){}
                     saveFootballAssociation((FootballAssociation) user,connection);
             }
             else if(user instanceof SystemManager){
                 try{
-                    ps.setInt(2,6);
+                    ps.setInt(6,6);
                     ps.executeUpdate();}catch (Exception e){}
                     saveSyatemManager((SystemManager) user,connection);
             }
             else if(user instanceof TeamOwner){
                 try{
-                    ps.setInt(2,7);
-                    ps.executeUpdate();}catch (Exception e){}
+                    ps.setInt(6,7);
+                    ps.executeUpdate();
+                }catch (Exception e){
+                    System.out.println(e);
+                }
                     saveTeamOwner((TeamOwner) user,connection);
             }
             else if(user instanceof TeamManager){
                 try{
-                    ps.setInt(2,8);
+                    ps.setInt(6,8);
                     ps.executeUpdate();}catch (Exception e){}
                     saveTeamManager((TeamManager) user,connection);
             }
@@ -446,4 +464,9 @@ public class UserSQL implements DataBase<User> {
         }
         return null;
     }
+
+
+
+
+
 }

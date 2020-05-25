@@ -12,6 +12,7 @@ import FootballSystem.System.FootballObjects.Team.Team;
 import FootballSystem.System.Users.Fan;
 import FootballSystem.System.Users.Player;
 import FootballSystem.System.Users.Referee;
+import FootballSystem.System.Users.TeamOwner;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -38,16 +39,16 @@ class FootballSystemApplicationTests {
 //	@Test
 //	void addFanUser(){
 //		UserSQL userSQL=UserSQL.getInstance();
-//		Fan f=new Fan(7654,"fanName5","123456","newNick5");
-//		userSQL.save(f);
+//		Fan f=new Fan(7654,"danaFan4","123456","danaFan4");
+//		//userSQL.save(f);
 //		userSQL.getAll();
 //	}
 
 //	@Test
 //	void addRefreeUser(){
 //		UserSQL userSQL=UserSQL.getInstance();
-//		Referee harelush=new Referee("harel", RefereeType.MAIN,345,"123456","harelush");
-//		//userSQL.save(harelush);
+//		Referee harelush=new Referee("harelll", RefereeType.MAIN,345,"123456","harelushka");
+//		userSQL.save(harelush);
 //		//userSQL.get("harelush");
 //		//userSQL.getAll();//get all before delete
 //	}
@@ -81,32 +82,35 @@ class FootballSystemApplicationTests {
 //		assert(userType==2);
 //	}
 
-	@Test
-	void getLeagueTest(){
-		System.out.println("getLeagueTest :");
-		List<Team> teams=new LinkedList<>();
-		League l=new League("Premier League",teams);
-		String s= LeagueSQL.getInstance().get(l);
-		System.out.println(s);
-		System.out.println("");
-	}
-
-	@Test
-	void getAllLeagueTest(){
-		System.out.println("getAllLeagueTest :");
-		List<String> list=LeagueSQL.getInstance().getAll();
-		for (int i=0;i<list.size();i++){
-			System.out.println(list.get(i));
-		}
-		System.out.println("");
-	}
+//	@Test
+//	void getLeagueTest(){
+//		System.out.println("getLeagueTest :");
+//		List<Team> teams=new LinkedList<>();
+//		League l=new League("Premier League",teams);
+//		String s= LeagueSQL.getInstance().get(l);
+//		System.out.println(s);
+//		System.out.println("");
+//	}
 
 //	@Test
-//	void saveLeagueTest() throws SQLException {
-//		List<Team> teams=new LinkedList<>();
-//		League l=new League("The best League ever",teams);
-//		LeagueSQL.getInstance().save(l);
+//	void getAllLeagueTest(){
+//		System.out.println("getAllLeagueTest :");
+//		List<String> list=LeagueSQL.getInstance().getAll();
+//		for (int i=0;i<list.size();i++){
+//			System.out.println(list.get(i));
+//		}
+//		System.out.println("");
 //	}
+
+	@Test
+	void saveLeagueTest() throws SQLException {
+		List<Team> teams=new LinkedList<>();
+		//League l=new League("The best League ever",teams);
+		League l=new League(1234,"The best League ever777",teams);
+
+		//League(int id,String name, List<Team> teams)
+		LeagueSQL.getInstance().save(l);
+	}
 
 //	@Test
 //	void deleteLeagueTest(){
@@ -119,5 +123,12 @@ class FootballSystemApplicationTests {
 //	void deleteLeagueByNameTest(){
 //		LeagueSQL.getInstance().delete("The best League ever");
 //	}
+
+//	@Test
+//	void addTeamOwnerToUserTable(){
+//		TeamOwner teamOwner=new TeamOwner(123,"owner8","123","owner8",0);
+//		UserSQL.getInstance().save(teamOwner);
+//	}
+
 
 }

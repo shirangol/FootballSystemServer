@@ -73,17 +73,10 @@ public class LeagueSQL implements DataBase<League> {
     @Override
     public void save(League league) throws SQLException {
         try {
-            int size=0;
             Connection con = DBConnector.getConnection();
-            Statement stat = con.createStatement();
-            String sql = "select * from league" ;
-            ResultSet rs = stat.executeQuery(sql);
-            while (rs.next()) {
-                size++;
-            }
             PreparedStatement ps=con.prepareStatement("insert into league(leagueID, name) "
                     + "values (?,?)");
-            ps.setInt(1, size+1);
+            ps.setInt(1, league.getId());
             ps.setString(2, league.getName());
             ps.executeUpdate();
             con.close();

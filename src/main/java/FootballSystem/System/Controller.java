@@ -104,7 +104,6 @@ public class Controller {
                     break;
                 case "FootballAssociation":
                     user = new FootballAssociation(Integer.parseInt(userArr[1]), userArr[2], userArr[3], userArr[4]);
-
             }
         }
         return user;
@@ -211,6 +210,17 @@ public class Controller {
         for(User user : users.values()){
             if(user instanceof TeamOwner){
                 teamOwnerList.add((TeamOwner) user);
+            }
+        }
+        List<String>l=UserSQL.getInstance().getAll();
+        for(String userStr : l){
+            String[] userArr = userStr.split(" ");
+            if (userArr[0].equals("TeamOwner")) {
+                   TeamOwner teamOwner = new TeamOwner(Integer.parseInt(userArr[2]),userArr[3],userArr[4],userArr[5],0);
+                   // String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
+                if(users.get(teamOwner.getName())==null){
+                    teamOwnerList.add(teamOwner);
+                }
             }
         }
         return teamOwnerList;

@@ -18,8 +18,19 @@ public class League implements IShowable {
 
     //<editor-fold desc="Constructor">
     public League(String name, List<Team> teams) {
+
         this.id= ID;
         ID++;
+        this.name=name;
+        this.teams= new ArrayList<>();
+        this.leaguesInformation = new ArrayList<>();
+        for (Team t : teams) {
+            this.teams.add(t);
+        }
+    }
+
+    public League(int id,String name, List<Team> teams) {
+        this.id= id;
         this.name=name;
         this.teams= new ArrayList<>();
         this.leaguesInformation = new ArrayList<>();
@@ -32,6 +43,10 @@ public class League implements IShowable {
     //<editor-fold desc="Getters">
     public String getName() {
         return name;
+    }
+
+    public int getId(){
+        return this.id;
     }
 
     @Override
