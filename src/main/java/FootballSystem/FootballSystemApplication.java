@@ -1,16 +1,23 @@
 package FootballSystem;
 
+import FootballSystem.DataAccess.DBConnector;
+import FootballSystem.DataAccess.GameSQL;
+import FootballSystem.DataAccess.LeagueInformationSQL;
+import FootballSystem.DataAccess.TeamSQL;
 import FootballSystem.ServiceLayer.*;
 import FootballSystem.System.Controller;
 import FootballSystem.System.Enum.RefereeType;
-import FootballSystem.System.FootballObjects.Field;
-import FootballSystem.System.FootballObjects.League;
-import FootballSystem.System.FootballObjects.LeagueInformation;
+import FootballSystem.System.Enum.TeamStatus;
+import FootballSystem.System.FootballObjects.*;
+import FootballSystem.System.FootballObjects.Team.DefaultAllocate;
+import FootballSystem.System.FootballObjects.Team.DefaultMethod;
 import FootballSystem.System.FootballObjects.Team.Team;
 import FootballSystem.System.Users.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,9 +26,60 @@ import java.util.List;
 public class FootballSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FootballSystemApplication.class, args);
+		//SpringApplication.run(FootballSystemApplication.class, args);
 		try {
-			intiallieSystem();
+			DBConnector.getConnection();
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//			String dateString = format.format( new Date()   );
+//			Date   date       = format.parse (  dateString);
+//			boolean i=true;
+
+
+			//intiallieSystem();
+			//TeamSQL.getInstance().get(1);
+			//TeamSQL.getInstance().getAll();
+			Team t = new Team(5,"aa", TeamStatus.Active,null,null,0,0);
+			Team t2 = new Team(10,"asd", TeamStatus.Active,null,null,0,0);
+//			TeamSQL.getInstance().save(t);
+			//TeamSQL.getInstance().getAll();
+			//TeamSQL.getInstance().delete(t);
+			//TeamSQL.getInstance().getAll();
+
+//			GameSQL.getInstance().get(1);
+//			GameSQL.getInstance().getAll();
+
+//				Referee referee =new Referee("a",RefereeType.MAIN,100,"123","a");
+//			Referee referee2 =new Referee("b",RefereeType.ASSISTANT,150,"123","b");
+//			Referee referee3 =new Referee("c",RefereeType.ASSISTANT,200,"123","c");
+//				Game game=new Game(100,new Date(),2000,"0:0",referee  , referee2, referee3, t, t2);
+//				GameSQL.getInstance().save(game);
+			//GameSQL.getInstance().getAll();
+			//GameSQL.getInstance().delete(game);
+
+//			LeagueInformationSQL.getInstance().get(1);
+//			LeagueInformationSQL.getInstance().getAll();
+//			List<Team> aa=new ArrayList<>();
+//			League league=new League("aa",aa);
+//			Season season=new Season(2000);
+//			FootballAssociation footballAssociation=new FootballAssociation(10,"123","acc","123");
+//			LeagueInformation leagueInformation=new LeagueInformation(5,league,season,footballAssociation,new DefaultAllocate(),new DefaultMethod());
+//			LeagueInformationSQL.getInstance().save(leagueInformation);
+//			LeagueInformationSQL.getInstance().getAll();
+//			LeagueInformationSQL.getInstance().delete(leagueInformation);
+//			LeagueInformationSQL.getInstance().getAll();
+
+
+			//test to controller
+			//Team tt=Controller.getInstance().getTeam(1);
+			//List<Team> teams2=Controller.getInstance().getAllTeams();
+
+			//Game g=Controller.getInstance().getGame(1);
+			//List<Game> games=Controller.getInstance().getAllGames();
+			//List<String> lll=GameSQL.getInstance().getAllgamesForReferee("Hen");
+			//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
+			List<League>ll=Controller.getInstance().getAllLeagues();
+			boolean i=true;
+
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -39,7 +97,7 @@ public class FootballSystemApplication {
 		Field field2 = TeamOwnerController.getInstance().createField(1,"ukr");
 
 
-		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA","1234","PA");
+		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA1","1234","PA1");
 		User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","1234","ref1", RefereeType.MAIN);
 		User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","ref2", RefereeType.ASSISTANT);
 		User refereeSide2 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker3","1234","ref3", RefereeType.ASSISTANT);

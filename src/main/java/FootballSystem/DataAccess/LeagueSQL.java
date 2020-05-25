@@ -76,7 +76,7 @@ public class LeagueSQL implements DataBase<League> {
             Connection con = DBConnector.getConnection();
             PreparedStatement ps=con.prepareStatement("insert into league(leagueID, name) "
                     + "values (?,?)");
-            ps.setInt(1, league.getId());
+            ps.setInt(1, league.getid());
             ps.setString(2, league.getName());
             ps.executeUpdate();
             con.close();

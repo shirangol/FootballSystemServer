@@ -106,7 +106,7 @@ class FootballSystemApplicationTests {
 	void saveLeagueTest() throws SQLException {
 		List<Team> teams=new LinkedList<>();
 		//League l=new League("The best League ever",teams);
-		League l=new League(1234,"The best League ever777",teams);
+		League l=new League(12345,"The best League ever777",teams);
 
 		//League(int id,String name, List<Team> teams)
 		LeagueSQL.getInstance().save(l);

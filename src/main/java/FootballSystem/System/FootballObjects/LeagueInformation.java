@@ -50,6 +50,22 @@ public class LeagueInformation {
             leagueTable.put(league.getTeams().get(i),0);
         }
     }
+
+    public LeagueInformation(int id, League league, Season season, FootballAssociation footballAssociation, ITeamAllocatePolicy iTeamAllocatePolicy,IScoreMethodPolicy iScoreMethodPolicy) {
+        this.id= id;
+        this. league=league;
+        this. season= season;
+        name= season.getName()+" "+league.getName();
+        this.footballAssociation = footballAssociation;
+        this.iTeamAllocatePolicy= iTeamAllocatePolicy;
+        leagueTable= new LinkedHashMap<>();
+        this.iScoreMethodPolicy= iScoreMethodPolicy;
+        games=new ArrayList<>();
+        //init league Table with 0 points to all the team.
+        for(int i=0;i<league.getTeams().size();i++){
+            leagueTable.put(league.getTeams().get(i),0);
+        }
+    }
     //</editor-fold>
 
     //<editor-fold desc="Getters">

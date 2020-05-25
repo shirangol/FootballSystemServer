@@ -3,8 +3,8 @@ package FootballSystem.DataAccess;
 import java.sql.SQLException;
 import java.util.*;
 public interface DataBase <T> {
-//טטטc
-        String get(long id);
+
+        Object get(long id);
 
         List<String> getAll();
 

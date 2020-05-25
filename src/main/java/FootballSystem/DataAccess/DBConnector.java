@@ -32,8 +32,8 @@ public class DBConnector {
             Connection con = DriverManager.getConnection(host, uName, uPass);
 
 
-            //check connect
-            //testConnection(con);
+//            check connect
+//            testConnection(con);
 
             return con;
 

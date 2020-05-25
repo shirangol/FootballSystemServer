@@ -28,7 +28,6 @@ public class League implements IShowable {
             this.teams.add(t);
         }
     }
-
     public League(int id,String name, List<Team> teams) {
         this.id= id;
         this.name=name;
@@ -44,9 +43,8 @@ public class League implements IShowable {
     public String getName() {
         return name;
     }
-
-    public int getId(){
-        return this.id;
+    public int getid(){
+        return id;
     }
 
     @Override
