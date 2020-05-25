@@ -17,7 +17,4 @@ public class Goal extends AEvent {
         return "goal";
     }
     //</editor-fold>
-
-
-
 }

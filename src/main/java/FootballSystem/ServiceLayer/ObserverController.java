@@ -1,6 +1,8 @@
 package FootballSystem.ServiceLayer;
 
 import FootballSystem.System.Controller;
+import FootballSystem.System.Exeptions.UserNameAlreadyExistException;
+import FootballSystem.System.SystemErrorLog;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +31,9 @@ public class ObserverController {
     public static void removeOnlineUser(String userName) {
         try {
             onlineUsers.remove(userName);
-        }catch (Exception e){}
+        }catch (Exception e){
+            SystemErrorLog.getInstance().writeToLog("Type: "+"Invalid username");
+        }
     }
 
     @GetMapping(path = "/getMyAlerts/{user_name}")
