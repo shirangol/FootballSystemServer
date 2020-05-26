@@ -55,6 +55,9 @@ public class Controller {
         scorePolicies = new HashMap<>();
         methodAllocatePolicies = new HashMap<>();
 
+
+        leagues=getAllLeagues();
+        teams=getAllTeams();
     }
     //</editor-fold>
 
@@ -107,8 +110,6 @@ public class Controller {
         return teamsToReturn;
     } //UC-4
 
-
-
     public List<Team> getAllTeams() {
         if (teams.size() != 0) {
             return teams;
@@ -145,9 +146,7 @@ public class Controller {
         return seasons;
     } //UC-4
 
-    public HashMap<String, User> getUsers() {
-        return users;
-    }
+
 
     public void addUser(String s, User u) {
         users.put(s, u);
@@ -346,6 +345,7 @@ public class Controller {
         return newGame;
 
     }
+
     public List<Game> getAllGames () {
         List<Game> games = new ArrayList<>();
 
