@@ -3569,3 +3569,71 @@ Tue May 26 15:17:48 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>:
 Tue May 26 15:17:49 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
 Tue May 26 15:17:49 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
 Tue May 26 15:26:09 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 15:51:55 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 15:54:07 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 15:57:03 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 15:57:11 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 15:57:11 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Tue May 26 15:57:11 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Tue May 26 15:57:11 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Tue May 26 15:57:11 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Tue May 26 15:57:11 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Tue May 26 15:57:11 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Tue May 26 15:57:34 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 15:57:34 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 15:57:34 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Tue May 26 15:59:46 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 16:00:08 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 16:00:08 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Tue May 26 16:00:08 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Tue May 26 16:00:08 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Tue May 26 16:00:08 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Tue May 26 16:00:08 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Tue May 26 16:00:08 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Tue May 26 16:00:48 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 16:00:48 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 16:00:48 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Tue May 26 16:04:20 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 16:04:54 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 16:04:59 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Tue May 26 16:04:59 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Tue May 26 16:05:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 16:05:02 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Tue May 26 16:05:02 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Tue May 26 16:05:02 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Tue May 26 16:05:02 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Tue May 26 16:05:02 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Tue May 26 16:05:02 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Tue May 26 16:06:20 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 16:06:20 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Tue May 26 16:06:20 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Tue May 26 16:06:20 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Tue May 26 16:06:20 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Tue May 26 16:06:20 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Tue May 26 16:06:20 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Tue May 26 16:06:37 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 16:06:37 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Tue May 26 16:06:37 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Tue May 26 16:06:37 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Tue May 26 16:06:37 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Tue May 26 16:06:37 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Tue May 26 16:06:37 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Tue May 26 16:07:17 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 16:07:19 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 16:07:19 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Tue May 26 16:07:19 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Tue May 26 16:07:19 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Tue May 26 16:07:19 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Tue May 26 16:07:19 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Tue May 26 16:07:19 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Tue May 26 16:07:41 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 16:07:41 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 16:07:41 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Tue May 26 16:09:39 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(1).
+Tue May 26 16:09:39 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 1) alert
+Tue May 26 16:09:39 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 2) alert
+Tue May 26 16:09:39 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 3) alert
+Tue May 26 16:09:39 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 4) alert
+Tue May 26 16:09:39 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 5) alert
+Tue May 26 16:09:39 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 6) alert
+Tue May 26 16:54:08 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).

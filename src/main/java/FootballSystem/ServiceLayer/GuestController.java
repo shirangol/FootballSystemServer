@@ -95,7 +95,7 @@ public class GuestController extends MainUserController {
 
     //Login
     @PostMapping (value = "/login")
-    public ResponseEntity login( @RequestBody Map<String,String> body ) throws WrongPasswordException, NoSuchAUserNamedException {
+    public ResponseEntity login( @RequestBody Map<String,String> body, HttpServletRequest request ) throws WrongPasswordException, NoSuchAUserNamedException {
         try {
             int type = getUserType(body.get("user_name"), body.get("password"));
             return new ResponseEntity(type, HttpStatus.ACCEPTED);

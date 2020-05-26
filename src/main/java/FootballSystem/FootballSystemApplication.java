@@ -113,7 +113,7 @@ public class FootballSystemApplication {
 			//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
 			//List<League>ll=Controller.getInstance().getAllLeagues();
 //			//boolean i=true;
-			String url = "http://85.250.251.197:3000/api/notification";
+			String url = "http://132.72.200.39:3000/api/notification";
 			RestTemplate restTemplate = new RestTemplate();
 			HttpHeaders headers = new HttpHeaders();
 			headers.set("Content-Type","application/json");
