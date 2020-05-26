@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.KeyStore;
 import java.util.HashMap;
 import java.util.List;
@@ -24,8 +25,9 @@ public class ObserverController {
 
 
     @GetMapping(path = "/register/{myIP}/{myPort}/{userName}")
-    public void addOnlineUser(@PathVariable("userName")String userName , @PathVariable("myPort")String portNumber ,@PathVariable("myIP") String ipAddress){
-        String value = ipAddress+":"+portNumber;
+    public void addOnlineUser(@PathVariable("userName")String userName , @PathVariable("myPort")String portNumber , @PathVariable("myIP") String ipAddress, HttpServletRequest request){
+//        String value = ipAddress+":"+portNumber;
+        String value= request.getRemoteAddr() +":"+portNumber ;
         onlineUsers.put(userName,value);
 }
     public static void removeOnlineUser(String userName) {

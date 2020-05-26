@@ -3,3 +3,5 @@ Sun May 24 22:31:43 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: F
 Mon May 25 18:25:52 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
 Mon May 25 18:26:56 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
 Mon May 25 18:27:16 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Tue May 26 18:52:00 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: Type: FootballSystem.System.Exeptions.NoRefereePermissions
+Tue May 26 18:52:00 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: TypeFootballSystem.System.Exeptions.NoRefereePermissionsTime:Tue May 26 18:52:00 IDT 2020

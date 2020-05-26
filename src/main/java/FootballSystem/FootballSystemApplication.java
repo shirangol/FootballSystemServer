@@ -34,7 +34,7 @@ import java.util.List;
 public class FootballSystemApplication {
 
 	public static void main(String[] args) {
-	//	delete event log table
+		//delete event log table
 		try {
 			Connection con = DBConnector.getConnection();
 			String query = "DELETE FROM event_log";
