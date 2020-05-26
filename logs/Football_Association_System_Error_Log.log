@@ -1,2 +1,5 @@
 Sun May 24 22:29:43 IDT 2020 lSystem.ServiceLayer.GuestController.login: TypeFootballSystem.System.Exeptions.NoSuchAUserNamedExceptionTime:Sun May 24 22:29:43 IDT 2020
 Sun May 24 22:31:43 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
+Mon May 25 18:25:52 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Mon May 25 18:26:56 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Mon May 25 18:27:16 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException

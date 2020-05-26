@@ -8,8 +8,8 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.User;
 import FootballSystem.System.*;
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
+//import javafx.application.Platform;
+//import javafx.scene.control.Alert;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -73,6 +73,7 @@ public class RefereeController extends MainUserController {
         for (Game g : ((Referee)referee).getGames()) {
             if (g.getId() == Integer.parseInt(body.get("game"))) {
                 game = g;
+                break;
             }
         }
         AEvent a1=null;
@@ -91,27 +92,27 @@ public class RefereeController extends MainUserController {
         }
         if(body.get("old_eventType").equals("Goal")){
             if (game.getHome().getName().equals( body.get("old_team"))) {
-                game.setResult(Integer.parseInt(game.getResult().split(":")[0]) - 1, Integer.parseInt(game.getResult().split(":")[1]));
+                game.setScore(Integer.parseInt(game.getResult().split(":")[0]) - 1, Integer.parseInt(game.getResult().split(":")[1]));
             } else {
                 String home = game.getResult().split(":")[0];
                 int away = (Integer.parseInt(game.getResult().split(":")[1]) - 1);
-                game.setResult(Integer.parseInt(home), away);
+                game.setScore(Integer.parseInt(home), away);
             }
         }
 
         if (body.get("type").equals("Goal")) {
             if (game.getHome().getName().equals( body.get("team"))) {
                 if (game.getResult() == null) {
-                    game.setResult(0, 0);
+                    game.setScore(0, 0);
                 }
-                game.setResult(Integer.parseInt(game.getResult().split(":")[0]) + 1, Integer.parseInt(game.getResult().split(":")[1]));
+                game.setScore(Integer.parseInt(game.getResult().split(":")[0]) + 1, Integer.parseInt(game.getResult().split(":")[1]));
             } else {
                 if (game.getResult() == null) {
-                    game.setResult(0, 0);
+                    game.setScore(0, 0);
                 }
                 String home = game.getResult().split(":")[0];
                 int away = (Integer.parseInt(game.getResult().split(":")[1]) + 1);
-                game.setResult(Integer.parseInt(home), away);
+                game.setScore(Integer.parseInt(home), away);
             }
         }
         return new ResponseEntity("succes",HttpStatus.ACCEPTED) ;
@@ -182,10 +183,12 @@ public class RefereeController extends MainUserController {
         for (Game g : ((Referee)referee).getGames()) {
             if (g.getId() == Integer.parseInt(body.get("game"))) {
                 game = g;
+                break;
             }
         }
         try {
             addEventDuringGame(((Referee)referee), game, body.get("type"), Integer.valueOf(body.get("min")), body.get("playerName"), body.get("team"));
+
         } catch (NoRefereePermissions e) {
             SystemErrorLog.getInstance().writeToLog("Type"+(new NoRefereePermissions()).toString()+"Time:" + (new Date()).toString());
             return null;
@@ -194,16 +197,16 @@ public class RefereeController extends MainUserController {
         if (body.get("type").equals("Goal")) {
             if (game.getHome().getName().equals( body.get("team"))) {
                 if (game.getResult() == null) {
-                    game.setResult(0, 0);
+                    game.setScore(0, 0);
                 }
-                game.setResult(Integer.parseInt(game.getResult().split(":")[0]) + 1, Integer.parseInt(game.getResult().split(":")[1]));
+                game.setScore(Integer.parseInt(game.getResult().split(":")[0]) + 1, Integer.parseInt(game.getResult().split(":")[1]));
             } else {
                 if (game.getResult() == null) {
-                    game.setResult(0, 0);
+                    game.setScore(0, 0);
                 }
                 String home = game.getResult().split(":")[0];
                 int away = (Integer.parseInt(game.getResult().split(":")[1]) + 1);
-                game.setResult(Integer.parseInt(home), away);
+                game.setScore(Integer.parseInt(home), away);
             }
         }
         return new ResponseEntity("success",HttpStatus.ACCEPTED);
@@ -268,15 +271,18 @@ public class RefereeController extends MainUserController {
 
     @GetMapping(path = "getEvents/{game_id}/{referee_name}")
     public ResponseEntity getEvents(@PathVariable("game_id")String gameID,@PathVariable("referee_name") String refereeName)throws OnlyForReferee {
+        System.out.println("shirannnnnnnnnnnnnnnnnnnnnnnnnnnn---------------------------------------------");
         User referee =  Controller.getInstance().getUser(refereeName);
         if(!(referee instanceof Referee)){
             SystemErrorLog.getInstance().writeToLog("Type: "+(new OnlyForReferee()).toString());
             throw new OnlyForReferee();
         }
         List<String> events=new LinkedList<>();
-        for (Game g : ((Referee)referee).getGames()) {
+        List<Game> games= ((Referee)referee).getGames();
+        for (Game g : games) {
             if (g.getId() == Integer.parseInt(gameID)) {
-                for(AEvent event : g.getEventLog().getEventList()){
+                List<AEvent> aEvents=g.getEventLog().getEventList();
+                for(AEvent event : aEvents){
                     events.add(event.getType()+","+"'"+event.getMinute()+","+event.getPlayerName()+","+event.getTeamName()+","+event.getId());
                 }
             }

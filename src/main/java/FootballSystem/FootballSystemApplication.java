@@ -15,7 +15,15 @@ import FootballSystem.System.FootballObjects.Team.Team;
 import FootballSystem.System.Users.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestTemplate;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,9 +34,30 @@ import java.util.List;
 public class FootballSystemApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(FootballSystemApplication.class, args);
+		//delete event log table
 		try {
-			DBConnector.getConnection();
+			Connection con = DBConnector.getConnection();
+			String query = "DELETE FROM event_log";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			preparedStmt.execute();
+
+			String query2 = "DELETE FROM event";
+			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
+
+			preparedStmt2.execute();
+			con.close();
+		} catch (SQLException err) {
+			throw new RuntimeException("Error connecting to the database", err);
+		}
+
+
+
+		SpringApplication.run(FootballSystemApplication.class, args);
+		//Dc connect
+		//creae WORLD
+		try {
+			//DBConnector.getConnection();
 //			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //			String dateString = format.format( new Date()   );
 //			Date   date       = format.parse (  dateString);
@@ -73,12 +102,24 @@ public class FootballSystemApplication {
 			//Team tt=Controller.getInstance().getTeam(1);
 			//List<Team> teams2=Controller.getInstance().getAllTeams();
 
-			//Game g=Controller.getInstance().getGame(1);
+//			List<Game> games= Controller.getInstance().getAllGames();
+//			Fan fan= (Fan)Controller.getInstance().getUser("Max");
+//			for (Game g:games){
+//				FanController.getInstance().followGame(fan,g);
+//			}
+
 			//List<Game> games=Controller.getInstance().getAllGames();
 			//List<String> lll=GameSQL.getInstance().getAllgamesForReferee("Hen");
 			//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
-			List<League>ll=Controller.getInstance().getAllLeagues();
-			boolean i=true;
+			//List<League>ll=Controller.getInstance().getAllLeagues();
+//			//boolean i=true;
+			String url = "http://85.250.251.197:3000/api/notification";
+			RestTemplate restTemplate = new RestTemplate();
+			HttpHeaders headers = new HttpHeaders();
+			headers.set("Content-Type","application/json");
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			HttpEntity<String> e = new HttpEntity<>(headers);
+			restTemplate.exchange(url, HttpMethod.GET, e , String.class);
 
 		}catch (Exception e){
 			e.printStackTrace();

@@ -116,8 +116,10 @@ public class GuestController extends MainUserController {
         Controller controller = Controller.getInstance();
         User user= controller.getUser(userName);
         controller.logOut(user);
-        ObserverController.removeOnlineUser(userName);
-        return new ResponseEntity(user,HttpStatus.ACCEPTED);
+        if(user instanceof Fan){
+            ObserverController.removeOnlineUser(userName);
+        }
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
     public int getUserType(String userName , String password) throws WrongPasswordException, NoSuchAUserNamedException {

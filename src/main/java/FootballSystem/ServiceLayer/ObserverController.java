@@ -23,13 +23,14 @@ public class ObserverController {
 
 
 
-    @GetMapping(path = "register/{myIP}/{myPort}/{userName}")
+    @GetMapping(path = "/register/{myIP}/{myPort}/{userName}")
     public void addOnlineUser(@PathVariable("userName")String userName , @PathVariable("myPort")String portNumber ,@PathVariable("myIP") String ipAddress){
         String value = ipAddress+":"+portNumber;
         onlineUsers.put(userName,value);
 }
     public static void removeOnlineUser(String userName) {
         try {
+
             onlineUsers.remove(userName);
         }catch (Exception e){
             SystemErrorLog.getInstance().writeToLog("Type: "+"Invalid username");

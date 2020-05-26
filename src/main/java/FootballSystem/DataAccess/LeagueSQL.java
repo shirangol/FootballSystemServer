@@ -25,7 +25,23 @@ public class LeagueSQL implements DataBase<League> {
 
     @Override
     public String get(long id) {
-        return null;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM league where leagueID="+ id;
+            ResultSet rs = stat.executeQuery(sql);
+            int leagueID_col=0;
+            String name_col="";
+            while (rs.next()) {
+                leagueID_col = rs.getInt("leagueID");
+                name_col = rs.getString("name");
+            }
+            con.close();
+            String str=leagueID_col+" "+name_col;
+            return str;
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
     }
 
     public String get(League league){
