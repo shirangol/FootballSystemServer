@@ -3575,3 +3575,24 @@ Tue May 26 18:28:02 IDT 2020 lSystem.System.Controller.login: User log in to the
 Tue May 26 18:28:20 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
 Tue May 26 18:28:21 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
 Tue May 26 18:28:21 IDT 2020 lSystem.System.Users.Referee.addEventToLogEvent: Event was added to the event log game 1 by the referee Hen.
+Tue May 26 18:30:35 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:30:53 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 18:30:53 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 18:31:11 IDT 2020 lSystem.System.Users.Referee.addEventToLogEvent: Event was added to the event log game 1 by the referee Hen.
+Tue May 26 18:31:38 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:31:58 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 18:31:58 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 18:31:58 IDT 2020 lSystem.System.Users.Referee.addEventToLogEvent: Event was added to the event log game 1 by the referee Hen.
+Tue May 26 18:33:04 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:33:24 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 18:33:24 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 18:33:24 IDT 2020 lSystem.System.Users.Referee.addEventToLogEvent: Event was added to the event log game 1 by the referee Hen.
+Tue May 26 18:33:54 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:34:20 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:34:37 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 18:34:37 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 18:34:37 IDT 2020 lSystem.System.Users.Referee.addEventToLogEvent: Event was added to the event log game 1 by the referee Hen.
+Tue May 26 18:36:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:37:19 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 18:37:19 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 18:37:19 IDT 2020 lSystem.System.Users.Referee.addEventToLogEvent: Event was added to the event log game 1 by the referee Hen.

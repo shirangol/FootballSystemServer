@@ -34,22 +34,22 @@ import java.util.List;
 public class FootballSystemApplication {
 
 	public static void main(String[] args) {
-		//delete event log table
-//		try {
-//			Connection con = DBConnector.getConnection();
-//			String query = "DELETE FROM event_log";
-//			PreparedStatement preparedStmt = con.prepareStatement(query);
-//
-//			preparedStmt.execute();
-//
-//			String query2 = "DELETE FROM event";
-//			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
-//
-//			preparedStmt2.execute();
-//			con.close();
-//		} catch (SQLException err) {
-//			throw new RuntimeException("Error connecting to the database", err);
-//		}
+	//	delete event log table
+		try {
+			Connection con = DBConnector.getConnection();
+			String query = "DELETE FROM event_log";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			preparedStmt.execute();
+
+			String query2 = "DELETE FROM event";
+			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
+
+			preparedStmt2.execute();
+			con.close();
+		} catch (SQLException err) {
+			throw new RuntimeException("Error connecting to the database", err);
+		}
 
 
 
