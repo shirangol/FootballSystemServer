@@ -35,21 +35,21 @@ public class FootballSystemApplication {
 
 	public static void main(String[] args) {
 		//delete event log table
-		try {
-			Connection con = DBConnector.getConnection();
-			String query = "DELETE FROM event_log";
-			PreparedStatement preparedStmt = con.prepareStatement(query);
-
-			preparedStmt.execute();
-
-			String query2 = "DELETE FROM event";
-			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
-
-			preparedStmt2.execute();
-			con.close();
-		} catch (SQLException err) {
-			throw new RuntimeException("Error connecting to the database", err);
-		}
+//		try {
+//			Connection con = DBConnector.getConnection();
+//			String query = "DELETE FROM event_log";
+//			PreparedStatement preparedStmt = con.prepareStatement(query);
+//
+//			preparedStmt.execute();
+//
+//			String query2 = "DELETE FROM event";
+//			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
+//
+//			preparedStmt2.execute();
+//			con.close();
+//		} catch (SQLException err) {
+//			throw new RuntimeException("Error connecting to the database", err);
+//		}
 
 
 
@@ -57,7 +57,7 @@ public class FootballSystemApplication {
 		//Dc connect
 		//creae WORLD
 		try {
-			//DBConnector.getConnection();
+			DBConnector.getConnection();
 //			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //			String dateString = format.format( new Date()   );
 //			Date   date       = format.parse (  dateString);
@@ -113,13 +113,18 @@ public class FootballSystemApplication {
 			//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
 			//List<League>ll=Controller.getInstance().getAllLeagues();
 //			//boolean i=true;
-			String url = "http://85.250.251.197:3000/api/notification";
-			RestTemplate restTemplate = new RestTemplate();
-			HttpHeaders headers = new HttpHeaders();
-			headers.set("Content-Type","application/json");
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<String> e = new HttpEntity<>(headers);
-			restTemplate.exchange(url, HttpMethod.GET, e , String.class);
+			try {
+				String url = "http://132.72.200.39:3000/api/notification";
+				RestTemplate restTemplate = new RestTemplate();
+				HttpHeaders headers = new HttpHeaders();
+				headers.set("Content-Type", "application/json");
+				headers.setContentType(MediaType.APPLICATION_JSON);
+				HttpEntity<String> e = new HttpEntity<>(headers);
+				restTemplate.exchange(url, HttpMethod.GET, e, String.class);
+			}
+			catch (Exception e){
+
+			}
 
 		}catch (Exception e){
 			e.printStackTrace();

@@ -3569,3 +3569,9 @@ Tue May 26 15:17:48 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>:
 Tue May 26 15:17:49 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
 Tue May 26 15:17:49 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
 Tue May 26 15:26:09 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Tue May 26 18:00:31 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:01:27 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:28:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Tue May 26 18:28:20 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Tue May 26 18:28:21 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Tue May 26 18:28:21 IDT 2020 lSystem.System.Users.Referee.addEventToLogEvent: Event was added to the event log game 1 by the referee Hen.

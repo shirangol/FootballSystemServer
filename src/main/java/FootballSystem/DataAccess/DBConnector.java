@@ -26,9 +26,9 @@ public class DBConnector {
      */
     public static Connection getConnection() {
         try {
-//            String host = "jdbc:mysql://132.72.65.99:3306/football_system2?useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String host = "jdbc:mysql://132.72.65.99:3306/football_system2?useLegacyDatetimeCode=false&serverTimezone=UTC";
 
-            String host = "jdbc:mysql://localhost:3306/football_system2?useLegacyDatetimeCode=false&serverTimezone=UTC";
+      //      String host = "jdbc:mysql://localhost:3306/football_system2?useLegacyDatetimeCode=false&serverTimezone=UTC";
 
             String uName = "root";
             String uPass = "root";
