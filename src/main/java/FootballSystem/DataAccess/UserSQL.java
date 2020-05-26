@@ -134,6 +134,8 @@ public class UserSQL implements DataBase<User> {
                          return fanStr;
                     case 2:
                          RefereeType type=getRefereeTypeSQL(username_col);
+
+                       // System.out.println(type.toString() + "*******************************");
                          //Referee referee=new Referee(fullName_col, type, id_col, password_col, username_col);
                          String refereeStr="Referee "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ username_col;
                          con.close();

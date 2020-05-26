@@ -27,7 +27,8 @@ public abstract class AEvent {
      */
     public AEvent(int minuteInTheGame, String playerName ,String teamName ) {
         this.minute = minuteInTheGame;
-        id=ID++;
+        id=ID;
+        ID++;
         date=new Date(System.currentTimeMillis());
         SystemEventLog.getInstance().writeToLog("New Event was created. ("+id+")");
         this.playerName = playerName;
@@ -37,7 +38,6 @@ public abstract class AEvent {
         this.minute = minuteInTheGame;
         this.id=id;
         this.date=date ;
-        SystemEventLog.getInstance().writeToLog("New Event was created. ("+id+")");
         this.playerName = playerName;
         this.teamName = teamName;
     }

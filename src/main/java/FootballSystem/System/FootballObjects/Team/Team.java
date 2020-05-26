@@ -20,7 +20,8 @@ import java.util.*;
 public class Team implements IPageAvailable, ISubjectTeam, IShowable {
 
     //<editor-fold desc="Fields">
-    private static int id;
+    private static int ID=1;
+    private int id;
     private String name;
     private TeamStatus teamStatus;
     private PersonalPage personalPage;
@@ -44,6 +45,8 @@ public class Team implements IPageAvailable, ISubjectTeam, IShowable {
 
      */
     public Team(String name,TeamOwner teamOwner) {
+        id=ID;
+        ID++;
         this.name = name;
         this.field = null;
         this.teamStatus = TeamStatus.Active;

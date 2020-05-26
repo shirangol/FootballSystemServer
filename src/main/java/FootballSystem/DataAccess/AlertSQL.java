@@ -44,7 +44,7 @@ public class AlertSQL implements DataBase {
             Connection con = DBConnector.getConnection();
             String userName = ((List<String>)o).get(0);
             String content = ((List<String>)o).get(1);
-            PreparedStatement ps = con.prepareStatement("insert into Alert_To_Fan(username, content) "
+            PreparedStatement ps = con.prepareStatement("insert into Alerts_To_Fan(username, content) "
                     + "values (?,?)");
             ps.setString(1,userName );
             ps.setString(2,content );
@@ -67,7 +67,7 @@ public class AlertSQL implements DataBase {
         String content = ((List<String>)o).get(1);
         try {
             Connection con = DBConnector.getConnection();
-            String query = "DELETE FROM Alert_To_Fan WHERE username="+" '" + userName + "'"+" and content=" + " '" + content + "'";
+            String query = "DELETE FROM Alerts_To_Fan WHERE username="+" '" + userName + "'"+" and content=" + " '" + content + "'";
             try {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 preparedStmt.execute();
@@ -87,7 +87,7 @@ public class AlertSQL implements DataBase {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
-            String sql = "select * from Alert_To_Fan where username= " + " '" + userName + "'";
+            String sql = "select * from Alerts_To_Fan where username= " + " '" + userName + "'";
             ResultSet rs = stat.executeQuery(sql);
             while (rs.next()) {
                 alerts.add(rs.getString("content"));

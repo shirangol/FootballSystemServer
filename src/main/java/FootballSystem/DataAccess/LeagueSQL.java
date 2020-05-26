@@ -28,7 +28,7 @@ public class LeagueSQL implements DataBase<League> {
         try {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
-            String sql = "SELECT * FROM league where name='"+id+"'";
+            String sql = "SELECT * FROM league where leagueID="+ id;
             ResultSet rs = stat.executeQuery(sql);
             int leagueID_col=0;
             String name_col="";

@@ -215,7 +215,7 @@ public class GameSQL implements DataBase<Game> {
                 int hour = rs.getInt("hour");
                 String result = rs.getString("result");
                 int pTeamAway = rs.getInt("pTeamAway");
-                int pTeamHome = rs.getInt("pTeamAway");
+                int pTeamHome = rs.getInt("pTeamHome");
                 String pMainReferee = rs.getString("pMainReferee");
                 String pAssistant1Referee = rs.getString("pAssistant1Referee");
                 String pAssistant2Referee = rs.getString("pAssistant2Referee");

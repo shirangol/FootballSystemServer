@@ -95,7 +95,7 @@ public class GuestController extends MainUserController {
 
     //Login
     @PostMapping (value = "/login")
-    public ResponseEntity login( @RequestBody Map<String,String> body ) throws WrongPasswordException, NoSuchAUserNamedException {
+    public ResponseEntity login( @RequestBody Map<String,String> body, HttpServletRequest request ) throws WrongPasswordException, NoSuchAUserNamedException {
         try {
             int type = getUserType(body.get("user_name"), body.get("password"));
             return new ResponseEntity(type, HttpStatus.ACCEPTED);
@@ -116,8 +116,10 @@ public class GuestController extends MainUserController {
         Controller controller = Controller.getInstance();
         User user= controller.getUser(userName);
         controller.logOut(user);
-        ObserverController.removeOnlineUser(userName);
-        return new ResponseEntity(user,HttpStatus.ACCEPTED);
+        if(user instanceof Fan){
+            ObserverController.removeOnlineUser(userName);
+        }
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
     public int getUserType(String userName , String password) throws WrongPasswordException, NoSuchAUserNamedException {

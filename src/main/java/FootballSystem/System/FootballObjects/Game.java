@@ -58,7 +58,7 @@ public class Game implements ISubjectGame {
         this.iObserverGameListForReferees =new LinkedList<>();
     }
 
-    public Game(int id,Date date,int hour,String result,  Referee mainReferee, Referee assistantRefereeOne, Referee assistantRefereeTwo, Team away, Team home, EventLog eventLog ) {
+    public Game(int id,Date date,int hour,String result,  Referee mainReferee, Referee assistantRefereeOne, Referee assistantRefereeTwo, Team away, Team home, EventLog eventLog, LeagueInformation leagueInformation) {
         this.id= id;
         this.date = date;
         this.hour = hour;
@@ -71,6 +71,7 @@ public class Game implements ISubjectGame {
         this.eventLog = eventLog;
         this.iObserverGameListForFans= new LinkedList<>();
         this.iObserverGameListForReferees =new LinkedList<>();
+        this.leagueInformation=leagueInformation;
     }
     //</editor-fold>
 
@@ -195,7 +196,9 @@ public class Game implements ISubjectGame {
         this.leagueInformation = leagueInformation;
     }
 
-    //public void setScore(){ }
+    public void setScore(int home,int away){
+        this.result= home+":"+away;
+    }
 
     //</editor-fold>
 
