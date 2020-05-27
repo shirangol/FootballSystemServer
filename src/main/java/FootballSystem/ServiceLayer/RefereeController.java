@@ -149,16 +149,16 @@ public class RefereeController extends MainUserController {
         if (body.get("type").equals("Goal")) {
             if (game.getHome().getName().equals( body.get("team"))) {
                 if (game.getResult() == null) {
-                    game.setResult(0, 0);
+                    game.setScore(0, 0);
                 }
                 game.setResult(Integer.parseInt(game.getResult().split(":")[0]) + 1, Integer.parseInt(game.getResult().split(":")[1]));
             } else {
                 if (game.getResult() == null) {
-                    game.setResult(0, 0);
+                    game.setScore(0, 0);
                 }
                 String home = game.getResult().split(":")[0];
                 int away = (Integer.parseInt(game.getResult().split(":")[1]) + 1);
-                game.setResult(Integer.parseInt(home), away);
+                game.setScore(Integer.parseInt(home), away);
             }
         }
         return new ResponseEntity("succes",HttpStatus.ACCEPTED) ;
