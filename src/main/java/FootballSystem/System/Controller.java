@@ -51,7 +51,10 @@ public class Controller {
         seasons = new LinkedList<>();
         fields = new LinkedList<>();
         scorePolicies = new HashMap<>();
+        scorePolicies.put("DefaultMethod",new DefaultMethod());
         methodAllocatePolicies = new HashMap<>();
+        methodAllocatePolicies.put("DefaultAllocate", new DefaultAllocate()) ;
+        methodAllocatePolicies.put("OneGameAllocatePolicy", new OneGameAllocatePolicy()) ;
         gameList=new ArrayList<>();
     }
     //</editor-fold>
@@ -65,12 +68,42 @@ public class Controller {
         List<String> t = LeagueSQL.getInstance().getAll();
         for (int i = 0; i < t.size(); i++) {
             String[] result = t.get(i).split(" ");
-
             int leagueID = Integer.parseInt(result[0]);
             String name = result[1];
-
             List<Team> teams= getAllTeamsForLeague(leagueID);
             League league=new League(leagueID,name,teams);
+            List<String> leagueInformationStr= LeagueInformationSQL.getInstance().getAllLegueInformation(leagueID);
+            //************************* split league information***********************
+            for(String l : leagueInformationStr) {
+                String[] splitleagueInformationString = l.split(" ");
+
+                int leagueInformationID = Integer.parseInt(splitleagueInformationString[0]);
+                String namel = splitleagueInformationString[1];
+                int winScore = Integer.parseInt(splitleagueInformationString[2]);
+                int lossScore = Integer.parseInt(splitleagueInformationString[3]);
+                int tieScore = Integer.parseInt(splitleagueInformationString[4]);
+
+                ITeamAllocatePolicy iTeamAllocatePolicy=null;
+                int piTeamAllocatePolicy = Integer.parseInt(splitleagueInformationString[5]);
+                if (piTeamAllocatePolicy == 1) {
+                    iTeamAllocatePolicy = new DefaultAllocate();
+                } else if (piTeamAllocatePolicy == 2) {
+                    iTeamAllocatePolicy = new OneGameAllocatePolicy();
+                }
+
+                IScoreMethodPolicy iScoreMethodPolicy = new DefaultMethod();
+                int piScoreMethodPolicy = Integer.parseInt(splitleagueInformationString[6]);
+
+                String footballAssociationString = splitleagueInformationString[7];
+                FootballAssociation footballAssociation = (FootballAssociation) getUser(footballAssociationString);
+
+                int pLeague = Integer.parseInt(splitleagueInformationString[8]);
+                int PSeason = Integer.parseInt(splitleagueInformationString[9]);
+                Season season = new Season(PSeason);
+                LeagueInformation newLeagueInformation=new LeagueInformation(leagueInformationID, league,season, null, iTeamAllocatePolicy, iScoreMethodPolicy ,winScore,lossScore,tieScore);
+                league.addLeagueInformation(newLeagueInformation);
+                //****************************************************************************
+            }
             leagues.add(league);
         }
         return leagues;
@@ -201,6 +234,37 @@ public class Controller {
                     user = new Referee(userArr[1], type, Integer.parseInt(userArr[3]), userArr[4], userArr[5]);
                     break;
                 case "FootballAssociation":
+
+
+//                    String leagueInformationString= (((String) LeagueInformationSQL.getInstance().getBypFootballAssociation(userArr[4])));
+                    //String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
+//                    String[] splitleagueInformationString=leagueInformationString.split(" ");
+//                    int leagueInformationID=Integer.parseInt(splitleagueInformationString[0]) ;
+//                    String name= splitleagueInformationString[1];
+//                    int winScore = Integer.parseInt(splitleagueInformationString[2]) ;
+//                    int lossScore = Integer.parseInt(splitleagueInformationString[3]) ;
+//                    int tieScore = Integer.parseInt(splitleagueInformationString[4]) ;
+//
+//                    ITeamAllocatePolicy iTeamAllocatePolicy;
+//                    int piTeamAllocatePolicy=Integer.parseInt(splitleagueInformationString[5]);
+//                    if( piTeamAllocatePolicy==1){
+//                        iTeamAllocatePolicy=new DefaultAllocate();
+//                    }
+//                    else if( piTeamAllocatePolicy==2){
+//                        iTeamAllocatePolicy=new OneGameAllocatePolicy();
+//                    }
+//                    IScoreMethodPolicy iScoreMethodPolicy= new DefaultMethod();
+//                    int piScoreMethodPolicy=Integer.parseInt(splitleagueInformationString[6]);
+//                    String footballAssociationString=splitleagueInformationString[7];
+//                    FootballAssociation footballAssociation=(FootballAssociation) getUser(footballAssociationString);
+//
+//                    int pLeague= Integer.parseInt(splitleagueInformationString[8]);
+//                    int PSeason = Integer.parseInt(splitleagueInformationString[9]);
+//                    League league=getLeague(pLeague);
+//                    Season season=new Season(PSeason);
+//                    LeagueInformation leagueInformation= new LeagueInformation( league,season,footballAssociation);
+//
+//                    user = new FootballAssociation(Integer.parseInt(userArr[1]), userArr[2], userArr[3], userArr[4],leagueInformation);
                     user = new FootballAssociation(Integer.parseInt(userArr[1]), userArr[2], userArr[3], userArr[4]);
             }
         }
@@ -483,7 +547,7 @@ public class Controller {
                 int day= Integer.parseInt(dateParse[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(14);
+                date2.setHours(11);
                 date2.setMinutes(0);
 
                 int hour = Integer.parseInt(seperate[2]);
@@ -705,7 +769,8 @@ public class Controller {
         for(String userStr : l){
             String[] userArr = userStr.split(" ");
             if (userArr[0].equals("TeamOwner")) {
-                   TeamOwner teamOwner = new TeamOwner(Integer.parseInt(userArr[2]),userArr[3],userArr[4],userArr[5],0);
+//                int i = Integer.parseInt(userArr[2]);
+                   TeamOwner teamOwner = new TeamOwner(Integer.parseInt(userArr[1]),userArr[2],userArr[3],userArr[4],0);
                    // String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
                 if(users.get(teamOwner.getName())==null){
                     teamOwnerList.add(teamOwner);
@@ -721,9 +786,10 @@ public class Controller {
      */
     public List<String> getScorePoliciesString () {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < scorePolicies.size(); i++) {
-            list.add(scorePolicies.keySet().toArray()[i].toString());
-        }
+//        for (int i = 0; i < scorePolicies.size(); i++) {
+//            list.add(scorePolicies.keySet().toArray()[i].toString());
+//        }
+        list.add("DefaultMethod");
         return list;
     }
 
@@ -782,6 +848,9 @@ public class Controller {
      * @param team
      */
     public void addTeam (Team team){
+        try{
+        TeamSQL.getInstance().save(team);
+        } catch (Exception e){}
         teams.add(team);
     }
 
@@ -795,9 +864,12 @@ public class Controller {
      */
     public List<String> getMethodAllocatePoliciesString () {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < methodAllocatePolicies.size(); i++) {
-            list.add(methodAllocatePolicies.keySet().toArray()[i].toString());
-        }
+//        for (int i = 0; i < methodAllocatePolicies.size(); i++) {
+//            list.add(methodAllocatePolicies.keySet().toArray()[i].toString());
+//        }
+        list.add("DefaultAllocate");
+        list.add("OneGameAllocatePolicy");
+
         return list;
     }
 

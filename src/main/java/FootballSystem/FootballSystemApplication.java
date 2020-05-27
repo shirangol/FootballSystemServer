@@ -56,7 +56,7 @@ public class FootballSystemApplication {
 		SpringApplication.run(FootballSystemApplication.class, args);
 		//Dc connect
 		//creae WORLD
-		try {
+//		try {
 			//DBConnector.getConnection();
 //			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //			String dateString = format.format( new Date()   );
@@ -108,22 +108,24 @@ public class FootballSystemApplication {
 //				FanController.getInstance().followGame(fan,g);
 //			}
 
+		//	Controller.getInstance().getUser("Inbar");
+			//boolean i=true;
 			//List<Game> games=Controller.getInstance().getAllGames();
 			//List<String> lll=GameSQL.getInstance().getAllgamesForReferee("Hen");
 			//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
 			//List<League>ll=Controller.getInstance().getAllLeagues();
 //			//boolean i=true;
-			String url = "http://132.72.200.39:3000/api/notification";
-			RestTemplate restTemplate = new RestTemplate();
-			HttpHeaders headers = new HttpHeaders();
-			headers.set("Content-Type","application/json");
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<String> e = new HttpEntity<>(headers);
-			restTemplate.exchange(url, HttpMethod.GET, e , String.class);
-
-		}catch (Exception e){
-			e.printStackTrace();
-		}
+			//String url = "http://132.72.200.39:3000/api/notification";
+//			RestTemplate restTemplate = new RestTemplate();
+//			HttpHeaders headers = new HttpHeaders();
+//			headers.set("Content-Type","application/json");
+//			headers.setContentType(MediaType.APPLICATION_JSON);
+//			HttpEntity<String> e = new HttpEntity<>(headers);
+//			restTemplate.exchange(url, HttpMethod.GET, e , String.class);
+//
+//		}catch (Exception e){
+//			e.printStackTrace();
+//		}
 
 	}
 

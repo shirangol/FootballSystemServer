@@ -77,6 +77,7 @@ public class LeagueSQL implements DataBase<League> {
                 String name_col = rs.getString("name");
 
                 String p = leagueID_col + " " + name_col ;
+                listToReturn.add(p);
                 System.out.println(p);
             }
             con.close();
@@ -85,6 +86,8 @@ public class LeagueSQL implements DataBase<League> {
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
+
+
 
     @Override
     public void save(League league) throws SQLException {

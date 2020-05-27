@@ -27,6 +27,11 @@ public class FootballAssociation extends User {
         super(id,name,password,userName);
         leaguesInformation=new HashMap<>();
     }
+    public FootballAssociation(@JsonProperty("id")int id, @JsonProperty("name")String name,@JsonProperty("password") String password, @JsonProperty("userName")String userName, LeagueInformation leagueInformation) {
+        super(id,name,password,userName);
+        leaguesInformation=new HashMap<>();
+        this.leaguesInformation.put(leagueInformation.getId(),leagueInformation);
+    }
     //</editor-fold>
 
     //<editor-fold desc="Getters">
