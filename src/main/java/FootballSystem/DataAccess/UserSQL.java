@@ -467,8 +467,22 @@ public class UserSQL implements DataBase<User> {
         return null;
     }
 
-
-
+    public int getTableSize(){
+        int size=0;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM users";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                size++;
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+        return size;
+    }
 
 
 }

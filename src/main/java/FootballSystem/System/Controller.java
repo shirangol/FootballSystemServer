@@ -58,9 +58,9 @@ public class Controller {
         gameList=new ArrayList<>();
 
 
-        leagues=getAllLeagues();
-        teams=getAllTeams();
-        gameList=getAllGames();
+//        leagues=getAllLeagues();
+//        teams=getAllTeams();
+//        gameList=getAllGames();
     }
     //</editor-fold>
 
@@ -523,7 +523,7 @@ public class Controller {
                 int day= Integer.parseInt(dateParse[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(14);
+                date2.setHours(12);
                 date2.setMinutes(0);
 
                 int hour = Integer.parseInt(seperate[2]);
@@ -745,7 +745,7 @@ public class Controller {
         for(String userStr : l){
             String[] userArr = userStr.split(" ");
             if (userArr[0].equals("TeamOwner")) {
-                   TeamOwner teamOwner = new TeamOwner(Integer.parseInt(userArr[2]),userArr[3],userArr[4],userArr[5],0);
+                   TeamOwner teamOwner = new TeamOwner(Integer.parseInt(userArr[1]),userArr[2],userArr[3],userArr[4],0);
                    // String teamOwnerStr="TeamOwner "+id_col+" "+ fullName_col+" "+ password_col+" "+username_col+" "+0;
                 if(users.get(teamOwner.getName())==null){
                     teamOwnerList.add(teamOwner);

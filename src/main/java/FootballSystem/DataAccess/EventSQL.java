@@ -2,13 +2,12 @@ package FootballSystem.DataAccess;
 
 import FootballSystem.System.FootballObjects.Event.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
 public class EventSQL implements DataBase<AEvent> {
+
     private static EventSQL ourInstance = new EventSQL();
 
     public static EventSQL getInstance() {
@@ -94,5 +93,22 @@ public class EventSQL implements DataBase<AEvent> {
         }catch (SQLException err) {
             err.printStackTrace();
         }
+    }
+
+    public int getTableSize(){
+        int size=0;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM event";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                size++;
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+        return size;
     }
 }

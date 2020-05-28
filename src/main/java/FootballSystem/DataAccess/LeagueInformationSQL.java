@@ -57,8 +57,6 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
     }
 
-
-
     public Object getBypFootballAssociation(String footballAssociation) {
         try {
             Connection con = DBConnector.getConnection();
@@ -263,5 +261,22 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             err.printStackTrace();
         }
 
+    }
+
+    public int getTableSize(){
+        int size=0;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM league_information";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                size++;
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+        return size;
     }
 }

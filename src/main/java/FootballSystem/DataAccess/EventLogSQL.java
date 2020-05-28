@@ -76,10 +76,25 @@ public class EventLogSQL implements DataBase<EventLog> {
 
     }
 
-
-
     @Override
     public void delete(EventLog eventLog) {
 
+    }
+
+    public int getTableSize(){
+        int size=0;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM event_log";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                size++;
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+        return size;
     }
 }

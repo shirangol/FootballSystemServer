@@ -1,5 +1,6 @@
 package FootballSystem.System.FootballObjects.Team;
 
+import FootballSystem.DataAccess.TeamSQL;
 import FootballSystem.System.Asset.Asset;
 import FootballSystem.System.Enum.TeamStatus;
 import FootballSystem.System.Exeptions.HasTeamAlreadyException;
@@ -20,7 +21,7 @@ import java.util.*;
 public class Team implements IPageAvailable, ISubjectTeam, IShowable {
 
     //<editor-fold desc="Fields">
-    private static int ID=1;
+    private static int ID;
     private int id;
     private String name;
     private TeamStatus teamStatus;
@@ -45,8 +46,9 @@ public class Team implements IPageAvailable, ISubjectTeam, IShowable {
 
      */
     public Team(String name,TeamOwner teamOwner) {
+        ID= TeamSQL.getInstance().getTableSize()+1;
         id=ID;
-        ID++;
+//        ID++;
         this.name = name;
         this.field = null;
         this.teamStatus = TeamStatus.Active;

@@ -3755,3 +3755,78 @@ Wed May 27 19:45:05 IDT 2020 lSystem.System.Controller.login: User log in to the
 Wed May 27 19:45:22 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : avi , id :1was added to the teams list of : harel , id :1
 Wed May 27 19:47:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
 Wed May 27 19:48:00 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : d , id :4was added to the teams list of : harel , id :1
+Wed May 27 20:03:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Wed May 27 20:03:07 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Wed May 27 20:04:15 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:37:01 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:37:07 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:37:38 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:37:52 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:37:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:38:01 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:38:03 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:38:15 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editGameSchedulingPolicy: game scheduling policy set
+Thu May 28 12:38:15 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editScoreSchedulingPolicy: Score policy set
+Thu May 28 12:38:27 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editGameSchedulingPolicy: game scheduling policy set
+Thu May 28 12:38:27 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editScoreSchedulingPolicy: Score policy set
+Thu May 28 12:38:28 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:39:29 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Thu May 28 12:39:31 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Thu May 28 12:39:31 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Thu May 28 12:39:34 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:40:07 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:40:55 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : beer7 , id :5was added to the teams list of : harel , id :1
+Thu May 28 12:42:52 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:44:15 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Thu May 28 12:44:41 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Thu May 28 12:44:41 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Thu May 28 12:47:17 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Thu May 28 12:49:16 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Thu May 28 12:49:16 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Thu May 28 12:49:25 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Thu May 28 12:49:27 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Thu May 28 12:50:07 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Thu May 28 12:50:07 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Thu May 28 12:50:10 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Thu May 28 12:52:31 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Thu May 28 12:52:31 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Thu May 28 12:52:38 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Thu May 28 12:52:52 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Thu May 28 12:52:52 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Thu May 28 12:52:52 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Thu May 28 12:52:53 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Thu May 28 12:53:04 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (2)
+Thu May 28 12:53:04 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.removeEvent: Event was removed from eventLog. Id:1
+Thu May 28 12:53:04 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:2
+Thu May 28 12:53:04 IDT 2020 lSystem.System.Users.Referee.editEventAfterGame: The referee Hen edited event(event Id:1).
+Thu May 28 12:53:35 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (3)
+Thu May 28 12:53:35 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.removeEvent: Event was removed from eventLog. Id:2
+Thu May 28 12:53:35 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:3
+Thu May 28 12:53:35 IDT 2020 lSystem.System.Users.Referee.editEventAfterGame: The referee Hen edited event(event Id:2).
+Thu May 28 12:54:00 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (4)
+Thu May 28 12:54:00 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:4
+Thu May 28 12:54:00 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Thu May 28 12:55:03 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Thu May 28 12:55:03 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Thu May 28 12:55:09 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(4).
+Thu May 28 12:55:16 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (5)
+Thu May 28 12:55:16 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:5
+Thu May 28 12:55:16 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Dana.
+Thu May 28 12:55:27 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (6)
+Thu May 28 12:55:27 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:6
+Thu May 28 12:55:27 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Dana.
+Thu May 28 13:02:31 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Thu May 28 13:02:57 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (7)
+Thu May 28 13:02:58 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:7
+Thu May 28 13:02:58 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Thu May 28 13:03:17 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (8)
+Thu May 28 13:03:17 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:8
+Thu May 28 13:03:17 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Thu May 28 13:04:10 IDT 2020 lSystem.System.Users.Referee.editEventAfterGame: The referee Dana edited event(event Id:7).
+Thu May 28 13:04:44 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (9)
+Thu May 28 13:04:44 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:9
+Thu May 28 13:04:44 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Dana.
+Thu May 28 13:05:36 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Thu May 28 13:05:36 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Thu May 28 13:05:37 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Thu May 28 13:05:37 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
