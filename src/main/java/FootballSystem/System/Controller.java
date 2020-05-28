@@ -483,7 +483,7 @@ public class Controller {
                 int day= Integer.parseInt(dateParse[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(18);
+                date2.setHours(16);
                 date2.setMinutes(0);
 
                 int hour = Integer.parseInt(seperate[2]);
@@ -782,7 +782,13 @@ public class Controller {
      * @param team
      */
     public void addTeam (Team team){
-        teams.add(team);
+        try {
+            TeamSQL.getInstance().save(team);
+            teams.add(team);
+        }
+        catch (Exception e){
+
+        }
     }
 
     public void removeTeam (Team team){
