@@ -1,5 +1,6 @@
 package FootballSystem.DataAccess;
 
+import FootballSystem.System.FootballObjects.League;
 import FootballSystem.System.FootballObjects.LeagueInformation;
 import FootballSystem.System.FootballObjects.Team.DefaultAllocate;
 import FootballSystem.System.FootballObjects.Team.IScoreMethodPolicy;
@@ -28,6 +29,39 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             Connection con = DBConnector.getConnection();
             Statement stat = con.createStatement();
             String sql = "select * from League_Information where leagueInformationID="+id;
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                int leagueInformationID = rs.getInt("leagueInformationID");
+                String name = rs.getString("name");
+                int winScore = rs.getInt("winScore");
+                int lossScore = rs.getInt("lossScore");
+                int tieScore = rs.getInt("tieScore");
+                int allocatePolicyCode = rs.getInt("allocatePolicyCode");
+                int scorePolicyCode = rs.getInt("scorePolicyCode");
+                String pFootballAssociation = rs.getString("pFootballAssociation");
+                int pLeague = rs.getInt("pLeague");
+                int PSeason = rs.getInt("PSeason");
+
+
+                String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
+                System.out.println(p);
+                return p;
+
+            }
+            con.close();
+
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+        return null;
+
+    }
+
+    public Object getBypFootballAssociation(String footballAssociation) {
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "select * from League_Information where pFootballAssociation="+"'"+footballAssociation+"'";
             ResultSet rs = stat.executeQuery(sql);
             while (rs.next()) {
                 int leagueInformationID = rs.getInt("leagueInformationID");
@@ -172,5 +206,77 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
         } catch (SQLException err) {
             throw new RuntimeException("Error connecting to the database", err);
         }
+    }
+
+    public List<String> getAllLegueInformation(int leagueID) {
+        List<String> leagueInformation=new ArrayList<>();
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "select * from League_Information where pLeague="+leagueID;
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                int leagueInformationID = rs.getInt("leagueInformationID");
+                String name = rs.getString("name");
+                int winScore = rs.getInt("winScore");
+                int lossScore = rs.getInt("lossScore");
+                int tieScore = rs.getInt("tieScore");
+                int allocatePolicyCode = rs.getInt("allocatePolicyCode");
+                int scorePolicyCode = rs.getInt("scorePolicyCode");
+                String pFootballAssociation = rs.getString("pFootballAssociation");
+                int pLeague = rs.getInt("pLeague");
+                int PSeason = rs.getInt("PSeason");
+
+
+
+
+
+                String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
+                System.out.println(p);
+                leagueInformation.add(p);
+            }
+            con.close();
+            return leagueInformation;
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+    }
+
+    public void updateAllocatePolicy(int id, ITeamAllocatePolicy iTeamAllocatePolicy) {
+        int type;
+        if(iTeamAllocatePolicy instanceof  DefaultAllocate){
+            type=1;
+        }else{
+            type=2;
+        }
+        try {
+            Connection connection = DBConnector.getConnection();
+
+            PreparedStatement ps=connection.prepareStatement("update League_Information set allocatePolicyCode="+type+" where leagueInformationID= "+id);
+            ps.executeUpdate();
+            connection.close();
+
+        } catch (SQLException err) {
+//            throw new RuntimeException("Error connecting to the database", err);
+            err.printStackTrace();
+        }
+
+    }
+
+    public int getTableSize(){
+        int size=0;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM league_information";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                size++;
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+        return size;
     }
 }

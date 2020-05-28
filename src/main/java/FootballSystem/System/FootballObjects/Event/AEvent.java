@@ -83,7 +83,7 @@ public abstract class AEvent {
     public abstract String getTypeToAlert();
 
     public String toString(){
-        return this.teamName+": the player "+ this.playerName +" get " + getTypeToAlert()+" in minute "+ this.minute;
+        return this.teamName+": the player "+ this.playerName +" got " + getTypeToAlert()+" in minute "+ this.minute;
     }
 
 

@@ -77,6 +77,7 @@ public class LeagueSQL implements DataBase<League> {
                 String name_col = rs.getString("name");
 
                 String p = leagueID_col + " " + name_col ;
+                listToReturn.add(p);
                 System.out.println(p);
             }
             con.close();
@@ -85,6 +86,8 @@ public class LeagueSQL implements DataBase<League> {
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
+
+
 
     @Override
     public void save(League league) throws SQLException {
@@ -137,5 +140,22 @@ public class LeagueSQL implements DataBase<League> {
         } catch (SQLException err) {
             throw new RuntimeException("Error connecting to the database", err);
         }
+    }
+
+    public int getTableSize(){
+        int size=0;
+        try {
+            Connection con = DBConnector.getConnection();
+            Statement stat = con.createStatement();
+            String sql = "SELECT * FROM league";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                size++;
+            }
+            con.close();
+        } catch (SQLException err) {
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+        return size;
     }
 }

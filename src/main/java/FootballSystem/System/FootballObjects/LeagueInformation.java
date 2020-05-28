@@ -1,5 +1,6 @@
 package FootballSystem.System.FootballObjects;
 
+import FootballSystem.DataAccess.LeagueInformationSQL;
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.FootballObjects.Event.EventLog;
 import FootballSystem.System.FootballObjects.Team.*;
@@ -52,7 +53,7 @@ public class LeagueInformation {
         }
     }
 
-    public LeagueInformation(int id, League league, Season season, FootballAssociation footballAssociation, ITeamAllocatePolicy iTeamAllocatePolicy,IScoreMethodPolicy iScoreMethodPolicy) {
+    public LeagueInformation(int id, League league, Season season, FootballAssociation footballAssociation, ITeamAllocatePolicy iTeamAllocatePolicy,IScoreMethodPolicy iScoreMethodPolicy ,int win,int loss,int tie) {
         this.id= id;
         this. league=league;
         this. season= season;
@@ -66,7 +67,13 @@ public class LeagueInformation {
         for(int i=0;i<league.getTeams().size();i++){
             leagueTable.put(league.getTeams().get(i),0);
         }
+        WIN=win;
+        LOSS=loss;
+        TIE=tie;
+
     }
+
+
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -226,6 +233,7 @@ public class LeagueInformation {
      */
     public void editGameSchedulingPolicy(ITeamAllocatePolicy iTeamAllocatePolicy){
         this.iTeamAllocatePolicy=iTeamAllocatePolicy;
+        LeagueInformationSQL.getInstance().updateAllocatePolicy(this.id,iTeamAllocatePolicy);
         SystemEventLog.getInstance().writeToLog("game scheduling policy set");
 
     } //UC-34
