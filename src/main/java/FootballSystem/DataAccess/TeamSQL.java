@@ -4,6 +4,7 @@ import FootballSystem.System.Enum.TeamStatus;
 import FootballSystem.System.FootballObjects.Field;
 import FootballSystem.System.FootballObjects.Team.Team;
 import FootballSystem.System.PersonalPages.PersonalPage;
+import FootballSystem.System.SystemErrorLog;
 import FootballSystem.System.Users.*;
 
 import java.sql.*;
@@ -48,6 +49,8 @@ public class TeamSQL implements DataBase<Team> {
             con.close();
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return null;
@@ -81,6 +84,8 @@ public class TeamSQL implements DataBase<Team> {
             con.close();
             return teams;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -112,6 +117,8 @@ public class TeamSQL implements DataBase<Team> {
             con.close();
             return teams;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -155,6 +162,8 @@ public class TeamSQL implements DataBase<Team> {
 
             System.out.println("Team:"+ team.getName()+" saved in DB");
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -189,6 +198,8 @@ public class TeamSQL implements DataBase<Team> {
 
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -206,6 +217,8 @@ public class TeamSQL implements DataBase<Team> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;

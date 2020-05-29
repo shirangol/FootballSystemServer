@@ -1,6 +1,7 @@
 package FootballSystem.DataAccess;
 
 import FootballSystem.System.PersonalPages.PersonalPage;
+import FootballSystem.System.SystemErrorLog;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -56,6 +57,8 @@ public class PersonalPageSQL implements DataBase<PersonalPage> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;

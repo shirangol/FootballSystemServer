@@ -1,6 +1,7 @@
 package FootballSystem.DataAccess;
 
 import FootballSystem.System.FootballObjects.Event.EventLog;
+import FootballSystem.System.SystemErrorLog;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -45,6 +46,8 @@ public class EventLogSQL implements DataBase<EventLog> {
             con.close();
             return events;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             err.printStackTrace();
         }
         return null;
@@ -67,6 +70,8 @@ public class EventLogSQL implements DataBase<EventLog> {
             ps.execute();
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             err.printStackTrace();
         }
     }
@@ -93,6 +98,8 @@ public class EventLogSQL implements DataBase<EventLog> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;

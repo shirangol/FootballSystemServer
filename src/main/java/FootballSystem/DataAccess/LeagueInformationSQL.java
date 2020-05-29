@@ -6,6 +6,7 @@ import FootballSystem.System.FootballObjects.Team.DefaultAllocate;
 import FootballSystem.System.FootballObjects.Team.IScoreMethodPolicy;
 import FootballSystem.System.FootballObjects.Team.ITeamAllocatePolicy;
 import FootballSystem.System.FootballObjects.Team.OneGameAllocatePolicy;
+import FootballSystem.System.SystemErrorLog;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             con.close();
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return null;
@@ -84,6 +87,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             con.close();
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return null;
@@ -119,6 +124,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             con.close();
             return leagueInformation;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -171,6 +178,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
             System.out.println("Game: "+ leagueInformation.getId()+" saved in DB");
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -204,6 +213,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -238,6 +249,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             con.close();
             return leagueInformation;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -257,6 +270,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             connection.close();
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
 //            throw new RuntimeException("Error connecting to the database", err);
             err.printStackTrace();
         }
@@ -275,6 +290,8 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;
