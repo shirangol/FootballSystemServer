@@ -58,9 +58,9 @@ public class Controller {
         gameList=new ArrayList<>();
 
 
-//        leagues=getAllLeagues();
-//        teams=getAllTeams();
-//        gameList=getAllGames();
+        leagues=getAllLeagues();
+        teams=getAllTeams();
+        gameList=getAllGames();
     }
     //</editor-fold>
 
@@ -280,37 +280,7 @@ public class Controller {
 
     }
 
-//    public List<Team> getTeams ( int id){
-//        if (teams.size() != 0) {
-//            return teams;
-//        }
-//        //not found- get from DB
-//        List<String> t = TeamSQL.getInstance().getAll();
-//        for (int i = 0; i < t.size(); i++) {
-//            String[] result = t.get(i).split(" ");
-//            int teamID = Integer.parseInt(result[0]);
-//            String name = result[1];
-//            int status = Integer.parseInt(result[2]);
-//            int fieldID = Integer.parseInt(result[3]);
-//            int pPersonalPage = Integer.parseInt(result[4]);
-//            int income = Integer.parseInt(result[5]);
-//            int expense = Integer.parseInt(result[6]);
-//            int pLeague = Integer.parseInt(result[7]);
-//
-//            TeamStatus teamStatus = null;
-//            if (status == 1) {
-//                teamStatus = TeamStatus.Active;
-//            } else if (status == 2) {
-//                teamStatus = TeamStatus.Close;
-//            } else {
-//                teamStatus = TeamStatus.PermanentlyClose;
-//            }
-//
-//            Team team2 = new Team(teamID, name, teamStatus, null, null, income, expense);
-//            teams.add(team2);
-//        }
-//        return teams;
-//    }
+
 
     public Game getGame ( int id){
         String game = GameSQL.getInstance().get(id);
@@ -404,6 +374,10 @@ public class Controller {
 
     }
     public List<Game> getAllGames () {
+        if(this.gameList.size()!=0){
+            return this.gameList;
+        }
+
         List<Game> games = new ArrayList<>();
 
         List<String> StringGames = GameSQL.getInstance().getAll();
@@ -491,7 +465,40 @@ public class Controller {
             EventLog eventLog=new EventLog(EventLog, aEvents);
 
             //leageInformation
-            LeagueInformation leagueInformation= ((LeagueInformation) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
+            //LeagueInformation leagueInformation= ((LeagueInformation) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
+            String leagueInformationString= ((String) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
+            //String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
+            String[] splitleagueInformationString=leagueInformationString.split(" ");
+
+            int leagueInformationID=Integer.parseInt(splitleagueInformationString[0]) ;
+            String name= splitleagueInformationString[1];
+            int winScore = Integer.parseInt(splitleagueInformationString[2]) ;
+            int lossScore = Integer.parseInt(splitleagueInformationString[3]) ;
+            int tieScore = Integer.parseInt(splitleagueInformationString[4]) ;
+
+            ITeamAllocatePolicy iTeamAllocatePolicy;
+            int piTeamAllocatePolicy=Integer.parseInt(splitleagueInformationString[5]);
+            if( piTeamAllocatePolicy==1){
+                iTeamAllocatePolicy=new DefaultAllocate();
+            }
+            else if( piTeamAllocatePolicy==2){
+                iTeamAllocatePolicy=new OneGameAllocatePolicy();
+            }
+
+            IScoreMethodPolicy iScoreMethodPolicy= new DefaultMethod();
+            int piScoreMethodPolicy=Integer.parseInt(splitleagueInformationString[6]);
+
+
+            String footballAssociationString=splitleagueInformationString[7];
+            FootballAssociation footballAssociation=(FootballAssociation) getUser(footballAssociationString);
+
+            int pLeague= Integer.parseInt(splitleagueInformationString[8]);
+            int PSeason = Integer.parseInt(splitleagueInformationString[9]);
+            League league=getLeague(pLeague);
+            Season season=new Season(PSeason);
+            LeagueInformation leagueInformation= new LeagueInformation( league,season,footballAssociation);
+
+
             Game newGame = new Game(id, date2, hour, result, newMain, newAss1, newAss2, away, home,eventLog,leagueInformation);
             games.add(newGame);
         }
@@ -499,6 +506,15 @@ public class Controller {
     }
 
     public List<Game> getAllGamesForReferee (String username){
+        if(this.gameList.size()!=0){
+            List<Game> games = new ArrayList<>();
+            for(Game game:this.gameList){
+               if(game.getMainReferee().getUserName().equals(username)||game.getAssistantRefereeTwo().getUserName().equals(username)||game.getAssistantRefereeOne().getUserName().equals(username)){
+                   games.add(game);
+               }
+            }
+            return games;
+        }
         boolean flag=false;
         List<Game> games = new ArrayList<>();
 
@@ -828,6 +844,7 @@ public class Controller {
         } catch (Exception e){}
         teams.add(team);
     }
+
 
     public void removeTeam (Team team){
         teams.remove(team);

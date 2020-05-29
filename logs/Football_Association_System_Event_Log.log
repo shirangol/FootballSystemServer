@@ -3830,3 +3830,5 @@ Thu May 28 13:05:36 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) upd
 Thu May 28 13:05:36 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
 Thu May 28 13:05:37 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
 Thu May 28 13:05:37 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Thu May 28 13:09:02 IDT 2020 lSystem.System.Users.User.setStatus: Dana(id: 4) update his status
+Thu May 28 13:09:02 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Dana).
