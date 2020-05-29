@@ -262,6 +262,10 @@ public class LeagueInformation {
         }
     }
 
+    public void addGame(Game game) {
+        games.add(game);
+    }
+
     //public void editScoreSchedulingPolicy(League league, Season season , IScoreMethodPolicy iScoreMethodPolicy){} //UC-37
     //</editor-fold>
 

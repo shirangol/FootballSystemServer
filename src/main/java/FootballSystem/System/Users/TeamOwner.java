@@ -1,5 +1,6 @@
 package FootballSystem.System.Users;
 
+import FootballSystem.DataAccess.TeamSQL;
 import FootballSystem.System.Enum.TeamStatus;
 import FootballSystem.System.Exeptions.StillNoAppointedOwner;
 import FootballSystem.System.Exeptions.TeamStatusException;
@@ -170,6 +171,7 @@ public class TeamOwner extends User implements IObserverTeam {
     public void addTeamToMyTeamList(Team t){
         if(!this.teamList.contains(t)) {
             this.teamList.add(t);
+            TeamSQL.getInstance().saveMyTeamOwner(t,this.userName);
             SystemEventLog.getInstance().writeToLog("Team : " + t.getName() + " , id :" + t.getId() + "was added to the teams list of : " + this.getName() +
                     " , id :" + this.getId());
             t.addOwnerToTeamOwnersList(this);

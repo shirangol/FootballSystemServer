@@ -150,6 +150,7 @@ public class TeamSQL implements DataBase<Team> {
             ps.setInt(8, 0);
 
             ps.executeUpdate();
+
             connection.close();
 
             System.out.println("Team:"+ team.getName()+" saved in DB");
@@ -208,5 +209,22 @@ public class TeamSQL implements DataBase<Team> {
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;
+    }
+
+    public void saveMyTeamOwner(Team team, String teamOwnerID){
+        try{
+            Connection connection = DBConnector.getConnection();
+            int id= team.getId();
+            String name= team.getName();
+            PreparedStatement ps =connection.prepareStatement("insert into teams_and_team_owner(teamID, teamOwnerID) "
+                    + "values (?,?)");
+            ps.setInt(1, id);
+            ps.setString(2,teamOwnerID);
+            ps.executeUpdate();
+            connection.close();
+        }catch (SQLException err){
+            err.printStackTrace();
+        }
+
     }
 }

@@ -57,17 +57,23 @@ public class Controller {
         methodAllocatePolicies.put("OneGameAllocatePolicy", new OneGameAllocatePolicy()) ;
         gameList=new ArrayList<>();
 
-
+        gameList=getAllGames();
         leagues=getAllLeagues();
         teams=getAllTeams();
-        gameList=getAllGames();
+
     }
     //</editor-fold>
 
     //<editor-fold desc="Getters">
     public List<League> getAllLeagues() { //UC-4
-        if (leagues.size() != 0) {
+        if (leagues.size()==LeagueSQL.getInstance().getTableSize()) {
             return leagues;
+        }
+        List<String> myGame= GameSQL.getInstance().getAll();
+        HashMap<Integer,Integer> lID= new HashMap<>();
+        for(String g: myGame){
+            String[] split= g.split(" ");
+            lID.put(Integer.valueOf(split[10]),Integer.valueOf(split[0]));
         }
         //not found- get from DB
         List<String> t = LeagueSQL.getInstance().getAll();
@@ -75,10 +81,20 @@ public class Controller {
             String[] result = t.get(i).split(" ");
 
             int leagueID = Integer.parseInt(result[0]);
-            String name = result[1];
-
-            List<Team> teams= getAllTeamsForLeague(leagueID);
-            League league=new League(leagueID,name,teams);
+            League league=null;
+            if(leagues.stream().anyMatch(x->x.getid()==leagueID)){
+               for(League l: leagues){
+                   if(l.getid()==leagueID){
+                       league=l;
+                   }
+               }
+            }
+            else {
+                String name = result[1];
+                List<Team> teams = getAllTeamsForLeague(leagueID);
+                league = new League(leagueID, name, teams);
+                leagues.add(league);
+            }
             List<String> leagueInformationStr= LeagueInformationSQL.getInstance().getAllLegueInformation(leagueID);
             //************************* split league information***********************
             for(String l : leagueInformationStr) {
@@ -106,12 +122,22 @@ public class Controller {
 
                 int pLeague = Integer.parseInt(splitleagueInformationString[8]);
                 int PSeason = Integer.parseInt(splitleagueInformationString[9]);
+
+
                 Season season = new Season(PSeason);
                 LeagueInformation newLeagueInformation=new LeagueInformation(leagueInformationID, league,season, null, iTeamAllocatePolicy, iScoreMethodPolicy ,winScore,lossScore,tieScore);
+                Integer gameID= lID.get(newLeagueInformation.getId());
+                if(gameID!=null){
+                    for(Game game: gameList){
+                        if(game.getId()==gameID){
+                            newLeagueInformation.addGame(game);
+                        }
+                    }
+                }
                 league.addLeagueInformation(newLeagueInformation);
                 //****************************************************************************
             }
-            leagues.add(league);
+
         }
         return leagues;
     } //UC-4
@@ -377,130 +403,140 @@ public class Controller {
         if(this.gameList.size()!=0){
             return this.gameList;
         }
-
+        boolean flag=false;
         List<Game> games = new ArrayList<>();
 
         List<String> StringGames = GameSQL.getInstance().getAll();
         for (int i = 0; i < StringGames.size(); i++) {
+            flag=false;
             String[] seperate = StringGames.get(i).split(" ");
             int id = Integer.parseInt(seperate[0]);
-            String date = seperate[1];
-
-            Date date2 = null;
-            try {
-                DateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH);
-                date2 = format.parse(date);
-
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-            int hour = Integer.parseInt(seperate[2]);
-            String result = seperate[3];
-
-            //teams
-            int pTeamAway = Integer.parseInt(seperate[4]);
-            int pTeamHome = Integer.parseInt(seperate[5]);
-            Team away = getTeam(pTeamAway);
-            Team home = getTeam(pTeamHome);
-
-           // String main =  UserSQL.getInstance().get(seperate[6]);
-            Referee newMain= (Referee) getUser(seperate[6]);
-
-            //String ass1 =  UserSQL.getInstance().get(seperate[7]);
-            Referee newAss1= (Referee) getUser(seperate[7]);
-           // String ass2 =  UserSQL.getInstance().get(seperate[8]);
-            Referee newAss2= (Referee) getUser(seperate[8]);
-            //EventLog
-            int EventLog=  Integer.parseInt(seperate[9]);
-            List<String> events= EventLogSQL.getInstance().get(EventLog);
-
-
-
-            List<AEvent> aEvents=new ArrayList<>();
-            for(String str:events) {
-                String[] seperate2 = str.split(",");
-                int eventID = Integer.parseInt(seperate2[0]);
-                String date3 = seperate2[1];
-                Date theSameDate = new Date();
-
-                try {
-                    theSameDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(date3);
-                } catch (Exception e) {
-                }
-
-                int minute = Integer.parseInt(seperate2[2]);
-
-                String playerName = seperate2[3];
-                String teamName = seperate2[4];
-                int type = Integer.parseInt(seperate2[5]);
-
-
-                switch (type) {
-                    case 1:
-                        Goal goal = new Goal(eventID, theSameDate, minute, playerName, teamName);
-                        aEvents.add(goal);
-                        break;
-                    case 2:
-                        Injury injury = new Injury(eventID, theSameDate, minute, playerName, teamName);
-                        aEvents.add(injury);
-                        break;
-                    case 3:
-                        Offense offense = new Offense(eventID, theSameDate, minute, playerName, teamName);
-                        aEvents.add(offense);
-                        break;
-                    case 4:
-                        Offside offside = new Offside(eventID, theSameDate, minute, playerName, teamName);
-                        aEvents.add(offside);
-                        break;
-                    case 5:
-                        RedCard redCard = new RedCard(eventID, theSameDate, minute, playerName, teamName);
-                        aEvents.add(redCard);
-                        break;
-                    case 6:
-                        YellowCard yellowCard = new YellowCard(eventID, theSameDate, minute, playerName, teamName);
-                        aEvents.add(yellowCard);
-                        break;
+            for(int j=0;i<gameList.size();j++){
+                if(gameList.get(j).getId()==id){
+                    games.add(gameList.get(j));
+                    flag=true;
+                    break;
                 }
             }
-            EventLog eventLog=new EventLog(EventLog, aEvents);
+            if(flag==false){
+                String date = seperate[1];
+                Date date2 = null;
+                String[] dateParse= seperate[1].split("-");
+                int year= Integer.parseInt(dateParse[0])-1900;
+                int month= Integer.parseInt(dateParse[1])-1;
+                int day= Integer.parseInt(dateParse[2]);
 
-            //leageInformation
-            //LeagueInformation leagueInformation= ((LeagueInformation) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
-            String leagueInformationString= ((String) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
-            //String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
-            String[] splitleagueInformationString=leagueInformationString.split(" ");
+                date2=new Date(year,month,day);
+                date2.setHours(12);
+                date2.setMinutes(0);
 
-            int leagueInformationID=Integer.parseInt(splitleagueInformationString[0]) ;
-            String name= splitleagueInformationString[1];
-            int winScore = Integer.parseInt(splitleagueInformationString[2]) ;
-            int lossScore = Integer.parseInt(splitleagueInformationString[3]) ;
-            int tieScore = Integer.parseInt(splitleagueInformationString[4]) ;
+                int hour = Integer.parseInt(seperate[2]);
+                String result = seperate[3];
 
-            ITeamAllocatePolicy iTeamAllocatePolicy;
-            int piTeamAllocatePolicy=Integer.parseInt(splitleagueInformationString[5]);
-            if( piTeamAllocatePolicy==1){
-                iTeamAllocatePolicy=new DefaultAllocate();
-            }
-            else if( piTeamAllocatePolicy==2){
-                iTeamAllocatePolicy=new OneGameAllocatePolicy();
-            }
+                //teams
+                int pTeamAway = Integer.parseInt(seperate[4]);
+                int pTeamHome = Integer.parseInt(seperate[5]);
+                Team away = getTeam(pTeamAway);
+                Team home = getTeam(pTeamHome);
 
-            IScoreMethodPolicy iScoreMethodPolicy= new DefaultMethod();
-            int piScoreMethodPolicy=Integer.parseInt(splitleagueInformationString[6]);
+                // String main =  UserSQL.getInstance().get(seperate[6]);
+                Referee newMain= (Referee) getUser(seperate[6]);
 
-
-            String footballAssociationString=splitleagueInformationString[7];
-            FootballAssociation footballAssociation=(FootballAssociation) getUser(footballAssociationString);
-
-            int pLeague= Integer.parseInt(splitleagueInformationString[8]);
-            int PSeason = Integer.parseInt(splitleagueInformationString[9]);
-            League league=getLeague(pLeague);
-            Season season=new Season(PSeason);
-            LeagueInformation leagueInformation= new LeagueInformation( league,season,footballAssociation);
+                //String ass1 =  UserSQL.getInstance().get(seperate[7]);
+                Referee newAss1= (Referee) getUser(seperate[7]);
+                // String ass2 =  UserSQL.getInstance().get(seperate[8]);
+                Referee newAss2= (Referee) getUser(seperate[8]);
+                //EventLog
+                int EventLog=  Integer.parseInt(seperate[9]);
+                List<String> events= EventLogSQL.getInstance().get(EventLog);
 
 
-            Game newGame = new Game(id, date2, hour, result, newMain, newAss1, newAss2, away, home,eventLog,leagueInformation);
-            games.add(newGame);
+
+                List<AEvent> aEvents=new ArrayList<>();
+                for(String str:events) {
+                    String[] seperate2 = str.split(",");
+                    int eventID = Integer.parseInt(seperate2[0]);
+                    String date3 = seperate2[1];
+                    Date theSameDate = new Date();
+
+                    try {
+                        theSameDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(date3);
+                    } catch (Exception e) {
+                    }
+
+                    int minute = Integer.parseInt(seperate2[2]);
+
+                    String playerName = seperate2[3];
+                    String teamName = seperate2[4];
+                    int type = Integer.parseInt(seperate2[5]);
+
+                    switch (type) {
+                        case 1:
+                            Goal goal = new Goal(eventID, theSameDate, minute, playerName, teamName);
+                            aEvents.add(goal);
+                            break;
+                        case 2:
+                            Injury injury = new Injury(eventID, theSameDate, minute, playerName, teamName);
+                            aEvents.add(injury);
+                            break;
+                        case 3:
+                            Offense offense = new Offense(eventID, theSameDate, minute, playerName, teamName);
+                            aEvents.add(offense);
+                            break;
+                        case 4:
+                            Offside offside = new Offside(eventID, theSameDate, minute, playerName, teamName);
+                            aEvents.add(offside);
+                            break;
+                        case 5:
+                            RedCard redCard = new RedCard(eventID, theSameDate, minute, playerName, teamName);
+                            aEvents.add(redCard);
+                            break;
+                        case 6:
+                            YellowCard yellowCard = new YellowCard(eventID, theSameDate, minute, playerName, teamName);
+                            aEvents.add(yellowCard);
+                            break;
+                    }
+                }
+                EventLog eventLog=new EventLog(EventLog, aEvents);
+
+                //leageInformation
+                String leagueInformationString= ((String) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
+                //String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
+                String[] splitleagueInformationString=leagueInformationString.split(" ");
+
+                int leagueInformationID=Integer.parseInt(splitleagueInformationString[0]) ;
+                String name= splitleagueInformationString[1];
+                int winScore = Integer.parseInt(splitleagueInformationString[2]) ;
+                int lossScore = Integer.parseInt(splitleagueInformationString[3]) ;
+                int tieScore = Integer.parseInt(splitleagueInformationString[4]) ;
+
+                ITeamAllocatePolicy iTeamAllocatePolicy;
+                int piTeamAllocatePolicy=Integer.parseInt(splitleagueInformationString[5]);
+                if( piTeamAllocatePolicy==1){
+                    iTeamAllocatePolicy=new DefaultAllocate();
+                }
+                else if( piTeamAllocatePolicy==2){
+                    iTeamAllocatePolicy=new OneGameAllocatePolicy();
+                }
+
+                IScoreMethodPolicy iScoreMethodPolicy= new DefaultMethod();
+                int piScoreMethodPolicy=Integer.parseInt(splitleagueInformationString[6]);
+
+
+                String footballAssociationString=splitleagueInformationString[7];
+                FootballAssociation footballAssociation=(FootballAssociation) getUser(footballAssociationString);
+
+                int pLeague= Integer.parseInt(splitleagueInformationString[8]);
+                int PSeason = Integer.parseInt(splitleagueInformationString[9]);
+                League league=getLeague(pLeague);
+                Season season=new Season(PSeason);
+                LeagueInformation leagueInformation= new LeagueInformation( league,season,footballAssociation);
+
+
+                Game newGame = new Game(id, date2, hour, result, newMain, newAss1, newAss2, away, home,eventLog,leagueInformation);
+                gameList.add(newGame);
+                games.add(newGame);
+            }//close flag if
         }
         return games;
     }
@@ -838,11 +874,17 @@ public class Controller {
      * add team to the system teams
      * @param team
      */
-    public void addTeam (Team team){
+    public boolean addTeam (Team team){
         try{
+            for(String s :TeamSQL.getInstance().getAll()){
+                if (s.contains(team.getName())){
+                    return false;
+                }
+            }
         TeamSQL.getInstance().save(team);
         } catch (Exception e){}
         teams.add(team);
+        return true;
     }
 
 

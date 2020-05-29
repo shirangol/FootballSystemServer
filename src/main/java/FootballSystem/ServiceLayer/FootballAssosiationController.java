@@ -276,7 +276,9 @@ public class FootballAssosiationController {
      */
     public Team createTeam(String teamName, TeamOwner teamOwner) {
         Team team = new Team(teamName, teamOwner);
-        Controller.getInstance().addTeam(team);
+        if(!Controller.getInstance().addTeam(team)){
+            return null;
+        }
         teamOwner.addTeamToMyTeamList(team);
         return team;
     }
@@ -285,7 +287,9 @@ public class FootballAssosiationController {
     public ResponseEntity createTeam(@RequestBody Map<String,String> body) {
         for (TeamOwner tO :  Controller.getInstance().getAllTeamOwner()) {
             if (tO.getUserName().equals(body.get("team_owner"))) {
-                createTeam(body.get("team_name"), tO);
+                if(createTeam(body.get("team_name"), tO)==null){
+                    return new ResponseEntity(HttpStatus.CONFLICT);
+                }
             }
         }
         return new ResponseEntity(HttpStatus.ACCEPTED);
@@ -365,10 +369,17 @@ public class FootballAssosiationController {
     @GetMapping(path = "/getLeagueInformation/{league_name}")
     public ResponseEntity getLeagueInformation(@PathVariable("league_name") String leagueName) {
         List<String> list = new ArrayList<>();
+//        List<Game> games= Controller.getInstance().getAllGames();
+//        List<Integer> lID=new LinkedList<>();
+//        for(Game game: games){
+//            lID.add(game.getLeagueInformation().getId());
+//        }
         for (League l : Controller.getInstance().getAllLeagues()) {
             if (l.getName().equals(leagueName)) {
                 for (LeagueInformation leagueInfo : l.getLeagueInformation()) {
-                    list.add(leagueInfo.getSeason().getYear());
+                    if(leagueInfo.getGames().size()==0) {
+                        list.add(leagueInfo.getSeason().getYear());
+                    }
                 }
             }
         }

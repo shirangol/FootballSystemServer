@@ -3832,3 +3832,113 @@ Thu May 28 13:05:37 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) upd
 Thu May 28 13:05:37 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
 Thu May 28 13:09:02 IDT 2020 lSystem.System.Users.User.setStatus: Dana(id: 4) update his status
 Thu May 28 13:09:02 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Dana).
+Fri May 29 18:13:11 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 18:13:27 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : beer sheva , id :4was added to the teams list of : harel , id :1
+Fri May 29 18:19:52 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 18:20:01 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : bin , id :4was added to the teams list of : harel , id :1
+Fri May 29 18:23:27 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 18:23:33 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : ds , id :5was added to the teams list of : harel , id :1
+Fri May 29 18:24:29 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :6was added to the teams list of : harel , id :1
+Fri May 29 18:52:42 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 18:52:51 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :4was added to the teams list of : harel , id :1
+Fri May 29 18:53:03 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran_golzar , id :5was added to the teams list of : harel , id :1
+Fri May 29 18:53:12 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : bla_bla , id :6was added to the teams list of : harel , id :1
+Fri May 29 18:53:25 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : Hapoel_beer_sheva_winnerssss , id :7was added to the teams list of : harel , id :1
+Fri May 29 19:10:27 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 29 19:10:27 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Fri May 29 19:10:27 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Fri May 29 19:10:27 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Fri May 29 19:10:27 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Fri May 29 19:10:27 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Fri May 29 19:10:27 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Fri May 29 19:10:29 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 29 19:10:29 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Fri May 29 19:10:34 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Fri May 29 19:10:41 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Fri May 29 19:10:41 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Fri May 29 19:10:46 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(5).
+Fri May 29 19:10:48 IDT 2020 lSystem.System.Users.User.setStatus: Shiran(id: 5) update his status
+Fri May 29 19:10:48 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Shiran).
+Fri May 29 19:11:06 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Fri May 29 19:11:09 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Fri May 29 19:11:09 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Fri May 29 19:11:13 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Fri May 29 19:11:19 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Fri May 29 19:11:19 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Fri May 29 19:11:25 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(5).
+Fri May 29 19:11:27 IDT 2020 lSystem.System.Users.User.setStatus: Shiran(id: 5) update his status
+Fri May 29 19:11:27 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Shiran).
+Fri May 29 19:14:36 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:14:56 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:15:40 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:15:53 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:16:26 IDT 2020 lSystem.System.Users.User.setStatus: Shiran(id: 5) update his status
+Fri May 29 19:16:26 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Shiran).
+Fri May 29 19:16:36 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:16:44 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:17:03 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:17:12 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:18:45 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:18:55 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:21:09 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:21:16 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:21:40 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:22:23 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:22:30 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:24:07 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:24:14 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : shiran , id :8was added to the teams list of : harel , id :1
+Fri May 29 19:24:24 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 19:24:24 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 19:25:57 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:27:06 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:28:01 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:28:47 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:30:36 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 19:30:36 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 19:43:22 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:43:33 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : hh , id :4was added to the teams list of : harel , id :1
+Fri May 29 19:45:28 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : hh , id :5was added to the teams list of : harel , id :1
+Fri May 29 19:53:38 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:57:12 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 19:57:14 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 19:57:14 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 20:01:56 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 20:01:56 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 20:02:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 20:03:22 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 20:06:11 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 20:07:34 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 20:27:25 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 20:28:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 20:36:22 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Fri May 29 20:36:30 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Fri May 29 20:36:30 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Fri May 29 20:36:33 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Fri May 29 20:36:33 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Fri May 29 21:04:37 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 21:04:53 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 21:04:53 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 21:05:05 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Fri May 29 21:05:14 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Fri May 29 21:05:14 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Fri May 29 21:06:20 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 21:51:37 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 21:51:59 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 21:51:59 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 21:52:00 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 21:52:00 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 21:52:49 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 22:03:20 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 22:12:03 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 22:13:05 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 22:13:05 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 22:24:45 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 22:41:04 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 22:46:57 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Fri May 29 22:47:12 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Fri May 29 22:47:12 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Fri May 29 22:47:18 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Fri May 29 22:47:44 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Fri May 29 22:47:44 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Fri May 29 22:48:15 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Fri May 29 22:48:15 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
