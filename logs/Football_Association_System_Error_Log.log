@@ -5,3 +5,7 @@ Mon May 25 18:26:56 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: F
 Mon May 25 18:27:16 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
 Tue May 26 18:52:00 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: Type: FootballSystem.System.Exeptions.NoRefereePermissions
 Tue May 26 18:52:00 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: TypeFootballSystem.System.Exeptions.NoRefereePermissionsTime:Tue May 26 18:52:00 IDT 2020
+Fri May 29 22:57:24 IDT 2020 lSystem.DataAccess.GameSQL.getAll: Type: SQLState '42S02' : java.sql.SQLSyntaxErrorException: Table 'football_system2.gamesiiiii' doesn't exist
+Fri May 29 23:01:40 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Fri May 29 23:21:00 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
+Fri May 29 23:21:11 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException

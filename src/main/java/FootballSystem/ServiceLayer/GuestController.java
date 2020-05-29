@@ -124,7 +124,10 @@ public class GuestController extends MainUserController {
 
     public int getUserType(String userName , String password) throws WrongPasswordException, NoSuchAUserNamedException {
         Controller controller = Controller.getInstance();
+
         User existUser = controller.login(userName,password);
+
+
         if(existUser instanceof Fan){
             return 1;
         }

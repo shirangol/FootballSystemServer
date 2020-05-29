@@ -926,7 +926,13 @@ public class Controller {
 
     //*************************  Necessary functions for iteration 3 + 4 ***********************************
     public User login (String userName, String password) throws WrongPasswordException, NoSuchAUserNamedException { //UC-3
-        User user = this.getUser(userName);
+        User user=null;
+        try{
+            user = this.getUser(userName);
+        }catch (Exception e){
+            throw new NoSuchAUserNamedException();
+        }
+
         if (user == null) {
             throw new NoSuchAUserNamedException();
         }

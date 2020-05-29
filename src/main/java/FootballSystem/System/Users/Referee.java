@@ -4,6 +4,7 @@ import FootballSystem.DataAccess.GameSQL;
 import FootballSystem.System.Controller;
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.Exeptions.NoRefereePermissions;
+import FootballSystem.System.Exeptions.NoSuchAUserNamedException;
 import FootballSystem.System.Exeptions.NoSuchEventException;
 import FootballSystem.System.FootballObjects.Event.*;
 import FootballSystem.System.FootballObjects.Game;
