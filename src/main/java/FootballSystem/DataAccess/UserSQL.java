@@ -1,5 +1,7 @@
 package FootballSystem.DataAccess;
+import FootballSystem.ServiceLayer.Exceptions.OnlyForReferee;
 import FootballSystem.System.Enum.RefereeType;
+import FootballSystem.System.SystemErrorLog;
 import FootballSystem.System.Users.*;
 
 
@@ -50,12 +52,13 @@ public class UserSQL implements DataBase<User> {
             ps.setInt(2, type);
             ps.executeUpdate();
         }catch (SQLException e) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new SQLException()).toString());
             e.printStackTrace();
         }
     }
 
     private void saveCoach(Coach user,Connection connection) {
-        System.out.println("Coach table dosent exist");
+        System.out.println("Coach table dosen't exist");
     }
 
     private void savePlayer(Player user,Connection connection) {
@@ -71,6 +74,7 @@ public class UserSQL implements DataBase<User> {
             ps.setInt(7, 0);//?????????????
             ps.executeUpdate();
         }catch (SQLException e) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+(new SQLException()).toString());
             e.printStackTrace();
         }
     }
@@ -96,17 +100,19 @@ public class UserSQL implements DataBase<User> {
             ps.executeUpdate();
 
         }catch (SQLException e) {
-            e.printStackTrace();
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + e.getSQLState() + "' : "
+                    + e.toString());
         }
         //table TeamOwner  username,salary,coach,teamManager,player
     }
 
     private void saveTeamManager(TeamManager user,Connection connection) {
         try {
-            PreparedStatement ps=connection.prepareStatement("insert into team_manager(username,teamID,teamOwnerID,assetValue,salary) "
+            PreparedStatement ps = connection.prepareStatement("insert into team_manager(username,teamID,teamOwnerID,assetValue,salary) "
                     + "values (user.getUserName(),0,0 ,0 ,0 )");
-        }catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            SystemErrorLog.getInstance().writeToLog("Type: " + "SQLState '" + e.getSQLState() + "' : "
+                    + e.toString());
         }
     }
 
@@ -175,7 +181,8 @@ public class UserSQL implements DataBase<User> {
             }
             con.close();
         } catch (SQLException err) {
-            throw new RuntimeException("Error connecting to the database", err);
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
         }
         return null;
     }
@@ -189,7 +196,8 @@ public class UserSQL implements DataBase<User> {
 
 
         }catch (Exception e){
-
+            SystemErrorLog.getInstance().writeToLog("Type: "+
+                     e.toString());
         }
     }
 
@@ -212,11 +220,13 @@ public class UserSQL implements DataBase<User> {
 
                  }
              } catch (SQLException err){
-                 throw new RuntimeException("Cannot delete a non-existing user", err);
+                 SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                         + err.toString());
              }
              con.close();
         } catch (SQLException err) {
-            throw new RuntimeException("Error connecting to the database", err);
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
         }
     }
 
@@ -285,6 +295,8 @@ public class UserSQL implements DataBase<User> {
             con.close();
             return listToReturn;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -356,6 +368,7 @@ public class UserSQL implements DataBase<User> {
 
             connection.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: Error connecting to the database");
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -373,13 +386,20 @@ public class UserSQL implements DataBase<User> {
                         String queryReff = "DELETE FROM referee WHERE username ="+ "'" +userName + "'";
                         preparedStmt = con.prepareStatement(queryReff);
                         preparedStmt.execute();
-                    }catch (Exception e){}
+                    }catch (Exception e){
+                        SystemErrorLog.getInstance().writeToLog("Type: "
+                                + e.toString());
+                    }
 
             }catch (SQLException err){
+                SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                        + err.toString());
                 throw new RuntimeException("Cannot delete a non-existing user", err);
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -400,6 +420,8 @@ public class UserSQL implements DataBase<User> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return null;
@@ -462,6 +484,8 @@ public class UserSQL implements DataBase<User> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return null;
@@ -479,6 +503,8 @@ public class UserSQL implements DataBase<User> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;

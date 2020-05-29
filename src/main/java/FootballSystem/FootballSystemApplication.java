@@ -8,6 +8,7 @@ import FootballSystem.ServiceLayer.*;
 import FootballSystem.System.Controller;
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.Enum.TeamStatus;
+import FootballSystem.System.ExternalSystems.*;
 import FootballSystem.System.FootballObjects.*;
 import FootballSystem.System.FootballObjects.Team.DefaultAllocate;
 import FootballSystem.System.FootballObjects.Team.DefaultMethod;
@@ -35,25 +36,32 @@ public class FootballSystemApplication {
 
 	public static void main(String[] args) {
 		//delete event log table
-		try {
-			Connection con = DBConnector.getConnection();
-			String query = "DELETE FROM event_log";
-			PreparedStatement preparedStmt = con.prepareStatement(query);
-
-			preparedStmt.execute();
-
-			String query2 = "DELETE FROM event";
-			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
-
-			preparedStmt2.execute();
-			con.close();
-		} catch (SQLException err) {
-			throw new RuntimeException("Error connecting to the database", err);
-		}
+//		try {
+//			Connection con = DBConnector.getConnection();
+//			String query = "DELETE FROM event_log";
+//			PreparedStatement preparedStmt = con.prepareStatement(query);
+//
+//			preparedStmt.execute();
+//
+//			String query2 = "DELETE FROM event";
+//			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
+//
+//			preparedStmt2.execute();
+//			con.close();
+//		} catch (SQLException err) {
+//			throw new RuntimeException("Error connecting to the database", err);
+//		}
 
 
 
 		SpringApplication.run(FootballSystemApplication.class, args);
+
+		IFinancialSystem iFinancialSystem = new ProxyFinancialSystem();
+		ITaxSystem iTaxSystem = new ProxyTaxSystem();
+
+
+		//Connection to external systems
+
 		//Dc connect
 		//creae WORLD
 //		try {
@@ -67,8 +75,8 @@ public class FootballSystemApplication {
 			//intiallieSystem();
 			//TeamSQL.getInstance().get(1);
 			//TeamSQL.getInstance().getAll();
-			Team t = new Team(5,"aa", TeamStatus.Active,null,null,0,0);
-			Team t2 = new Team(10,"asd", TeamStatus.Active,null,null,0,0);
+//			Team t = new Team(5,"aa", TeamStatus.Active,null,null,0,0);
+//			Team t2 = new Team(10,"asd", TeamStatus.Active,null,null,0,0);
 //			TeamSQL.getInstance().save(t);
 			//TeamSQL.getInstance().getAll();
 			//TeamSQL.getInstance().delete(t);

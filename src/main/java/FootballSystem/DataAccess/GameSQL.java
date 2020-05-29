@@ -4,6 +4,7 @@ import FootballSystem.System.Controller;
 import FootballSystem.System.FootballObjects.Game;
 import FootballSystem.System.FootballObjects.LeagueInformation;
 import FootballSystem.System.FootballObjects.Team.Team;
+import FootballSystem.System.SystemErrorLog;
 import FootballSystem.System.Users.Referee;
 import FootballSystem.System.Users.User;
 
@@ -51,6 +52,8 @@ public class GameSQL implements DataBase<Game> {
             con.close();
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return null;
@@ -85,6 +88,8 @@ public class GameSQL implements DataBase<Game> {
             con.close();
             return games;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -132,6 +137,8 @@ public class GameSQL implements DataBase<Game> {
 
             System.out.println("Game: "+ game.getId()+" saved in DB");
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -166,6 +173,8 @@ public class GameSQL implements DataBase<Game> {
 
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -229,6 +238,8 @@ public class GameSQL implements DataBase<Game> {
             con.close();
             return games;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -245,6 +256,8 @@ public class GameSQL implements DataBase<Game> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;

@@ -4,4 +4,6 @@ public interface ITaxSystem {
 
     double getTaxRate (double revenueAmount);
 
+    boolean connect();
+
 }

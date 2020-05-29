@@ -2,6 +2,7 @@ package FootballSystem.DataAccess;
 
 import FootballSystem.System.Enum.RefereeType;
 import FootballSystem.System.FootballObjects.League;
+import FootballSystem.System.SystemErrorLog;
 import FootballSystem.System.Users.*;
 
 import java.sql.*;
@@ -40,6 +41,8 @@ public class LeagueSQL implements DataBase<League> {
             String str=leagueID_col+" "+name_col;
             return str;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -60,6 +63,8 @@ public class LeagueSQL implements DataBase<League> {
             String str=leagueID_col+" "+name_col;
             return str;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -83,6 +88,8 @@ public class LeagueSQL implements DataBase<League> {
             con.close();
             return listToReturn;
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -100,6 +107,8 @@ public class LeagueSQL implements DataBase<League> {
             ps.executeUpdate();
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -118,10 +127,14 @@ public class LeagueSQL implements DataBase<League> {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 preparedStmt.execute();
             } catch (SQLException err){
+                SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                        + err.toString());
                 throw new RuntimeException("Cannot delete a non-existing user", err);
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -134,10 +147,14 @@ public class LeagueSQL implements DataBase<League> {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 preparedStmt.execute();
             } catch (SQLException err){
+                SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                        + err.toString());
                 throw new RuntimeException("Cannot delete a non-existing user", err);
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -154,6 +171,8 @@ public class LeagueSQL implements DataBase<League> {
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;

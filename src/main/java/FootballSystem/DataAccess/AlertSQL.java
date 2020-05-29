@@ -1,5 +1,7 @@
 package FootballSystem.DataAccess;
 
+import FootballSystem.System.SystemErrorLog;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +53,8 @@ public class AlertSQL implements DataBase {
             ps.execute();
             con.close();
         }catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             err.printStackTrace();
 //            throw new RuntimeException("Error connecting to the database", err);
         }
@@ -73,10 +77,14 @@ public class AlertSQL implements DataBase {
                 preparedStmt.execute();
 
             } catch (SQLException err){
+                SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                        + err.toString());
                 throw new RuntimeException("Cannot delete a non-existing user", err);
             }
             con.close();
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
 
@@ -95,6 +103,8 @@ public class AlertSQL implements DataBase {
             con.close();
 
         }catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
 
         }

@@ -1,4 +1,6 @@
 package FootballSystem.DataAccess;
+import FootballSystem.System.SystemErrorLog;
+
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -40,6 +42,8 @@ public class DBConnector {
             return con;
 
         } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
             throw new RuntimeException("Error connecting to the database", err);
         }
     }
@@ -63,6 +67,8 @@ public class DBConnector {
                 con.close();
 
             }catch (SQLException err) {
+                        SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                                + err.toString());
                 throw new RuntimeException("Error connecting to the database", err);
             }
     }
