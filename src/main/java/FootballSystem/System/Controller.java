@@ -896,7 +896,9 @@ public class Controller {
             users.put(userName,user);
             if(user instanceof Fan){
                 for (int i=0;i<gameList.size();i++){
-                    FanController.getInstance().followGame(((Fan) user),gameList.get(i));
+                    if(!(gameList.get(i).getiObserverGameListForFans().contains(user))) {
+                        FanController.getInstance().followGame(((Fan) user), gameList.get(i));
+                    }
                 }
             }
             return user;
