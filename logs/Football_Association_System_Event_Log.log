@@ -4420,3 +4420,158 @@ Sat May 30 14:58:08 IDT 2020 lSystem.System.Controller.login: User log in to the
 Sat May 30 14:58:16 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
 Sat May 30 14:58:16 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
 Sat May 30 14:58:20 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 15:10:08 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 15:10:08 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 15:10:40 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 15:10:40 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 15:11:12 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 15:11:12 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 15:11:22 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 15:11:22 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 15:14:14 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 15:14:14 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 15:14:21 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 15:14:21 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Sat May 30 15:14:21 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Sat May 30 15:14:21 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Sat May 30 15:14:21 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Sat May 30 15:14:21 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Sat May 30 15:14:21 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Sat May 30 15:14:29 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 15:14:29 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 15:14:39 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:14:41 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:14:41 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 15:14:48 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sat May 30 15:14:50 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Sat May 30 15:14:50 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Sat May 30 15:16:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:17:40 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:17:41 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:17:41 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 15:17:47 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(5).
+Sat May 30 15:17:47 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:17:47 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(hen).
+Sat May 30 15:17:48 IDT 2020 lSystem.System.Users.User.setStatus: Shiran(id: 5) update his status
+Sat May 30 15:17:48 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Shiran).
+Sat May 30 15:18:20 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:18:23 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:18:23 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(hen).
+Sat May 30 15:18:30 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sat May 30 15:18:39 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Sat May 30 15:18:39 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(inbar).
+Sat May 30 15:18:46 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:18:51 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:18:51 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 15:20:26 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:21:00 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:21:00 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 15:21:07 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sat May 30 15:21:15 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Sat May 30 15:21:15 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(inbar).
+Sat May 30 15:21:51 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:22:03 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 15:22:20 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 15:22:20 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 15:25:13 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:25:13 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 15:27:04 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 15:27:04 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 15:27:13 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 15:27:24 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 15:27:24 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Sat May 30 15:27:24 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Sat May 30 15:27:24 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Sat May 30 15:27:24 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Sat May 30 15:27:24 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Sat May 30 15:27:24 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Sat May 30 15:27:40 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Sat May 30 15:27:41 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Sat May 30 15:27:41 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Sat May 30 15:27:41 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 15:28:58 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(1).
+Sat May 30 15:28:58 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 1) alert
+Sat May 30 15:28:58 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 2) alert
+Sat May 30 15:28:58 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 3) alert
+Sat May 30 15:28:58 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 4) alert
+Sat May 30 15:28:58 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 5) alert
+Sat May 30 15:28:58 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Shachar (id: 1) register to receive a game (id: 6) alert
+Sat May 30 15:29:46 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (2)
+Sat May 30 15:29:46 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:2
+Sat May 30 15:29:46 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Sat May 30 15:29:47 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Shachar
+Sat May 30 15:29:47 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 15:30:54 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (3)
+Sat May 30 15:30:54 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:3
+Sat May 30 15:30:54 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Sat May 30 15:30:54 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Shachar
+Sat May 30 15:30:54 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 15:31:38 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (4)
+Sat May 30 15:31:39 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:4
+Sat May 30 15:31:39 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Sat May 30 15:31:39 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Shachar
+Sat May 30 15:31:39 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 15:32:25 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (5)
+Sat May 30 15:32:25 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:5
+Sat May 30 15:32:25 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Sat May 30 15:32:25 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Shachar
+Sat May 30 15:32:25 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 15:33:11 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 15:33:11 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 15:33:34 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (6)
+Sat May 30 15:33:34 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:6
+Sat May 30 15:33:34 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Sat May 30 15:33:34 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Shachar
+Sat May 30 15:33:34 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 15:33:42 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 15:33:50 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 15:33:50 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 15:34:16 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 15:34:16 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 16:38:33 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 16:38:33 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 16:38:38 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 16:38:38 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Sat May 30 16:38:38 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Sat May 30 16:38:38 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Sat May 30 16:38:38 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Sat May 30 16:38:38 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Sat May 30 16:38:38 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Sat May 30 16:38:40 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 16:38:40 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 16:38:48 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 16:38:49 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 16:38:49 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 16:38:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sat May 30 16:39:13 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Sat May 30 16:39:13 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Sat May 30 16:46:22 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sat May 30 16:46:31 IDT 2020 lSystem.System.Users.TeamOwner.addTeamToMyTeamList: Team : aa , id :4 was added to the teams list of : harel , id :1
+Sat May 30 16:47:05 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editGameSchedulingPolicy: game scheduling policy set
+Sat May 30 16:47:05 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editScoreSchedulingPolicy: Score policy set
+Sat May 30 16:47:57 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Sat May 30 16:47:57 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Sat May 30 16:48:01 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 16:48:14 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (7)
+Sat May 30 16:48:15 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:7
+Sat May 30 16:48:15 IDT 2020 lSystem.System.Users.Fan.update: Fan was updated about a msg. username's fan:Max
+Sat May 30 16:48:15 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 17:11:50 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 17:11:50 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 17:14:29 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sat May 30 17:14:29 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sat May 30 17:14:33 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 17:14:33 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 1) alert
+Sat May 30 17:14:33 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 2) alert
+Sat May 30 17:14:33 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 3) alert
+Sat May 30 17:14:33 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 4) alert
+Sat May 30 17:14:33 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 5) alert
+Sat May 30 17:14:33 IDT 2020 lSystem.System.FootballObjects.Game.registerFanToAlert: Fan Max (id: 2) register to receive a game (id: 6) alert
+Sat May 30 17:14:37 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 17:14:37 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 17:16:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 17:16:14 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 17:16:14 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 17:22:54 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
+Sat May 30 17:22:58 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
+Sat May 30 17:22:58 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).

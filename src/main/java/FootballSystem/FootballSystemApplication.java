@@ -35,6 +35,7 @@ import java.util.List;
 public class FootballSystemApplication {
 
 	public static void main(String[] args) {
+	//	DBConnector.getConnection();
 		//delete event log table
 //		try {
 //			Connection con = DBConnector.getConnection();

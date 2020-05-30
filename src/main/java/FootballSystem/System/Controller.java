@@ -427,7 +427,7 @@ public class Controller {
                 int day= Integer.parseInt(dateParse[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(13);
+                date2.setHours(15);
                 date2.setMinutes(00);
 
                 int hour = Integer.parseInt(seperate[2]);
