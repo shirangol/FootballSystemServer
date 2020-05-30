@@ -21,7 +21,7 @@ import java.util.*;
 public class Team implements IPageAvailable, ISubjectTeam, IShowable {
 
     //<editor-fold desc="Fields">
-    private static int ID;
+    private static int ID= TeamSQL.getInstance().getTableSize()+1;
     private int id;
     private String name;
     private TeamStatus teamStatus;
@@ -46,9 +46,8 @@ public class Team implements IPageAvailable, ISubjectTeam, IShowable {
 
      */
     public Team(String name,TeamOwner teamOwner) {
-        ID= TeamSQL.getInstance().getTableSize()+1;
         id=ID;
-//        ID++;
+        ID++;
         this.name = name;
         this.field = null;
         this.teamStatus = TeamStatus.Active;
@@ -60,7 +59,7 @@ public class Team implements IPageAvailable, ISubjectTeam, IShowable {
         this.allTeamOwners=new LinkedList<>();
         if(teamOwner != null) {
             allTeamOwners.add(teamOwner);
-            teamOwner.addTeamToMyTeamList(this);
+//            teamOwner.addTeamToMyTeamList(this);
         }
         this.financialReport = new LinkedList<FinancialReport>();
         this.iObserverTeamListForSystemManagers=new LinkedList<>();

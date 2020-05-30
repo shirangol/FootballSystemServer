@@ -45,7 +45,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
 
                 String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
-                System.out.println(p);
+                //System.out.println(p);
                 return p;
 
             }
@@ -80,7 +80,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
 
                 String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
-                System.out.println(p);
+                //System.out.println(p);
                 return p;
 
             }
@@ -117,7 +117,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
 
                 String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
-                System.out.println(p);
+               // System.out.println(p);
                 leagueInformation.add(p);
 
             }
@@ -176,7 +176,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
             ps.executeUpdate();
             connection.close();
 
-            System.out.println("Game: "+ leagueInformation.getId()+" saved in DB");
+           // System.out.println("Game: "+ leagueInformation.getId()+" saved in DB");
         } catch (SQLException err) {
             SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
                     + err.toString());
@@ -208,7 +208,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
             con.close();
 
-            System.out.println("Game:"+ leagueInformation.getId()+" delete from DB");
+           // System.out.println("Game:"+ leagueInformation.getId()+" delete from DB");
 
 
 
@@ -243,7 +243,7 @@ public class LeagueInformationSQL implements DataBase<LeagueInformation> {
 
 
                 String p = leagueInformationID + " " + name + " " + winScore + " " + lossScore + " " + tieScore + " " + allocatePolicyCode+ " " +scorePolicyCode + " " +pFootballAssociation+ " " + pLeague+ " " +PSeason ;
-                System.out.println(p);
+               // System.out.println(p);
                 leagueInformation.add(p);
             }
             con.close();

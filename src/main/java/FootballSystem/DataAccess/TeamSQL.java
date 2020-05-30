@@ -43,7 +43,7 @@ public class TeamSQL implements DataBase<Team> {
 
 
                 String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
-                System.out.println(p);
+                //System.out.println(p);
                 return (p);
             }
             con.close();
@@ -77,7 +77,7 @@ public class TeamSQL implements DataBase<Team> {
                 int pLeague = rs.getInt("pLeague");
 
                 String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
-                System.out.println(p);
+                //System.out.println(p);
                 teams.add(p);
             }
 
@@ -110,7 +110,7 @@ public class TeamSQL implements DataBase<Team> {
                 int pLeague = rs.getInt("pLeague");
 
                 String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
-                System.out.println(p);
+               // System.out.println(p);
                 teams.add(p);
             }
 
@@ -160,7 +160,7 @@ public class TeamSQL implements DataBase<Team> {
 
             connection.close();
 
-            System.out.println("Team:"+ team.getName()+" saved in DB");
+           // System.out.println("Team:"+ team.getName()+" saved in DB");
         } catch (SQLException err) {
             SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
                     + err.toString());
@@ -193,7 +193,7 @@ public class TeamSQL implements DataBase<Team> {
 
             con.close();
 
-            System.out.println("Team:"+ team.getName()+" delete from DB");
+          //  System.out.println("Team:"+ team.getName()+" delete from DB");
 
 
 

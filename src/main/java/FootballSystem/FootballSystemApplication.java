@@ -57,7 +57,10 @@ public class FootballSystemApplication {
 		SpringApplication.run(FootballSystemApplication.class, args);
 
 		IFinancialSystem iFinancialSystem = new ProxyFinancialSystem();
+		iFinancialSystem.connect();
 		ITaxSystem iTaxSystem = new ProxyTaxSystem();
+		iTaxSystem.connect();
+
 
 
 		//Connection to external systems

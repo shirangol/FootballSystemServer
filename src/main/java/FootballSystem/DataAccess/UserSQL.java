@@ -290,7 +290,7 @@ public class UserSQL implements DataBase<User> {
                     // default:
                 }//close switch
                 String p = id_col + " " + username_col + " " + fullName_col + " " + password_col + " " + UserTypeCode ;
-                System.out.println(p);
+               // System.out.println(p);
             }
             con.close();
             return listToReturn;
@@ -449,7 +449,7 @@ public class UserSQL implements DataBase<User> {
                         RefereeType type=getRefereeTypeSQL(userName);
                         //Referee referee=new Referee(fullName_col, type, id_col, password_col, username_col);
                         String refereeStr="Referee"+" "+fullName_col+" "+ type.toString()+" "+ id_col+" "+ password_col+" "+ userName;
-                        System.out.println(refereeStr);//*********************************
+                       //System.out.println(refereeStr);//*********************************
                         con.close();
                         return refereeStr;
                     case 3:

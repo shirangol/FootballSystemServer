@@ -45,7 +45,7 @@ public class GameSQL implements DataBase<Game> {
                 int pLeagueInformation = rs.getInt("pLeagueInformation");
 
                 String p = gameID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
-                System.out.println(p);
+                //System.out.println(p);
                 return p;
 
             }
@@ -73,7 +73,7 @@ public class GameSQL implements DataBase<Game> {
                 int hour = rs.getInt("hour");
                 String result = rs.getString("result");
                 int pTeamAway = rs.getInt("pTeamAway");
-                int pTeamHome = rs.getInt("pTeamAway");
+                int pTeamHome = rs.getInt("pTeamHome");
                 String pMainReferee = rs.getString("pMainReferee");
                 String pAssistant1Referee = rs.getString("pAssistant1Referee");
                 String pAssistant2Referee = rs.getString("pAssistant2Referee");
@@ -81,9 +81,8 @@ public class GameSQL implements DataBase<Game> {
                 int pLeagueInformation = rs.getInt("pLeagueInformation");
 
                 String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
-                System.out.println(p);
+                //System.out.println(p);
                 games.add(p);
-
             }
             con.close();
             return games;
@@ -135,7 +134,7 @@ public class GameSQL implements DataBase<Game> {
             ps.executeUpdate();
             connection.close();
 
-            System.out.println("Game: "+ game.getId()+" saved in DB");
+            //System.out.println("Game: "+ game.getId()+" saved in DB");
         } catch (SQLException err) {
             SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
                     + err.toString());
@@ -168,7 +167,7 @@ public class GameSQL implements DataBase<Game> {
 
             con.close();
 
-            System.out.println("Game:"+ game.getId()+" delete from DB");
+            //System.out.println("Game:"+ game.getId()+" delete from DB");
 
 
 
@@ -190,35 +189,6 @@ public class GameSQL implements DataBase<Game> {
             String sql = "SELECT * FROM games WHERE pMainReferee = "+ name +" OR pAssistant1Referee = "+ name +" OR pAssistant2Referee = "+ name ;
             ResultSet rs = stat.executeQuery(sql);
             while (rs.next()) {
-//                int teamID = rs.getInt("gameID");
-//                String date = rs.getString("date");
-//                Date date2= new Date();
-//                int temp= Integer.parseInt(date);
-//                date2.setTime(temp);
-//
-//                int hour = rs.getInt("hour");
-//                String result = rs.getString("result");
-//                int pTeamAway = rs.getInt("pTeamAway");
-//                Team t1= Controller.getInstance().getTeam(pTeamAway);
-//
-//                int pTeamHome = rs.getInt("pTeamAway");
-//                Team t2= Controller.getInstance().getTeam(pTeamHome);
-//
-//                String pMainReferee = rs.getString("pMainReferee");
-//                Referee main= (Referee)Controller.getInstance().getUser(pMainReferee);
-//
-//                String pAssistant1Referee = rs.getString("pAssistant1Referee");
-//                Referee ass1= (Referee)Controller.getInstance().getUser(pAssistant1Referee);
-//
-//                String pAssistant2Referee = rs.getString("pAssistant2Referee");
-//                Referee ass2= (Referee)Controller.getInstance().getUser(pAssistant2Referee);
-//
-//                int pEventLogID = rs.getInt("pEventLogID");
-//                int pLeagueInformation = rs.getInt("pLeagueInformation");
-//                String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
-//                System.out.println(p);
-//                //Game game=new Game(teamID,date2,hour,result,t1,t2,main,ass1,ass2,pEventLogID,null);
-//                games.add(p);
                 int teamID = rs.getInt("gameID");
                 String date = rs.getString("date");
                 int hour = rs.getInt("hour");
@@ -232,7 +202,7 @@ public class GameSQL implements DataBase<Game> {
                 int pLeagueInformation = rs.getInt("pLeagueInformation");
 
                 String p = teamID + " " + date + " " + hour + " " + result + " " + pTeamAway + " " + pTeamHome+ " " +pMainReferee + " " +pAssistant1Referee+ " " + pAssistant2Referee+ " " +pEventLogID + " " +pLeagueInformation;
-                System.out.println(p);
+                //System.out.println(p);
                 games.add(p);
             }
             con.close();
@@ -261,5 +231,33 @@ public class GameSQL implements DataBase<Game> {
             throw new RuntimeException("Error connecting to the database", err);
         }
         return size;
+    }
+
+    public void update(Game game, String result) {
+//        UPDATE `football_system2`.`games` SET `result` = '1:0' WHERE (`gameID` = '1');
+//        "UPDATE Registration " +
+//                "SET age = 30 WHERE id in (100, 101)";
+
+        try {
+            Connection connection = DBConnector.getConnection();
+
+            int id= game.getId();
+            String result2="'"+result+"'";
+            String sql = "update games set result="+result2+ "where gameID=" +id;
+
+            Statement stmt = connection.createStatement();
+
+            System.out.println("Database updated successfully ");
+            stmt.executeUpdate(sql);
+
+            connection.close();
+
+            //System.out.println("Game: "+ game.getId()+" saved in DB");
+        } catch (SQLException err) {
+            SystemErrorLog.getInstance().writeToLog("Type: "+ "SQLState '" + err.getSQLState() + "' : "
+                    + err.toString());
+            throw new RuntimeException("Error connecting to the database", err);
+        }
+
     }
 }

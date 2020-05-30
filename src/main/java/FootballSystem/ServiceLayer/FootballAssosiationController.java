@@ -369,11 +369,6 @@ public class FootballAssosiationController {
     @GetMapping(path = "/getLeagueInformation/{league_name}")
     public ResponseEntity getLeagueInformation(@PathVariable("league_name") String leagueName) {
         List<String> list = new ArrayList<>();
-//        List<Game> games= Controller.getInstance().getAllGames();
-//        List<Integer> lID=new LinkedList<>();
-//        for(Game game: games){
-//            lID.add(game.getLeagueInformation().getId());
-//        }
         for (League l : Controller.getInstance().getAllLeagues()) {
             if (l.getName().equals(leagueName)) {
                 for (LeagueInformation leagueInfo : l.getLeagueInformation()) {

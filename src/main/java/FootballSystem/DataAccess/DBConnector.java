@@ -60,8 +60,8 @@ public class DBConnector {
                     int id_col = rs.getInt("code");
                     String fullName = rs.getString("policyName");
                     String p = id_col +  " " + fullName ;
-                    System.out.println(p);
-                    System.out.println("start connection to DB");
+                   // System.out.println(p);
+                    //System.out.println("start connection to DB");
 
                 }
                 con.close();

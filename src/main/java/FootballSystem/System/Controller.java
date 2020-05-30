@@ -1,5 +1,5 @@
 package FootballSystem.System;
-/////
+
 import FootballSystem.DataAccess.*;
 import FootballSystem.ServiceLayer.FanController;
 import FootballSystem.System.*;
@@ -308,97 +308,97 @@ public class Controller {
 
 
 
-    public Game getGame ( int id){
-        String game = GameSQL.getInstance().get(id);
-        String[] seperate = game.split(" ");
-        String date = seperate[1];
-
-        Date date2 = null;
-        try {
-            DateFormat format = new SimpleDateFormat("yyyy-dd-mm", Locale.ENGLISH);
-            date2 = format.parse(date);
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        int hour = Integer.parseInt(seperate[2]);
-        String result = seperate[3];
-
-        //teams
-        int pTeamAway = Integer.parseInt(seperate[4]);
-        int pTeamHome = Integer.parseInt(seperate[5]);
-        Team away = getTeam(pTeamAway);
-        Team home = getTeam(pTeamHome);
-
-        //String main =  UserSQL.getInstance().get(seperate[6]);
-        Referee newMain= (Referee) getUser(seperate[6]);
-
-        //String ass1 =  UserSQL.getInstance().get(seperate[7]);
-        Referee newAss1= (Referee) getUser(seperate[7]);
-        //String ass2 =  UserSQL.getInstance().get(seperate[8]);
-        Referee newAss2= (Referee) getUser(seperate[8]);
-
-        //EventLog
-        int EventLog=  Integer.parseInt(seperate[9]);
-        List<String> events= EventLogSQL.getInstance().get(EventLog);
-
-
-
-        List<AEvent> aEvents=new ArrayList<>();
-        for(String str:events) {
-            String[] seperate2 = str.split(",");
-            int eventID = Integer.parseInt(seperate2[0]);
-            String date3 = seperate2[1];
-            Date theSameDate = new Date();
-
-            try {
-                theSameDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(date3);
-            } catch (Exception e) {
-            }
-
-            int minute = Integer.parseInt(seperate2[2]);
-
-            String playerName = seperate2[3];
-            String teamName = seperate2[4];
-            int type = Integer.parseInt(seperate2[5]);
-
-
-            switch (type) {
-                case 1:
-                    Goal goal = new Goal(eventID, theSameDate, minute, playerName, teamName);
-                    aEvents.add(goal);
-                    break;
-                case 2:
-                    Injury injury = new Injury(eventID, theSameDate, minute, playerName, teamName);
-                    aEvents.add(injury);
-                    break;
-                case 3:
-                    Offense offense = new Offense(eventID, theSameDate, minute, playerName, teamName);
-                    aEvents.add(offense);
-                    break;
-                case 4:
-                    Offside offside = new Offside(eventID, theSameDate, minute, playerName, teamName);
-                    aEvents.add(offside);
-                    break;
-                case 5:
-                    RedCard redCard = new RedCard(eventID, theSameDate, minute, playerName, teamName);
-                    aEvents.add(redCard);
-                    break;
-                case 6:
-                    YellowCard yellowCard = new YellowCard(eventID, theSameDate, minute, playerName, teamName);
-                    aEvents.add(yellowCard);
-                    break;
-            }
-        }
-        EventLog eventLog=new EventLog(EventLog, aEvents);
-
-        //leageInformation
-
-        LeagueInformation leagueInformation= ((LeagueInformation) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
-        Game newGame = new Game(id, date2, hour, result, newMain, newAss1, newAss2, away, home,eventLog,leagueInformation);
-        return newGame;
-
-    }
+//    public Game getGame ( int id){
+//        String game = GameSQL.getInstance().get(id);
+//        String[] seperate = game.split(" ");
+//        String date = seperate[1];
+//
+//        Date date2 = null;
+//        try {
+//            DateFormat format = new SimpleDateFormat("yyyy-dd-mm", Locale.ENGLISH);
+//            date2 = format.parse(date);
+//
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        int hour = Integer.parseInt(seperate[2]);
+//        String result = seperate[3];
+//
+//        //teams
+//        int pTeamAway = Integer.parseInt(seperate[4]);
+//        int pTeamHome = Integer.parseInt(seperate[5]);
+//        Team away = getTeam(pTeamAway);
+//        Team home = getTeam(pTeamHome);
+//
+//        //String main =  UserSQL.getInstance().get(seperate[6]);
+//        Referee newMain= (Referee) getUser(seperate[6]);
+//
+//        //String ass1 =  UserSQL.getInstance().get(seperate[7]);
+//        Referee newAss1= (Referee) getUser(seperate[7]);
+//        //String ass2 =  UserSQL.getInstance().get(seperate[8]);
+//        Referee newAss2= (Referee) getUser(seperate[8]);
+//
+//        //EventLog
+//        int EventLog=  Integer.parseInt(seperate[9]);
+//        List<String> events= EventLogSQL.getInstance().get(EventLog);
+//
+//
+//
+//        List<AEvent> aEvents=new ArrayList<>();
+//        for(String str:events) {
+//            String[] seperate2 = str.split(",");
+//            int eventID = Integer.parseInt(seperate2[0]);
+//            String date3 = seperate2[1];
+//            Date theSameDate = new Date();
+//
+//            try {
+//                theSameDate = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(date3);
+//            } catch (Exception e) {
+//            }
+//
+//            int minute = Integer.parseInt(seperate2[2]);
+//
+//            String playerName = seperate2[3];
+//            String teamName = seperate2[4];
+//            int type = Integer.parseInt(seperate2[5]);
+//
+//
+//            switch (type) {
+//                case 1:
+//                    Goal goal = new Goal(eventID, theSameDate, minute, playerName, teamName);
+//                    aEvents.add(goal);
+//                    break;
+//                case 2:
+//                    Injury injury = new Injury(eventID, theSameDate, minute, playerName, teamName);
+//                    aEvents.add(injury);
+//                    break;
+//                case 3:
+//                    Offense offense = new Offense(eventID, theSameDate, minute, playerName, teamName);
+//                    aEvents.add(offense);
+//                    break;
+//                case 4:
+//                    Offside offside = new Offside(eventID, theSameDate, minute, playerName, teamName);
+//                    aEvents.add(offside);
+//                    break;
+//                case 5:
+//                    RedCard redCard = new RedCard(eventID, theSameDate, minute, playerName, teamName);
+//                    aEvents.add(redCard);
+//                    break;
+//                case 6:
+//                    YellowCard yellowCard = new YellowCard(eventID, theSameDate, minute, playerName, teamName);
+//                    aEvents.add(yellowCard);
+//                    break;
+//            }
+//        }
+//        EventLog eventLog=new EventLog(EventLog, aEvents);
+//
+//        //leageInformation
+//
+//        LeagueInformation leagueInformation= ((LeagueInformation) LeagueInformationSQL.getInstance().get(Integer.parseInt(seperate[10])));
+//        Game newGame = new Game(id, date2, hour, result, newMain, newAss1, newAss2, away, home,eventLog,leagueInformation);
+//        return newGame;
+//
+//    }
     public List<Game> getAllGames () {
         if(this.gameList.size()!=0){
             return this.gameList;
@@ -427,8 +427,8 @@ public class Controller {
                 int day= Integer.parseInt(dateParse[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(12);
-                date2.setMinutes(0);
+                date2.setHours(13);
+                date2.setMinutes(00);
 
                 int hour = Integer.parseInt(seperate[2]);
                 String result = seperate[3];
@@ -575,8 +575,8 @@ public class Controller {
                 int day= Integer.parseInt(dateParse[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(12);
-                date2.setMinutes(0);
+                date2.setHours(11);
+                date2.setMinutes(30);
 
                 int hour = Integer.parseInt(seperate[2]);
                 String result = seperate[3];
@@ -877,8 +877,11 @@ public class Controller {
     public boolean addTeam (Team team){
         try{
             for(String s :TeamSQL.getInstance().getAll()){
-                if (s.contains(team.getName())){
+                String[] split= s.split(" ");
+                if (team.getName().equals(split[1])){
+                    SystemErrorLog.getInstance().writeToLog("Create team failed- team name already exist");
                     return false;
+
                 }
             }
         TeamSQL.getInstance().save(team);

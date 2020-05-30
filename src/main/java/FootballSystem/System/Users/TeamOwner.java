@@ -172,7 +172,7 @@ public class TeamOwner extends User implements IObserverTeam {
         if(!this.teamList.contains(t)) {
             this.teamList.add(t);
             TeamSQL.getInstance().saveMyTeamOwner(t,this.userName);
-            SystemEventLog.getInstance().writeToLog("Team : " + t.getName() + " , id :" + t.getId() + "was added to the teams list of : " + this.getName() +
+            SystemEventLog.getInstance().writeToLog("Team : " + t.getName() + " , id :" + t.getId() + " was added to the teams list of : " + this.getName() +
                     " , id :" + this.getId());
             t.addOwnerToTeamOwnersList(this);
         }

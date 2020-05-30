@@ -1,5 +1,6 @@
 package FootballSystem.System.FootballObjects;
 
+import FootballSystem.DataAccess.GameSQL;
 import FootballSystem.System.FootballObjects.Event.AEvent;
 import FootballSystem.System.FootballObjects.Event.EventLog;
 import FootballSystem.System.FootballObjects.Team.Team;
@@ -198,6 +199,7 @@ public class Game implements ISubjectGame {
 
     public void setScore(int home,int away){
         this.result= home+":"+away;
+        GameSQL.getInstance().update(this, result);
     }
 
     //</editor-fold>
@@ -208,6 +210,7 @@ public class Game implements ISubjectGame {
      * @param event
      */
     public void addEventToLogEvent(AEvent event){
+
         eventLog.addEventToLog(event);
         notifyFan(event);
     }

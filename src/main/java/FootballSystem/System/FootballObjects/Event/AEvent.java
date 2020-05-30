@@ -1,5 +1,6 @@
 package FootballSystem.System.FootballObjects.Event;
 
+import FootballSystem.DataAccess.EventSQL;
 import FootballSystem.System.SystemEventLog;
 
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.Date;
 public abstract class AEvent {
 
     //<editor-fold desc="Fields">
-    private static int ID=1;
+    private static int ID= EventSQL.getInstance().getTableSize()+1;
     private int id;
     private Date date;
     private int minute;

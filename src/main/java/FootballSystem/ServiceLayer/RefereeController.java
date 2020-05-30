@@ -91,6 +91,7 @@ public class RefereeController extends MainUserController {
             return new ResponseEntity("fail",HttpStatus.EXPECTATION_FAILED);
         }
         if(body.get("old_eventType").equals("Goal")){
+            String x= body.get("old_team");
             if (game.getHome().getName().equals( body.get("old_team"))) {
                 game.setScore(Integer.parseInt(game.getResult().split(":")[0]) - 1, Integer.parseInt(game.getResult().split(":")[1]));
             } else {
@@ -271,7 +272,7 @@ public class RefereeController extends MainUserController {
 
     @GetMapping(path = "getEvents/{game_id}/{referee_name}")
     public ResponseEntity getEvents(@PathVariable("game_id")String gameID,@PathVariable("referee_name") String refereeName)throws OnlyForReferee {
-        System.out.println("shirannnnnnnnnnnnnnnnnnnnnnnnnnnn---------------------------------------------");
+
         User referee =  Controller.getInstance().getUser(refereeName);
         if(!(referee instanceof Referee)){
             SystemErrorLog.getInstance().writeToLog("Type: "+(new OnlyForReferee()).toString());
