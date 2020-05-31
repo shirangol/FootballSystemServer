@@ -13,6 +13,7 @@ import FootballSystem.System.FootballObjects.Season;
 import FootballSystem.System.IShowable;
 import FootballSystem.System.I_Observer.IObserverGame;
 import FootballSystem.System.I_Observer.ISubjectGame;
+import FootballSystem.System.SystemErrorLog;
 import FootballSystem.System.SystemEventLog;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -108,7 +109,7 @@ public class Referee extends User implements IObserverGame,IShowable {
             game.addEventToLogEvent(editedEvent);
             SystemEventLog.getInstance().writeToLog("The referee " + getUserName() + " edited event" + "(event Id:" + oldEvent.getId() + ").");
         } else {
-            SystemEventLog.getInstance().writeToLog("The referee " + getUserName() + " edited event" + "(event Id:" + oldEvent.getId() + ").");
+            SystemErrorLog.getInstance().writeToLog("The referee " + getUserName() + " can't edit event" + "(event Id:" + oldEvent.getId() + ").");
             throw new NoRefereePermissions();
         }
     }

@@ -57,7 +57,7 @@ public class LeagueInformation {
         this.id= id;
         this. league=league;
         this. season= season;
-        name= season.getName()+" "+league.getName();
+        name= season.getName()+"_"+league.getName();
         this.footballAssociation = footballAssociation;
         this.iTeamAllocatePolicy= iTeamAllocatePolicy;
         leagueTable= new LinkedHashMap<>();

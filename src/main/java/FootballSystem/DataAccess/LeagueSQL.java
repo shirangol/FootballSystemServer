@@ -94,8 +94,6 @@ public class LeagueSQL implements DataBase<League> {
         }
     }
 
-
-
     @Override
     public void save(League league) throws SQLException {
         try {

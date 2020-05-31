@@ -425,12 +425,12 @@ public class Controller {
                 int year= Integer.parseInt(dateParse[0])-1900;
                 int month= Integer.parseInt(dateParse[1])-1;
                 int day= Integer.parseInt(dateParse[2]);
+                int hour = Integer.parseInt(seperate[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(15);
-                date2.setMinutes(00);
+                date2.setHours(hour/100);
+                date2.setMinutes(hour%100);
 
-                int hour = Integer.parseInt(seperate[2]);
                 String result = seperate[3];
 
                 //teams
@@ -573,12 +573,12 @@ public class Controller {
                 int year= Integer.parseInt(dateParse[0])-1900;
                 int month= Integer.parseInt(dateParse[1])-1;
                 int day= Integer.parseInt(dateParse[2]);
+                int hour = Integer.parseInt(seperate[2]);
 
                 date2=new Date(year,month,day);
-                date2.setHours(11);
-                date2.setMinutes(30);
+                date2.setHours(hour/100);
+                date2.setMinutes(hour%100);
 
-                int hour = Integer.parseInt(seperate[2]);
                 String result = seperate[3];
 
                 //teams

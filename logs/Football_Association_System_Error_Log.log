@@ -30,17 +30,28 @@ Sat May 30 12:43:42 IDT 2020 lSystem.System.Controller.addTeam: Create team fail
 Sat May 30 13:45:54 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '9' for key 'event.PRIMARY'
 Sat May 30 13:48:30 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15' for key 'event.PRIMARY'
 Sat May 30 14:19:47 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '3' for key 'event.PRIMARY'
-Sat May 30 15:07:36 IDT 2020 lSystem.DataAccess.GameSQL.getAll: Type: SQLState '08003' : java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
-Sat May 30 15:08:45 IDT 2020 lSystem.DataAccess.DBConnector.getConnection: Type: SQLState '08S01' : com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-Sat May 30 15:09:19 IDT 2020 lSystem.DataAccess.GameSQL.getAll: Type: SQLState '08003' : java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
-Sat May 30 15:14:34 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
-Sat May 30 15:20:47 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: Type: FootballSystem.System.Exeptions.NoRefereePermissions
-Sat May 30 15:20:47 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: TypeFootballSystem.System.Exeptions.NoRefereePermissionsTime:Sat May 30 15:20:47 IDT 2020
-Sat May 30 15:22:09 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: Type: FootballSystem.System.Exeptions.NoRefereePermissions
-Sat May 30 15:22:09 IDT 2020 lSystem.ServiceLayer.RefereeController.addEventAfterGame: TypeFootballSystem.System.Exeptions.NoRefereePermissionsTime:Sat May 30 15:22:09 IDT 2020
-Sat May 30 16:45:25 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
-Sat May 30 17:16:21 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
-Sat May 30 17:16:44 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
-Sat May 30 17:23:20 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
+Sat May 30 18:05:17 IDT 2020 lSystem.System.Controller.addTeam: Create team failed- team name already exist
+Sat May 30 18:54:59 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1-1' for key 'event_log.PRIMARY'
+Sat May 30 20:58:30 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1-2' for key 'event_log.PRIMARY'
+Sat May 30 20:58:47 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sat May 30 21:06:06 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1-3' for key 'event_log.PRIMARY'
+Sat May 30 21:11:37 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sat May 30 21:22:35 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sat May 30 21:25:21 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sat May 30 21:26:39 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sun May 31 01:21:59 IDT 2020 lSystem.DataAccess.UserSQL.saveReferee: Type: java.sql.SQLException
+Sun May 31 01:23:08 IDT 2020 lSystem.DataAccess.UserSQL.saveReferee: Type: java.sql.SQLException
+Sun May 31 01:41:00 IDT 2020 lSystem.DataAccess.UserSQL.saveTeamOwner: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'owner8' for key 'team_owner.username'
+Sun May 31 01:55:34 IDT 2020 lSystem.DataAccess.LeagueSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '12345' for key 'league.PRIMARY'
+Sun May 31 01:57:06 IDT 2020 lSystem.DataAccess.LeagueSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '12345' for key 'league.PRIMARY'
+Sun May 31 02:24:59 IDT 2020 lSystem.DataAccess.LeagueInformationSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'league_information.PRIMARY'
+Sun May 31 02:32:46 IDT 2020 lSystem.DataAccess.LeagueInformationSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7' for key 'league_information.PRIMARY'
+Sun May 31 02:37:58 IDT 2020 lSystem.DataAccess.LeagueInformationSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7' for key 'league_information.PRIMARY'
+Sun May 31 09:27:23 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Sun May 31 10:15:07 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Sun May 31 10:15:18 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Sun May 31 10:15:30 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException
+Sun May 31 10:15:35 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
+Sun May 31 10:15:43 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.NoSuchAUserNamedException
+Sun May 31 10:20:13 IDT 2020 lSystem.System.Controller.addTeam: Create team failed- team name already exist
+Sun May 31 10:28:18 IDT 2020 lSystem.System.Controller.addTeam: Create team failed- team name already exist
