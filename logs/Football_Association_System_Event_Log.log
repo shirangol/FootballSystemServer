@@ -4575,3 +4575,6 @@ Sat May 30 17:16:14 IDT 2020 lSystem.System.Controller.logOut: User log out from
 Sat May 30 17:22:54 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(2).
 Sat May 30 17:22:58 IDT 2020 lSystem.System.Users.User.setStatus: Max(id: 2) update his status
 Sat May 30 17:22:58 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Max).
+Sat May 30 20:33:55 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 20:33:55 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 20:33:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
