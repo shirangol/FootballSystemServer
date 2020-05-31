@@ -36,3 +36,15 @@ Sat May 30 20:58:30 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '2
 Sat May 30 20:58:47 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
 Sat May 30 21:06:06 IDT 2020 lSystem.DataAccess.EventSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1-3' for key 'event_log.PRIMARY'
 Sat May 30 21:11:37 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sat May 30 21:22:35 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sat May 30 21:25:21 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sat May 30 21:26:39 IDT 2020 lSystem.DataAccess.EventLogSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Column 'report' cannot be null
+Sun May 31 01:21:59 IDT 2020 lSystem.DataAccess.UserSQL.saveReferee: Type: java.sql.SQLException
+Sun May 31 01:23:08 IDT 2020 lSystem.DataAccess.UserSQL.saveReferee: Type: java.sql.SQLException
+Sun May 31 01:41:00 IDT 2020 lSystem.DataAccess.UserSQL.saveTeamOwner: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'owner8' for key 'team_owner.username'
+Sun May 31 01:55:34 IDT 2020 lSystem.DataAccess.LeagueSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '12345' for key 'league.PRIMARY'
+Sun May 31 01:57:06 IDT 2020 lSystem.DataAccess.LeagueSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '12345' for key 'league.PRIMARY'
+Sun May 31 02:24:59 IDT 2020 lSystem.DataAccess.LeagueInformationSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '5' for key 'league_information.PRIMARY'
+Sun May 31 02:32:46 IDT 2020 lSystem.DataAccess.LeagueInformationSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7' for key 'league_information.PRIMARY'
+Sun May 31 02:37:58 IDT 2020 lSystem.DataAccess.LeagueInformationSQL.save: Type: SQLState '23000' : java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '7' for key 'league_information.PRIMARY'
+Sun May 31 09:27:23 IDT 2020 lSystem.ServiceLayer.GuestController.login: Type: FootballSystem.System.Exeptions.WrongPasswordException

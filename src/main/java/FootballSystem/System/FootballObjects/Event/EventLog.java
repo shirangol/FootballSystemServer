@@ -11,8 +11,7 @@ import java.util.List;
 
 public class EventLog {
 
-    private static int ID=1;
-    //<editor-fold desc="Fields">
+    private static int ID= EventLogSQL.getInstance().getTableSize()+1;    //<editor-fold desc="Fields">
     private int id;
     private List<AEvent> aEventList;
     private String report;
@@ -42,8 +41,9 @@ public class EventLog {
     }
 
     public void setReport(String report) throws SQLException {
-        EventLogSQL.getInstance().save(this);
         this.report = report;
+        EventLogSQL.getInstance().save(this);
+        SystemEventLog.getInstance().writeToLog("report added to the game");
     }
     //</editor-fold>
 

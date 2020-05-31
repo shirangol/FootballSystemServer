@@ -35,97 +35,12 @@ import java.util.List;
 public class FootballSystemApplication {
 
 	public static void main(String[] args) {
-	//	DBConnector.getConnection();
-		//delete event log table
-//		try {
-//			Connection con = DBConnector.getConnection();
-//			String query = "DELETE FROM event_log";
-//			PreparedStatement preparedStmt = con.prepareStatement(query);
-//
-//			preparedStmt.execute();
-//
-//			String query2 = "DELETE FROM event";
-//			PreparedStatement preparedStmt2 = con.prepareStatement(query2);
-//
-//			preparedStmt2.execute();
-//			con.close();
-//		} catch (SQLException err) {
-//			throw new RuntimeException("Error connecting to the database", err);
-//		}
-
-
-
 		SpringApplication.run(FootballSystemApplication.class, args);
 
 		IFinancialSystem iFinancialSystem = new ProxyFinancialSystem();
 		iFinancialSystem.connect();
 		ITaxSystem iTaxSystem = new ProxyTaxSystem();
 		iTaxSystem.connect();
-
-
-
-		//Connection to external systems
-
-		//Dc connect
-		//creae WORLD
-//		try {
-			//DBConnector.getConnection();
-//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//			String dateString = format.format( new Date()   );
-//			Date   date       = format.parse (  dateString);
-//			boolean i=true;
-
-
-			//intiallieSystem();
-			//TeamSQL.getInstance().get(1);
-			//TeamSQL.getInstance().getAll();
-//			Team t = new Team(5,"aa", TeamStatus.Active,null,null,0,0);
-//			Team t2 = new Team(10,"asd", TeamStatus.Active,null,null,0,0);
-//			TeamSQL.getInstance().save(t);
-			//TeamSQL.getInstance().getAll();
-			//TeamSQL.getInstance().delete(t);
-			//TeamSQL.getInstance().getAll();
-
-//			GameSQL.getInstance().get(1);
-//			GameSQL.getInstance().getAll();
-
-//				Referee referee =new Referee("a",RefereeType.MAIN,100,"123","a");
-//			Referee referee2 =new Referee("b",RefereeType.ASSISTANT,150,"123","b");
-//			Referee referee3 =new Referee("c",RefereeType.ASSISTANT,200,"123","c");
-//				Game game=new Game(100,new Date(),2000,"0:0",referee  , referee2, referee3, t, t2);
-//				GameSQL.getInstance().save(game);
-			//GameSQL.getInstance().getAll();
-			//GameSQL.getInstance().delete(game);
-
-//			LeagueInformationSQL.getInstance().get(1);
-//			LeagueInformationSQL.getInstance().getAll();
-//			List<Team> aa=new ArrayList<>();
-//			League league=new League("aa",aa);
-//			Season season=new Season(2000);
-//			FootballAssociation footballAssociation=new FootballAssociation(10,"123","acc","123");
-//			LeagueInformation leagueInformation=new LeagueInformation(5,league,season,footballAssociation,new DefaultAllocate(),new DefaultMethod());
-//			LeagueInformationSQL.getInstance().save(leagueInformation);
-//			LeagueInformationSQL.getInstance().getAll();
-//			LeagueInformationSQL.getInstance().delete(leagueInformation);
-//			LeagueInformationSQL.getInstance().getAll();
-
-
-			//test to controller
-			//Team tt=Controller.getInstance().getTeam(1);
-			//List<Team> teams2=Controller.getInstance().getAllTeams();
-
-//			List<Game> games= Controller.getInstance().getAllGames();
-//			Fan fan= (Fan)Controller.getInstance().getUser("Max");
-//			for (Game g:games){
-//				FanController.getInstance().followGame(fan,g);
-//			}
-
-//		testsForClient();
-//		testsForServer();
-//		Controller.getInstance();
-//		boolean i=true;
-
-
 	}
 
 	public static void intiallieSystem() throws Exception{
@@ -174,8 +89,6 @@ public class FootballSystemApplication {
 	}
 
 	public static void testsForServer(){
-
-
 		try {
 			//Dc connect
 		DBConnector.getConnection();
@@ -237,6 +150,7 @@ public class FootballSystemApplication {
 			e.printStackTrace();
 		}
 	}
+
 	public static void testsForClient(){
 
 		String url = "http://132.72.200.39:3000/api/notification";

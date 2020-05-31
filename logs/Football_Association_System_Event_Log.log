@@ -4580,3 +4580,44 @@ Sat May 30 21:11:26 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>:
 Sat May 30 21:11:26 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.removeEvent: Event was removed from eventLog. Id:2
 Sat May 30 21:11:26 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:3
 Sat May 30 21:11:26 IDT 2020 lSystem.System.Users.Referee.editEventAfterGame: The referee Hen edited event(event Id:2).
+Sat May 30 21:22:16 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 21:22:16 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 21:22:29 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 21:24:34 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 21:24:34 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 21:24:36 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 21:25:33 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 21:25:33 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 21:25:47 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 21:26:55 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 21:26:55 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 21:26:56 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 21:37:48 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 21:37:48 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 21:40:42 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sat May 30 21:40:42 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sat May 30 21:40:47 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sat May 30 21:41:08 IDT 2020 lSystem.System.FootballObjects.Event.AEvent.<init>: New Event was created. (1)
+Sat May 30 21:41:08 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.addEventToLog: Event was added to eventLog. Id:1
+Sat May 30 21:41:08 IDT 2020 lSystem.System.Users.Referee.addEventMidGame: Event was added to the log event game 1 by the referee Hen.
+Sat May 30 21:41:25 IDT 2020 lSystem.System.FootballObjects.Event.EventLog.setReport: report added to the game
+Sun May 31 01:25:50 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(4).
+Sun May 31 01:33:55 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(4).
+Sun May 31 01:41:02 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(4).
+Sun May 31 01:46:29 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(4).
+Sun May 31 09:26:44 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sun May 31 09:26:44 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sun May 31 09:27:10 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sun May 31 09:27:18 IDT 2020 lSystem.System.Users.User.setStatus: Hen(id: 3) update his status
+Sun May 31 09:27:18 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Hen).
+Sun May 31 09:27:28 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(6).
+Sun May 31 09:27:35 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editGameSchedulingPolicy: game scheduling policy set
+Sun May 31 09:27:35 IDT 2020 lSystem.System.FootballObjects.LeagueInformation.editScoreSchedulingPolicy: Score policy set
+Sun May 31 09:27:47 IDT 2020 lSystem.System.Users.User.setStatus: Inbar(id: 6) update his status
+Sun May 31 09:27:47 IDT 2020 lSystem.System.Controller.logOut: User log out from the system. id(Inbar).
+Sun May 31 09:41:05 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sun May 31 09:41:05 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sun May 31 09:41:15 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).
+Sun May 31 09:41:57 IDT 2020 lSystem.System.ExternalSystems.ProxyFinancialSystem.connect: Successful confection to Financial System
+Sun May 31 09:41:57 IDT 2020 lSystem.System.ExternalSystems.ProxyTaxSystem.connect: Successful confection to Tax System
+Sun May 31 09:42:16 IDT 2020 lSystem.System.Controller.login: User log in to the system. id(3).

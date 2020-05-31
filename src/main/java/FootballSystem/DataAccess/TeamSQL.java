@@ -41,9 +41,7 @@ public class TeamSQL implements DataBase<Team> {
                 int expense = rs.getInt("expense");
                 int pLeague = rs.getInt("pLeague");
 
-
                 String p = teamID + " " + name + " " + status + " " + fieldID + " " + pPersonalPage + " " + income+ " " +expense + " " +pLeague;
-                //System.out.println(p);
                 return (p);
             }
             con.close();
@@ -90,6 +88,7 @@ public class TeamSQL implements DataBase<Team> {
         }
 
     }
+
     public List<String> getAllForLeague(int id) {
         List<String> teams= new ArrayList<>();
         try {
