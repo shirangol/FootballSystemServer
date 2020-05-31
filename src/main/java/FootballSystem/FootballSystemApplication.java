@@ -43,124 +43,124 @@ public class FootballSystemApplication {
 		iTaxSystem.connect();
 	}
 
-	public static void intiallieSystem() throws Exception{
-		Controller.getInstance().initSystem();
-//		GuestController guestController = new GuestController();
-//		guestController.signUp(1,"Pudge","1234","Pudge");
-		User systemManager = Controller.getInstance().login("Admin","2&^4BcE#@6");
-		User teamOwner = SystemManagerController.getInstance().createNewTeamOwner((SystemManager)systemManager,4,"Puck","1234","Puck",0,0);
-
-		Field field1 = TeamOwnerController.getInstance().createField(0,"rus");
-		Field field2 = TeamOwnerController.getInstance().createField(1,"ukr");
-
-
-		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA1","1234","PA1");
-		User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","1234","ref1", RefereeType.MAIN);
-		User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","ref2", RefereeType.ASSISTANT);
-		User refereeSide2 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker3","1234","ref3", RefereeType.ASSISTANT);
-		User fan= SystemManagerController.getInstance().createNewFan((SystemManager)systemManager,2,"fan","1234","fan");
-
-
-		Team team1 = FootballAssosiationController.getInstance().createTeam("Navi",(TeamOwner)teamOwner);
-		Team team2 = FootballAssosiationController.getInstance().createTeam("VP",(TeamOwner)teamOwner);
-
-		TeamOwnerController.getInstance().addAssetToTeam((TeamOwner)teamOwner,team1,field1);
-		TeamOwnerController.getInstance().addAssetToTeam((TeamOwner)teamOwner,team2,field2);
-
-		List<Team> teamList = new LinkedList<>();
-		teamList.add(team1);
-		teamList.add(team2);
-
-		League league = FootballAssosiationController.getInstance().initEmptyLeague("Major",teamList);
-		LeagueInformation leagueInformation = FootballAssosiationController.getInstance().initLeague((FootballAssociation)footballAs,league,"2020");
-		FootballAssosiationController.getInstance().schedulingGames((FootballAssociation)footballAs ,leagueInformation );
-
-		List<Referee> referees = new LinkedList<>();
-		referees.add((Referee)referee);
-		referees.add((Referee)refereeSide1);
-		referees.add((Referee)refereeSide2);
-
-		leagueInformation.getGames().get(0).setDate(new Date());
-		leagueInformation.getGames().get(1).setResult(0,9);
-		FanController.getInstance().followGame((Fan)fan,leagueInformation.getGames().get(0));
-		FanController.getInstance().followGame((Fan)fan,leagueInformation.getGames().get(1));
-
-		FootballAssosiationController.getInstance().schedulingReferee((FootballAssociation)footballAs ,leagueInformation ,referees);
-	}
-
-	public static void testsForServer(){
-		try {
-			//Dc connect
-		DBConnector.getConnection();
-
-		intiallieSystem();
-		TeamSQL.getInstance().get(1);
-		TeamSQL.getInstance().getAll();
-		Team t = new Team(5,"aa", TeamStatus.Active,null,null,0,0);
-		Team t2 = new Team(10,"asd", TeamStatus.Active,null,null,0,0);
-		TeamSQL.getInstance().save(t);
-		TeamSQL.getInstance().getAll();
-		TeamSQL.getInstance().delete(t);
-		TeamSQL.getInstance().getAll();
-
-		GameSQL.getInstance().get(1);
-		GameSQL.getInstance().getAll();
-
-		Referee referee =new Referee("a",RefereeType.MAIN,100,"123","a");
-		Referee referee2 =new Referee("b",RefereeType.ASSISTANT,150,"123","b");
-		Referee referee3 =new Referee("c",RefereeType.ASSISTANT,200,"123","c");
-		//Game game=new Game(100,new Date(),2000,"0:0",referee  , referee2, referee3, t, t2);
-//		GameSQL.getInstance().save(game);
+//	public static void intiallieSystem() throws Exception{
+//		Controller.getInstance().initSystem();
+////		GuestController guestController = new GuestController();
+////		guestController.signUp(1,"Pudge","1234","Pudge");
+//		User systemManager = Controller.getInstance().login("Admin","2&^4BcE#@6");
+//		User teamOwner = SystemManagerController.getInstance().createNewTeamOwner((SystemManager)systemManager,4,"Puck","1234","Puck",0,0);
+//
+//		Field field1 = TeamOwnerController.getInstance().createField(0,"rus");
+//		Field field2 = TeamOwnerController.getInstance().createField(1,"ukr");
+//
+//
+//		User footballAs = SystemManagerController.getInstance().createNewFootballAssociation((SystemManager)systemManager,4,"PA1","1234","PA1");
+//		User referee = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker","1234","ref1", RefereeType.MAIN);
+//		User refereeSide1 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker2","1234","ref2", RefereeType.ASSISTANT);
+//		User refereeSide2 = SystemManagerController.getInstance().createNewReferee((SystemManager)systemManager,2,"Invoker3","1234","ref3", RefereeType.ASSISTANT);
+//		User fan= SystemManagerController.getInstance().createNewFan((SystemManager)systemManager,2,"fan","1234","fan");
+//
+//
+//		Team team1 = FootballAssosiationController.getInstance().createTeam("Navi",(TeamOwner)teamOwner);
+//		Team team2 = FootballAssosiationController.getInstance().createTeam("VP",(TeamOwner)teamOwner);
+//
+//		TeamOwnerController.getInstance().addAssetToTeam((TeamOwner)teamOwner,team1,field1);
+//		TeamOwnerController.getInstance().addAssetToTeam((TeamOwner)teamOwner,team2,field2);
+//
+//		List<Team> teamList = new LinkedList<>();
+//		teamList.add(team1);
+//		teamList.add(team2);
+//
+//		League league = FootballAssosiationController.getInstance().initEmptyLeague("Major",teamList);
+//		LeagueInformation leagueInformation = FootballAssosiationController.getInstance().initLeague((FootballAssociation)footballAs,league,"2020");
+//		FootballAssosiationController.getInstance().schedulingGames((FootballAssociation)footballAs ,leagueInformation );
+//
+//		List<Referee> referees = new LinkedList<>();
+//		referees.add((Referee)referee);
+//		referees.add((Referee)refereeSide1);
+//		referees.add((Referee)refereeSide2);
+//
+//		leagueInformation.getGames().get(0).setDate(new Date());
+//		leagueInformation.getGames().get(1).setResult(0,9);
+//		FanController.getInstance().followGame((Fan)fan,leagueInformation.getGames().get(0));
+//		FanController.getInstance().followGame((Fan)fan,leagueInformation.getGames().get(1));
+//
+//		FootballAssosiationController.getInstance().schedulingReferee((FootballAssociation)footballAs ,leagueInformation ,referees);
+//	}
+//
+//	public static void testsForServer(){
+//		try {
+//			//Dc connect
+//		DBConnector.getConnection();
+//
+//		intiallieSystem();
+//		TeamSQL.getInstance().get(1);
+//		TeamSQL.getInstance().getAll();
+//		Team t = new Team(5,"aa", TeamStatus.Active,null,null,0,0);
+//		Team t2 = new Team(10,"asd", TeamStatus.Active,null,null,0,0);
+//		TeamSQL.getInstance().save(t);
+//		TeamSQL.getInstance().getAll();
+//		TeamSQL.getInstance().delete(t);
+//		TeamSQL.getInstance().getAll();
+//
+//		GameSQL.getInstance().get(1);
 //		GameSQL.getInstance().getAll();
-//		GameSQL.getInstance().delete(game);
-
-			LeagueInformationSQL.getInstance().get(1);
-			LeagueInformationSQL.getInstance().getAll();
-			List<Team> aa=new ArrayList<>();
-			League league=new League("aa",aa);
-			Season season=new Season(2000);
-			FootballAssociation footballAssociation=new FootballAssociation(10,"123","acc","123");
-			//LeagueInformation leagueInformation=new LeagueInformation(5,league,season,footballAssociation,new DefaultAllocate(),new DefaultMethod());
-			//LeagueInformationSQL.getInstance().save(leagueInformation);
-			LeagueInformationSQL.getInstance().getAll();
-			//LeagueInformationSQL.getInstance().delete(leagueInformation);
-			LeagueInformationSQL.getInstance().getAll();
-
-
-
-		Team tt=Controller.getInstance().getTeam(1);
-		List<Team> teams2=Controller.getInstance().getAllTeams();
-
-			List<Game> games= Controller.getInstance().getAllGames();
-			Fan fan= (Fan)Controller.getInstance().getUser("Max");
-			for (Game g:games){
-				FanController.getInstance().followGame(fan,g);
-			}
-
-			Controller.getInstance().getUser("Inbar");
-		boolean i=true;
-		//List<Game> games=Controller.getInstance().getAllGames();
-		List<String> lll=GameSQL.getInstance().getAllgamesForReferee("Hen");
-		//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
-		List<League>ll=Controller.getInstance().getAllLeagues();
-			//boolean i=true;
-
-
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-	}
-
-	public static void testsForClient(){
-
-		String url = "http://132.72.200.39:3000/api/notification";
-		RestTemplate restTemplate = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Content-Type","application/json");
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		HttpEntity<String> e = new HttpEntity<>(headers);
-		restTemplate.exchange(url, HttpMethod.GET, e , String.class);
-
-	}
+//
+//		Referee referee =new Referee("a",RefereeType.MAIN,100,"123","a");
+//		Referee referee2 =new Referee("b",RefereeType.ASSISTANT,150,"123","b");
+//		Referee referee3 =new Referee("c",RefereeType.ASSISTANT,200,"123","c");
+//		//Game game=new Game(100,new Date(),2000,"0:0",referee  , referee2, referee3, t, t2);
+////		GameSQL.getInstance().save(game);
+////		GameSQL.getInstance().getAll();
+////		GameSQL.getInstance().delete(game);
+//
+//			LeagueInformationSQL.getInstance().get(1);
+//			LeagueInformationSQL.getInstance().getAll();
+//			List<Team> aa=new ArrayList<>();
+//			League league=new League("aa",aa);
+//			Season season=new Season(2000);
+//			FootballAssociation footballAssociation=new FootballAssociation(10,"123","acc","123");
+//			//LeagueInformation leagueInformation=new LeagueInformation(5,league,season,footballAssociation,new DefaultAllocate(),new DefaultMethod());
+//			//LeagueInformationSQL.getInstance().save(leagueInformation);
+//			LeagueInformationSQL.getInstance().getAll();
+//			//LeagueInformationSQL.getInstance().delete(leagueInformation);
+//			LeagueInformationSQL.getInstance().getAll();
+//
+//
+//
+//		Team tt=Controller.getInstance().getTeam(1);
+//		List<Team> teams2=Controller.getInstance().getAllTeams();
+//
+//			List<Game> games= Controller.getInstance().getAllGames();
+//			Fan fan= (Fan)Controller.getInstance().getUser("Max");
+//			for (Game g:games){
+//				FanController.getInstance().followGame(fan,g);
+//			}
+//
+//			Controller.getInstance().getUser("Inbar");
+//		boolean i=true;
+//		//List<Game> games=Controller.getInstance().getAllGames();
+//		List<String> lll=GameSQL.getInstance().getAllgamesForReferee("Hen");
+//		//List<Game> games=Controller.getInstance().getAllGamesForReferee("Hen");
+//		List<League>ll=Controller.getInstance().getAllLeagues();
+//			//boolean i=true;
+//
+//
+//		}catch (Exception e){
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	public static void testsForClient(){
+//
+//		String url = "http://132.72.200.39:3000/api/notification";
+//		RestTemplate restTemplate = new RestTemplate();
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.set("Content-Type","application/json");
+//		headers.setContentType(MediaType.APPLICATION_JSON);
+//		HttpEntity<String> e = new HttpEntity<>(headers);
+//		restTemplate.exchange(url, HttpMethod.GET, e , String.class);
+//
+//	}
 
 }
